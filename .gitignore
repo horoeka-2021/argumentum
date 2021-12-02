@@ -1,3 +1,6 @@
+# basics
+.bundle*
+
 # Logs
 logs
 *.log
