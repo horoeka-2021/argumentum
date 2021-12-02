@@ -8418,11 +8418,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _ExampleComponent_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.jsx */ "./client/components/ExampleComponent.jsx");
-/* harmony import */ var _Chat_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Chat.jsx */ "./client/components/Chat.jsx");
+/* harmony import */ var _Chat_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Chat.jsx */ "./client/components/Chat.jsx");
+/* harmony import */ var _ChatPrivate_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatPrivate.jsx */ "./client/components/ChatPrivate.jsx");
 
  // import ErrorMessage from './ErrorMessage.jsx'
 // import Components
+// import ExampleComponent from './ExampleComponent.jsx'
 
 
 
@@ -8432,10 +8433,11 @@ function App() {
     className: "app"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "/",
-    component: _ExampleComponent_jsx__WEBPACK_IMPORTED_MODULE_1__["default"]
+    exact: true,
+    component: _Chat_jsx__WEBPACK_IMPORTED_MODULE_1__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
-    path: "/",
-    component: _Chat_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]
+    path: "/chat",
+    component: _ChatPrivate_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]
   }));
 }
 
@@ -8471,10 +8473,10 @@ function Chat() {
 
 /***/ }),
 
-/***/ "./client/components/ExampleComponent.jsx":
-/*!************************************************!*\
-  !*** ./client/components/ExampleComponent.jsx ***!
-  \************************************************/
+/***/ "./client/components/ChatPrivate.jsx":
+/*!*******************************************!*\
+  !*** ./client/components/ChatPrivate.jsx ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8482,29 +8484,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_exampleAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/exampleAction */ "./client/actions/exampleAction.js");
-// React and Redux imports
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_chat_engine__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chat-engine */ "./node_modules/react-chat-engine/dist/index.modern.js");
 
- // Import Actions
 
- // Import components
 
-function ExampleComponent() {
-  var example = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.exampleReducer;
+
+function ChatPrivate() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
+
+  function createDirectChat(creds) {
+    (0,react_chat_engine__WEBPACK_IMPORTED_MODULE_2__.getOrCreateChat)(creds, {
+      is_direct_chat: true,
+      usernames: [username]
+    }, function () {
+      return setUsername('');
+    });
+  }
+
+  function renderChatForm(creds) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+      placeholder: "Username",
+      value: username,
+      onChange: function onChange(e) {
+        return setUsername(e.target.value);
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+      onClick: function onClick() {
+        return createDirectChat(creds);
+      }
+    }, "Create"));
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_chat_engine__WEBPACK_IMPORTED_MODULE_2__.ChatEngine, {
+    height: "100vh",
+    userName: "tane" // userName='test'
+    ,
+    userSecret: "keyboard56" // userSecret='password'
+    ,
+    projectID: "f7791b90-3ea7-4f97-8fd4-9e62df29bbc7",
+    renderNewChatForm: function renderNewChatForm(creds) {
+      return renderChatForm(creds);
+    }
   });
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_actions_exampleAction__WEBPACK_IMPORTED_MODULE_2__.exampleAction)());
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "example-component"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Example Component"), example);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExampleComponent);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChatPrivate);
 
 /***/ }),
 
