@@ -9,5 +9,5 @@ module.exports = router
 
 router.get('/', (req, res) => {
   console.log('login route')
-  res.send('Hello Login!')
+  res.send('')
 })

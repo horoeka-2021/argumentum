@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginAction } from '../actions/loginAction.js'
 
 // import React-Bootstrap components
-import Button from 'react-bootstrap/Button'
 
 // Import components
 
@@ -21,10 +20,8 @@ function loginComponent () {
 
   return (
     <div className='login-component'>
-      <h1>Argumentum Login</h1>
+      <h1>Civil Debate</h1>
       {login}
-      <Button variant="outline-primary">Register</Button>{' '}
-      <Button variant="outline-primary">Log In</Button>{' '}
     </div>
   )
 }

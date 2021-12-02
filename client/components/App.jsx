@@ -1,4 +1,5 @@
 import React from 'react'
+import Navigation from './Navigation'
 import { Route } from 'react-router-dom'
 // import ErrorMessage from './ErrorMessage.jsx'
 
@@ -11,6 +12,7 @@ function App () {
     <div className='app'>
       {/* <Route path='/' component={ExampleComponent} /> */}
       {/* <Route path='/' component={ErrorMessage} /> */}
+      <Navigation/>
       <Route path='/' component={loginComponent} />
     </div>
   )
