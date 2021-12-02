@@ -167,6 +167,63 @@ function exampleAction() {
 
 /***/ }),
 
+/***/ "./client/actions/loginAction.js":
+/*!***************************************!*\
+  !*** ./client/actions/loginAction.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LOGIN_ACTION": () => (/* binding */ LOGIN_ACTION),
+/* harmony export */   "LOGIN_ACTION_SUCCESS": () => (/* binding */ LOGIN_ACTION_SUCCESS),
+/* harmony export */   "LOGIN_ACTION_PENDING": () => (/* binding */ LOGIN_ACTION_PENDING),
+/* harmony export */   "loginActionPending": () => (/* binding */ loginActionPending),
+/* harmony export */   "loginActionSucess": () => (/* binding */ loginActionSucess),
+/* harmony export */   "loginAction": () => (/* binding */ loginAction)
+/* harmony export */ });
+/* harmony import */ var _api_loginAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/loginAPI */ "./client/api/loginAPI.js");
+// import api's and other actions
+ // import { showError } from './error'
+// export action types
+
+var LOGIN_ACTION = 'LOGIN_ACTION';
+var LOGIN_ACTION_SUCCESS = 'LOGIN_ACTION_SUCCESS';
+var LOGIN_ACTION_PENDING = 'LOGIN_ACTION_PENDING';
+function loginActionPending() {
+  return {
+    type: LOGIN_ACTION_PENDING
+  };
+}
+function loginActionSucess(login) {
+  return {
+    type: LOGIN_ACTION_SUCCESS,
+    login: login
+  };
+}
+function loginAction() {
+  return function (dispatch) {
+    dispatch(loginActionPending());
+    return (0,_api_loginAPI__WEBPACK_IMPORTED_MODULE_0__.loginAPI)().then(function (login) {
+      dispatch(loginActionSucess(login));
+      return null;
+    })["catch"](function (err) {
+      // if the error is from our routes, this will use the message our route
+      // sends back, rather than the generic 'Internal Server Error' from a
+      // status 500
+      // if the error is from elsewhere in the Promise chain, there won't be
+      // an err.response object, so we use err.message
+      // const errMessage = err.response?.text || err.message
+      // dispatch(showError(errMessage))
+      // just doing a standard err message
+      console.log('action login error: ', err.message);
+    });
+  };
+}
+
+/***/ }),
+
 /***/ "./client/api/exampleAPI.js":
 /*!**********************************!*\
   !*** ./client/api/exampleAPI.js ***!
@@ -190,6 +247,29 @@ function exampleAPI() {
 
 /***/ }),
 
+/***/ "./client/api/loginAPI.js":
+/*!********************************!*\
+  !*** ./client/api/loginAPI.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "loginAPI": () => (/* binding */ loginAPI)
+/* harmony export */ });
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
+ // Login API
+
+function loginAPI() {
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default().get('/api/v1/loginRoute').then(function (res) {
+    return res.text;
+  });
+}
+
+/***/ }),
+
 /***/ "./client/components/App.jsx":
 /*!***********************************!*\
   !*** ./client/components/App.jsx ***!
@@ -203,13 +283,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _ExampleComponent_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.jsx */ "./client/components/ExampleComponent.jsx");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var _LoginComponent_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginComponent.jsx */ "./client/components/LoginComponent.jsx");
 
  // import ErrorMessage from './ErrorMessage.jsx'
 // import Components
-
- // import React-Bootstrap components
+// import ExampleComponent from './ExampleComponent.jsx'
 
 
 
@@ -218,20 +296,18 @@ function App() {
     className: "app"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: "/",
-    component: _ExampleComponent_jsx__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "secondary"
-  }, " Just a Button "));
+    component: _LoginComponent_jsx__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),
 
-/***/ "./client/components/ExampleComponent.jsx":
-/*!************************************************!*\
-  !*** ./client/components/ExampleComponent.jsx ***!
-  \************************************************/
+/***/ "./client/components/LoginComponent.jsx":
+/*!**********************************************!*\
+  !*** ./client/components/LoginComponent.jsx ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -241,27 +317,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_exampleAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/exampleAction */ "./client/actions/exampleAction.js");
+/* harmony import */ var _actions_loginAction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/loginAction.js */ "./client/actions/loginAction.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
 // React and Redux imports
 
  // Import Actions
 
+ // import React-Bootstrap components
+
  // Import components
 
-function ExampleComponent() {
-  var example = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.exampleReducer;
+function loginComponent() {
+  var login = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.loginReducer;
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_actions_exampleAction__WEBPACK_IMPORTED_MODULE_2__.exampleAction)());
+    dispatch((0,_actions_loginAction_js__WEBPACK_IMPORTED_MODULE_2__.loginAction)());
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "example-component"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Example Component"), example);
+    className: "login-component"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Argumentum Login"), login, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "outline-primary"
+  }, "Register"), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "outline-primary"
+  }, "Log In"), ' ');
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExampleComponent);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loginComponent);
 
 /***/ }),
 
@@ -307,14 +390,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _exampleReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exampleReducer */ "./client/reducers/exampleReducer.js");
+/* harmony import */ var _loginReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loginReducer */ "./client/reducers/loginReducer.js");
  // import reducers
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  exampleReducer: _exampleReducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  exampleReducer: _exampleReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  loginReducer: _loginReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
+
+/***/ }),
+
+/***/ "./client/reducers/loginReducer.js":
+/*!*****************************************!*\
+  !*** ./client/reducers/loginReducer.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_loginAction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/loginAction */ "./client/actions/loginAction.js");
+
+
+function loginReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_loginAction__WEBPACK_IMPORTED_MODULE_0__.LOGIN_ACTION_SUCCESS:
+      return action.login;
+
+    default:
+      return state;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loginReducer);
 
 /***/ }),
 
