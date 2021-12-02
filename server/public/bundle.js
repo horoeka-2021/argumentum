@@ -8488,7 +8488,7 @@ function Chat() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_chat_engine__WEBPACK_IMPORTED_MODULE_2__.ChatEngine, {
     height: "100vh",
-    userName: "test1",
+    userName: "test2",
     userSecret: "password",
     projectID: "5de9b671-f871-4592-bbf9-5b905ee2f090",
     renderNewChatForm: function renderNewChatForm(creds) {
