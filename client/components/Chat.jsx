@@ -32,7 +32,7 @@ function Chat () {
   }
 
   return (
-    <div classNam='chat'>
+    <div className='chat'>
       <ChatEngine
         height='70vh'
         // userName='test2'

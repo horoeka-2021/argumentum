@@ -101,7 +101,7 @@ function profile () {
               <h3>Take me to a debate:</h3>
             </Col>
             <Col>
-              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter the Debate</Button>
+              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
             </Col>
           </Row>
         </Container>

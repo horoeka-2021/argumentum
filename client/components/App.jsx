@@ -6,6 +6,7 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import Register from './Register'
 import Profile from './Profile'
+import Reception from './Reception'
 import Welcome from './Welcome'
 
 // import ErrorMessage from './ErrorMessage.jsx'
@@ -24,10 +25,13 @@ function App () {
       {/* <Route path='/' exact component={loginComponent} /> */}
       {/* <Route path='/' component={loginComponent} /> */}
       <Navigation/>
-      <Route path='/' exact component={Profile} />
-      <Route path='/chat' component={Chat} />
-      {/* <Route path='/register' component={Register} /> */}
-      <Footer/>
+      <main>
+        <Route path='/' exact component={Profile} />
+        <Route path='/chat' component={Chat} />
+        <Route path='/reception' component={Reception} />
+        {/* <Route path='/register' component={Register} /> */}
+      </main>
+      <Footer id='footer'/>
     </div>
   )
 }
