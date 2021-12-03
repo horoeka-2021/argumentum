@@ -2,8 +2,15 @@
 const path = require('path')
 const express = require('express')
 
+require('dotenv').config({ path: path.join(__dirname, '.env') })
+
 // internal requires
 const exampleRoute = require('./routes/exampleRoute')
+
+const userRoutes = require('./routes/users')
+const argumentRoutes = require('./routes/arguments')
+const addChatUser = require('./routes/addChatUser')
+const loginRoute = require('./routes/loginRoute')
 
 const server = express()
 
@@ -11,7 +18,12 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
 // tell server about our routes
-server.use('/api/v1/exampleRoute', exampleRoute)
+server.use('/api/v1/example', exampleRoute)
+
+server.use('/api/v1/users', userRoutes)
+server.use('/api/v1/arguments', argumentRoutes)
+server.use('/addChatUser', addChatUser)
+server.use('/api/v1/loginRoute', loginRoute)
 
 // For the client side BrowserRouter - because there is no '#' to distinguish
 // between client and server side routes, this sends back the index.html

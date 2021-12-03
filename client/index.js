@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Provider } from 'react-redux'
+import { Auth0Provider } from '@auth0/auth0-react'
 
 import reducers from './reducers'
 import App from './components/App'
@@ -17,32 +18,20 @@ const store = createStore(reducers, composeEnhancers(
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>,
+    <Auth0Provider
+      domain={'argumentum-eda.au.auth0.com'}
+      clientId={'SJltMt7PecLv4daxzzTuYuRkrNG0Pu2h'}
+      redirectUri={window.location.origin}
+      audience='https://argumentum/api'
+    >
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </Auth0Provider>,
     document.getElementById('app')
   )
 })
 
-// IF YOU WANT OAuth 2.0
-// document.addEventListener('DOMContentLoaded', () => {
-//   ReactDOM.render(
-//     /**
-//      * Auth0Provider is a component that has a hook that provides
-//      * all authorization operations
-//      */
-//     <Auth0Provider
-//       domain={'horoeka-21-tane.au.auth0.com'}
-//       clientId={'MQcOgMhBM1xvThQoN402V0tFmmAauVHY'}
-//       redirectUri={window.location.origin}
-//       audience='https://fruits/api'
-//     >
-//       <Provider store={store}>
-//         <App />
-//       </Provider>
-//     </Auth0Provider>,
-//     document.getElementById('app')
-//   )
-// })
+export default store
