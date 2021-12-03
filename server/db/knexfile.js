@@ -6,7 +6,8 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: path.join(__dirname, 'dev.sqlite3')
-    }
+    },
+    useNullAsDefault: true
   },
 
   staging: {
@@ -27,10 +28,10 @@ module.exports = {
 
   production: {
     client: 'postgresql',
-    connection: { 
-            connectionString: process.env.DATABASE_URL,
-            ssl: { rejectUnauthorized: false }
-        }
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    },
     pool: {
       min: 2,
       max: 10
@@ -39,5 +40,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 }
