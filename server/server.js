@@ -2,6 +2,8 @@
 const path = require('path')
 const express = require('express')
 
+require('dotenv').config({ path: path.join(__dirname, '.env') })
+
 // internal requires
 const exampleRoute = require('./routes/exampleRoute')
 

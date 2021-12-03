@@ -6,13 +6,13 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import Register from './Register'
 import Profile from './Profile'
-import Reception from './Reception'
+import Welcome from './Welcome'
 
 // import ErrorMessage from './ErrorMessage.jsx'
 
 // import Components
 // import ExampleComponent from './ExampleComponent.jsx'
-import Chat from './Chat1.jsx'
+import Chat from './Chat.jsx'
 import loginComponent from './LoginComponent.jsx'
 
 function App () {
@@ -21,13 +21,12 @@ function App () {
     <div className='app'>
       {/* <Route path='/' component={ExampleComponent} /> */}
       {/* <Route path='/' component={ErrorMessage} /> */}
-      <Route path='/chat' component={Chat} />
+      {/* <Route path='/' exact component={loginComponent} /> */}
+      {/* <Route path='/' component={loginComponent} /> */}
       <Navigation/>
-      <Route path='/' exact component={loginComponent} />
-      <Route path='/register' component={Register} />
-      <Route path='/' component={loginComponent} />
-      <Profile/>
-      <Reception/>
+      <Route path='/' exact component={Profile} />
+      <Route path='/chat' component={Chat} />
+      {/* <Route path='/register' component={Register} /> */}
       <Footer/>
     </div>
   )
