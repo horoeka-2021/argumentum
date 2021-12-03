@@ -28,8 +28,8 @@ function profile () {
   const history = useHistory()
 
   const radios = [
-    { name: '  For  ', value: '1' },
-    { name: 'Against', value: '2' }
+    { name: 'Pro', value: '1' },
+    { name: 'Con', value: '2' }
   ]
 
   function handleClick (event) {
@@ -111,7 +111,7 @@ function profile () {
               <h3>Take me to a debate:</h3>
             </Col>
             <Col>
-              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter the Debate</Button>
+              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
             </Col>
           </Row>
         </Container>

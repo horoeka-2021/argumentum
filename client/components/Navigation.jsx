@@ -35,7 +35,7 @@ function Navigation () {
 
   return (
     <>
-      <Navbar bg="primary" variant="dark" className='fixed-top'>
+      <Navbar bg="info" variant="dark" className='fixed-top'>
         <Container>
           <Navbar.Brand href="/home">Argumentum</Navbar.Brand>
           <Nav className="me-auto">
