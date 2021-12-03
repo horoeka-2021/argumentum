@@ -12,7 +12,6 @@ const privateKey = process.env.CHAT_ENGINE_PRIVATE_KEY
 
 router.post('/', async (req, res) => {
   const data = req.body
-  console.log('data', data)
   try {
     await request.post('https://api.chatengine.io/users/')
       .set('PRIVATE-KEY', privateKey)

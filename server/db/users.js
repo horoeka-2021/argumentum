@@ -5,6 +5,7 @@ module.exports = {
 }
 
 function createUser (user, db = connection) {
+  console.log('trying to insert user into users table')
   return db('users')
     .insert(user)
 }
