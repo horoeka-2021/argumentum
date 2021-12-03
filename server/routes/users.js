@@ -18,7 +18,10 @@ router.post('/', async (req, res) => {
     await db.createUser(user)
     res.sendStatus(201)
   } catch (err) {
-    console.error(err)
+    console.error(err.message)
     res.status(500).send(err.message)
   }
 })
+
+// router.post('/', (req, res) => {
+//   ))

@@ -16,7 +16,7 @@ import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 // import apis, actions, and reducers
-import { postUser } from '../actions/chatUsers'
+import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
 
 function profile () {
@@ -39,6 +39,12 @@ function profile () {
       secret: user.auth0Id
     }
 
+    // user to be sent to our server
+    const dbUser = {
+      auth0Id: user.auth0Id,
+      email: user.email
+    }
+
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
     // do I need to use dispatch here or can I just call the api?
     // dispatch(postUser(user))
@@ -46,12 +52,16 @@ function profile () {
     // lets just say I can just call the api...
     addChatUser(chatUser)
       .then(() => {
-        history.push('/reciption')
+        // history.push('/reciption')
         return null
       })
       .catch(err => {
         console.error(err)
       })
+
+    // add user to database
+    dispatch(postUser(dbUser))
+    history.push('/reception')
   }
 
   return (
