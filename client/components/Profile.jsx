@@ -13,8 +13,8 @@ function profile () {
   const [radioValue, setRadioValue] = useState('1')
 
   const radios = [
-    { name: '  For  ', value: '1' },
-    { name: 'Against', value: '2' }
+    { name: 'Pro', value: '1' },
+    { name: 'Con', value: '2' }
   ]
   return (
 
@@ -23,7 +23,7 @@ function profile () {
         <Row>
           <Col>
             <br></br>
-            <h3>Choose a topic to wrestle with...</h3>
+            <h3>Choose a topic to sharpen your wits on...</h3>
             <br></br>
             <h1>Are programmers on a different evolutionary path?</h1>
             <br></br>
@@ -31,7 +31,7 @@ function profile () {
         </Row>
         <Row className='justify-content-start'>
           <Col>
-            <h3>I wish to take a side:</h3>
+            <h3>Which side are you:</h3>
           </Col>
           <Col>
             <ButtonGroup>
@@ -57,10 +57,10 @@ function profile () {
         </Row>
         <Row className='justify-content-start'>
           <Col>
-            <h3>Take me to a debate:</h3>
+            <h3>Meet your opposition:</h3>
           </Col>
           <Col>
-            <Button variant="outline-warning">Enter the Debate</Button>
+            <Button variant="outline-warning">Enter</Button>
           </Col>
         </Row>
       </Container>

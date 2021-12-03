@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import Profile from './Profile'
+import Reception from './Reception'
 
 // import ErrorMessage from './ErrorMessage.jsx'
 
