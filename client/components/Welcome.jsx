@@ -12,9 +12,10 @@ export default function Welcome () {
       <Container>
         <Row>
           <Col>
-            <h1>Welcome to the worlds oldest activity</h1>
+            <h1>Welcome to the worlds oldest activity.</h1>
           </Col>
         </Row>
+        <hr className="solid"></hr>
         <Row>
           <Col>
             <p>If someone has a different viewpoint, why not run towards it, see it as a valuable chance to learn, it&#39;s gym for your brain.</p>
@@ -25,8 +26,9 @@ export default function Welcome () {
 
             <p>Genuinely seeking to understand someones view isn&#39;t dignifying it, nor endorsing it, it&#39;s a key part of growth. Tolerating them is a key part of society, not vacillation or weakness. </p>
 
-            <p>Feel free to agree or ignore or debate</p></Col>
+            <p>Feel free to agree or ignore or debate.</p></Col>
         </Row>
+        <hr className="solid"></hr>
         <Row>
           <Col><h1>Sign in or Register!</h1></Col>
         </Row>

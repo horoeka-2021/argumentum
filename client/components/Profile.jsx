@@ -79,6 +79,7 @@ function profile () {
               <h1>Are programmers on a different evolutionary path?</h1>
               <br></br>
             </Col>
+            <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
             <Col>
@@ -104,7 +105,7 @@ function profile () {
             </Col>
           </Row>
           <Row>
-            <Col>---</Col>
+            <Col><hr className="solid"></hr></Col>
           </Row>
           <Row className='justify-content-start'>
             <Col>
@@ -114,6 +115,7 @@ function profile () {
               <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
             </Col>
           </Row>
+          <hr className="solid"></hr>
         </Container>
       </IfAuthenticated>
     </>
