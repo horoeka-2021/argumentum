@@ -6,13 +6,13 @@ const router = express.Router()
 module.exports = router
 
 // test data (this should actually come from a user registering after auth0)
-const data = { username: 'testAPI1', secret: 'password' }
+// const data = { username: 'testAPI9', secret: 'password' }
 
-// get private key from dotenv file using process
-// const privateKey = process.env.CHAT_ENGINE_PRIVATE_KEY
-const privateKey = 'f4a20a6a-7c23-48e6-ad03-85a48414e6df'
+const privateKey = process.env.CHAT_ENGINE_PRIVATE_KEY
 
 router.post('/', async (req, res) => {
+  const data = req.body
+  console.log('data', data)
   try {
     await request.post('https://api.chatengine.io/users/')
       .set('PRIVATE-KEY', privateKey)
