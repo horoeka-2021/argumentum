@@ -12,7 +12,7 @@ import Welcome from './Welcome'
 
 // import Components
 // import ExampleComponent from './ExampleComponent.jsx'
-import Chat from './Chat1.jsx'
+import Chat from './Chat.jsx'
 import loginComponent from './LoginComponent.jsx'
 
 function App () {
