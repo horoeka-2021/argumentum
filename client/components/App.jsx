@@ -17,7 +17,7 @@ function App () {
       {/* <Route path='/' component={ErrorMessage} /> */}
       <Route path='/chat' component={Chat} />
       <Navigation/>
-      <Route path='/' component={loginComponent} />
+      <Route path='/' exact component={loginComponent} />
 
       <Footer/>
     </div>
