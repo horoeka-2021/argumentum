@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Navigation from './Navigation'
 import Footer from './Footer'
+import Profile from './Profile'
 
 // import ErrorMessage from './ErrorMessage.jsx'
 
@@ -16,7 +17,7 @@ function App () {
       {/* <Route path='/' component={ErrorMessage} /> */}
       <Navigation/>
       <Route path='/' component={loginComponent} />
-
+      <Profile/>
       <Footer/>
     </div>
   )
