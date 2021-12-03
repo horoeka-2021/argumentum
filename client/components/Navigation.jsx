@@ -20,9 +20,11 @@ function Navigation () {
   function handleRegister (e) {
     e.preventDefault()
     console.log('register')
-    loginWithRedirect({
-      redirectUri: `${window.location.origin}/register`
-    })
+    // getting error where register does not take me to the /register route... changing things up for now
+    // loginWithRedirect({
+    //   redirectUri: `${window.location.origin}/register`
+    // })
+    loginWithRedirect()
   }
 
   function handleSignIn (e) {
