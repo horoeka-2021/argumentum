@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button'
 
 function Reception () {
   const history = useHistory()
-
   function handleClick (event) {
     history.push('/chat')
   }
