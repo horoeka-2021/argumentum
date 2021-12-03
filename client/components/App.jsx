@@ -4,6 +4,7 @@ import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
+import Profile from './Profile'
 
 // import ErrorMessage from './ErrorMessage.jsx'
 
@@ -19,7 +20,7 @@ function App () {
       {/* <Route path='/' component={ErrorMessage} /> */}
       <Navigation/>
       <Route path='/' component={loginComponent} />
-
+      <Profile/>
       <Footer/>
     </div>
   )
