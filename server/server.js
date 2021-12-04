@@ -2,6 +2,7 @@
 const path = require('path')
 const express = require('express')
 
+// setting up the dotenv
 require('dotenv').config({ path: path.join(__dirname, '.env') })
 
 // internal requires
