@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/horoeka-2021/anger_management.git"
-  },  
+  },
   "scripts": {
     "start": "run-p webpack server",
     "webpack": "webpack --config ./client/webpack.config.js",
@@ -122,6 +122,5 @@
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
