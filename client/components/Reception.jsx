@@ -1,5 +1,6 @@
 // React and Redux imports
 import React from 'react'
+import { useHistory } from 'react-router'
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
@@ -8,6 +9,11 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 function Reception () {
+  const history = useHistory()
+  function handleClick (event) {
+    history.push('/chat')
+  }
+
   return (
 
     <>
@@ -31,7 +37,7 @@ function Reception () {
         <Row className='justify-content-center'>
           <Col></Col>
           <Col>
-            <Button variant="outline-warning">Enter</Button>
+            <Button onClick={e => handleClick(e)} variant="outline-warning">Enter</Button>
           </Col>
           <Col></Col>
         </Row>
