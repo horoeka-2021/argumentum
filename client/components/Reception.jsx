@@ -14,23 +14,24 @@ function Reception () {
       <Container>
         <Row>
           <Col>
-            <h3>Your counterparty for this joust is:</h3>
+            <h4>Your counterparty is:</h4>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h3>The honorable: Lord Wallace</h3>
+            <h3>Jaqueline Kennedy</h3>
           </Col>
         </Row>
+        <Col><hr className="solid"></hr></Col>
         <Row>
           <Col>
-            <h3>Please wait for the green light and then hit the enter button below.</h3>
+            <h4>To continue please click enter.</h4>
           </Col>
         </Row>
         <Row className='justify-content-center'>
           <Col></Col>
           <Col>
-            <Button variant="outline-warning">Enter the Debate!</Button>
+            <Button variant="outline-warning">Enter</Button>
           </Col>
           <Col></Col>
         </Row>
