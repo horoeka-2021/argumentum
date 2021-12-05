@@ -28,11 +28,13 @@ Response (200):
     {
       "id": 1,
       "name": "Does Freewill Exist?",
-      "sides" : [
-        "Yes",
-        "?",
-        "No"
-      ]
+      "side0": "Yes",
+      "side1": "No"
+      // "sides" : [
+      //   "Yes",
+      //   "?",
+      //   "No"
+      // ]
     }
   ],
   "serious": [
