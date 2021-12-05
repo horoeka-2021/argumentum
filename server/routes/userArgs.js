@@ -21,3 +21,24 @@ router.get('/:authId', (req, res) => {
       res.status(500).send('USER DATABASE ERROR: ' + err.message)
     })
 })
+
+router.post('/', (req, res) => {
+  const { authId, args } = req.body
+  args.forEach(arg => {
+    const { argId, side, story } = arg
+    const userArg = {
+      user_id: authId,
+      arg_id: argId,
+      side,
+      story
+    }
+    db.createUserArg(userArg)
+      .then(() => {
+        res.sendStatus(201)
+      })
+      .catch(err => {
+        console.error(err.message)
+        res.status(500).send('USER DATABASE ERROR: ' + err.message)
+      })
+  })
+})
