@@ -1,5 +1,5 @@
 // React and Redux imports
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
@@ -18,20 +18,19 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
-import { fetchProfileArguments } from '../actions/arguments'
 
-function Profile () {
+function profile () {
+  const [radioValue, setRadioValue] = useState('1')
+  const user = useSelector(state => state.user)
+  console.log('TCL: profile -> user', user)
   const dispatch = useDispatch()
+  // use history
   const history = useHistory()
 
-  const user = useSelector(state => state.user)
-
-  // Get the available arguments the user can choose from
-  const profileArguments = useSelector(state => state.profileArguments)
-  useEffect(() => {
-    dispatch(fetchProfileArguments())
-  }, [])
-  console.log('Profile: profileArguments: ', profileArguments)
+  const radios = [
+    { name: 'Pro', value: '1' },
+    { name: 'Con', value: '2' }
+  ]
 
   function handleClick (event) {
     // set up userChat as an object containing the user.auth0_id and email
@@ -49,6 +48,7 @@ function Profile () {
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
     addChatUser(chatUser)
       .then(() => {
+        // history.push('/reciption')
         return null
       })
       .catch(err => {
@@ -69,33 +69,53 @@ function Profile () {
         <Container>
           <Row>
             <Col>
-              <h3>What do you want to argue about?</h3>
+              <br></br>
+              <h3>Choose a topic to wrestle with...</h3>
+              <br></br>
+              <h1>Are programmers on a different evolutionary path?</h1>
+              <br></br>
             </Col>
             <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h3>Stupid</h3>
+              <h3>I wish to take a side:</h3>
             </Col>
-            <hr className="solid"></hr>
+            <Col>
+              <ButtonGroup>
+                {radios.map((radio, idx) => (
+                  <ToggleButton
+                    key={idx}
+                    id={`radio-${idx}`}
+                    type="radio"
+                    variant={idx % 2 ? 'outline-danger' : 'outline-success'}
+                    name="radio"
+                    value={radio.value}
+                    checked={radioValue === radio.value}
+                    onChange={(e) => setRadioValue(e.currentTarget.value)}
+                  >
+                    {radio.name}
+                  </ToggleButton>
+                ))}
+              </ButtonGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col><hr className="solid"></hr></Col>
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h3>Serious</h3>
+              <h3>Take me to a debate:</h3>
             </Col>
-            <hr className="solid"></hr>
-          </Row>
-          <Row className='justify-content-start'>
             <Col>
-              <h3>Fun</h3>
+              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
             </Col>
-            <hr className="solid"></hr>
           </Row>
+          <hr className="solid"></hr>
         </Container>
       </IfAuthenticated>
     </>
   )
 }
-// {/* <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button> */}
 
-export default Profile
+export default profile
