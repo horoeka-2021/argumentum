@@ -70,13 +70,15 @@ function Profile () {
       <IfAuthenticated>
         <Container>
           <Row>
+            <h2>What do you want to argue about?</h2>
+            <hr className="solid"></hr>
+          </Row>
+          <Row>
             <Col>
               <Row>
                 <Col>
-                  <h2>What do you want to argue about?</h2>
                 </Col>
               </Row>
-              <hr className="solid"></hr>
               <Row className='justify-content-start'>
                 <Col>
                   <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
@@ -100,7 +102,7 @@ function Profile () {
                 </Col>
               </Row>
               <Row className='justify-content-start'>
-                <DropdownButton variant="dark" id="dropdown-basic-button" title="Fun">
+                <DropdownButton variant="outline-dark" id="dropdown-basic-button" title="Fun">
                   {profileArguments.fun && profileArguments.fun.map(argument => (
                     <Dropdown.Item key={argument.id} href="#/action-1">
                       <ArgFormModal argument={argument} />
@@ -109,7 +111,7 @@ function Profile () {
                 </DropdownButton>           <Col>
                 </Col>
               </Row>
-              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
+              <Button onClick={e => handleClick(e)} variant="outline-dark">Enter Reception</Button>
             </Col>
             <Col>
               <List />
