@@ -10,10 +10,13 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Welcome from './Welcome'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 // import other components
+import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import ArgFormModal from './ArgFormModal'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
@@ -75,12 +78,13 @@ function Profile () {
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h3>Stupid</h3>
-              {profileArguments.stupid && profileArguments.stupid.map(argument => {
-                return (
-                  <p key={argument.name}>{argument.name}</p>
-                )
-              })}
+              <DropdownButton id="dropdown-basic-button" title="Stupid">
+                {profileArguments.stupid && profileArguments.stupid.map(argument => (
+                  <Dropdown.Item key={argument.id} href="#/action-1">
+                    <ArgFormModal argument={argument} />
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
             </Col>
             <hr className="solid"></hr>
           </Row>
