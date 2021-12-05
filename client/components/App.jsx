@@ -12,7 +12,6 @@ import Welcome from './Welcome'
 // import ErrorMessage from './ErrorMessage.jsx'
 
 // import Components
-// import ExampleComponent from './ExampleComponent.jsx'
 import Chat from './Chat.jsx'
 import loginComponent from './LoginComponent.jsx'
 
@@ -20,7 +19,6 @@ function App () {
   cacheUser(useAuth0)
   return (
     <div className='app'>
-      {/* <Route path='/' component={ExampleComponent} /> */}
       {/* <Route path='/' component={ErrorMessage} /> */}
       {/* <Route path='/' exact component={loginComponent} /> */}
       {/* <Route path='/' component={loginComponent} /> */}
