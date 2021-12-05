@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
 import user from './user'
-import loginReducer from './loginReducer'
+import profileArguments from './arguments'
+import radio from './radio'
 
 export default combineReducers({
   user,
-  loginReducer
+  profileArguments,
+  radio
 })

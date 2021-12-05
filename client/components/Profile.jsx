@@ -1,36 +1,38 @@
 // React and Redux imports
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Welcome from './Welcome'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
 
 // import other components
+import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import ArgFormModal from './ArgFormModal'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
+import { fetchProfileArguments } from '../actions/arguments'
 
-function profile () {
-  const [radioValue, setRadioValue] = useState('1')
-  const user = useSelector(state => state.user)
-  console.log('TCL: profile -> user', user)
+function Profile () {
   const dispatch = useDispatch()
-  // use history
   const history = useHistory()
 
-  const radios = [
-    { name: 'Pro', value: '1' },
-    { name: 'Con', value: '2' }
-  ]
+  const user = useSelector(state => state.user)
+
+  // Get the available arguments the user can choose from
+  const profileArguments = useSelector(state => state.profileArguments)
+  useEffect(() => {
+    dispatch(fetchProfileArguments())
+  }, [])
+  console.log('Profile profileArguments: ', profileArguments)
 
   function handleClick (event) {
     // set up userChat as an object containing the user.auth0_id and email
@@ -48,7 +50,6 @@ function profile () {
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
     addChatUser(chatUser)
       .then(() => {
-        // history.push('/reciption')
         return null
       })
       .catch(err => {
@@ -69,53 +70,39 @@ function profile () {
         <Container>
           <Row>
             <Col>
-              <br></br>
-              <h4>Choose a topic:</h4>
-              <br></br>
-              <h1>Are programmers on a different evolutionary path?</h1>
-              <br></br>
+              <h2>What do you want to argue about?</h2>
             </Col>
           </Row>
           <hr className="solid"></hr>
           <Row className='justify-content-start'>
             <Col>
-              <h4>Select for or against:</h4>
-            </Col>
-            <Col>
-              <ButtonGroup>
-                {radios.map((radio, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    id={`radio-${idx}`}
-                    type="radio"
-                    variant={idx % 2 ? 'outline-danger' : 'outline-success'}
-                    name="radio"
-                    value={radio.value}
-                    checked={radioValue === radio.value}
-                    onChange={(e) => setRadioValue(e.currentTarget.value)}
-                  >
-                    {radio.name}
-                  </ToggleButton>
+              <DropdownButton id="dropdown-basic-button" title="Stupid">
+                {profileArguments.stupid && profileArguments.stupid.map(argument => (
+                  <Dropdown.Item key={argument.id} href="#/action-1">
+                    <ArgFormModal argument={argument} />
+                  </Dropdown.Item>
                 ))}
-              </ButtonGroup>
+              </DropdownButton>
             </Col>
-          </Row>
-          <Row>
-            <Col><hr className="solid"></hr></Col>
+            <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h4>Meet your counterparty:</h4>
+              <h3>Serious</h3>
             </Col>
-            <Col>
-              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
-            </Col>
+            <hr className="solid"></hr>
           </Row>
-          <hr className="solid"></hr>
+          <Row className='justify-content-start'>
+            <Col>
+              <h3>Fun</h3>
+            </Col>
+            <hr className="solid"></hr>
+          </Row>
+          <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
         </Container>
       </IfAuthenticated>
     </>
   )
 }
 
-export default profile
+export default Profile
