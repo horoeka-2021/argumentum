@@ -10,7 +10,7 @@ Request:
 
 ```json
 {
-  "authId": "",
+  "authId": "abc123",
   "email": "user@example.com"
 }
 ```
