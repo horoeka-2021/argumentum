@@ -13,7 +13,6 @@ import Welcome from './Welcome'
 
 // import Components
 import Chat from './Chat.jsx'
-import loginComponent from './LoginComponent.jsx'
 
 function App () {
   cacheUser(useAuth0)
