@@ -16,7 +16,7 @@ server.use(express.static(path.join(__dirname, 'public')))
 
 // tell server about our routes
 server.use('/api/v1/users', userRoutes)
-server.use('/api/v1/arguments', argumentRoutes)
+server.use('/api/v1/args', argumentRoutes)
 server.use('/api/v1/addChatUser', addChatUser)
 
 // For the client side BrowserRouter - because there is no '#' to distinguish
