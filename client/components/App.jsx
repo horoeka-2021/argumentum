@@ -9,12 +9,20 @@ import Profile from './Profile'
 import Reception from './Reception'
 import Welcome from './Welcome'
 
+// import icons from fontawesome
+import ReactDOM from 'react-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 // import ErrorMessage from './ErrorMessage.jsx'
 
 // import Components
 // import ExampleComponent from './ExampleComponent.jsx'
 import Chat from './Chat.jsx'
 import loginComponent from './LoginComponent.jsx'
+
+library.add(fab, faCheckSquare, faCoffee)
 
 function App () {
   cacheUser(useAuth0)

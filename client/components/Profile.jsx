@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
+// import from fontawesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -75,6 +78,7 @@ function profile () {
             <Col>
               <br></br>
               <h4>Choose a topic:</h4>
+              <h3>Your <FontAwesomeIcon icon="coffee" /> is hot and ready!</h3>
               <br></br>
               <h1>Are programmers on a different evolutionary path?</h1>
               <br></br>
@@ -118,6 +122,7 @@ function profile () {
           <hr className="solid"></hr>
         </Container>
       </IfAuthenticated>
+
     </>
   )
 }
