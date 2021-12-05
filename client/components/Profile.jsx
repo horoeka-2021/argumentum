@@ -46,10 +46,6 @@ function profile () {
     }
 
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
-    // do I need to use dispatch here or can I just call the api?
-    // dispatch(postUser(user))
-
-    // lets just say I can just call the api...
     addChatUser(chatUser)
       .then(() => {
         // history.push('/reciption')
@@ -74,16 +70,16 @@ function profile () {
           <Row>
             <Col>
               <br></br>
-              <h3>Choose a topic to wrestle with...</h3>
+              <h4>Choose a topic:</h4>
               <br></br>
               <h1>Are programmers on a different evolutionary path?</h1>
               <br></br>
             </Col>
-            <hr className="solid"></hr>
           </Row>
+          <hr className="solid"></hr>
           <Row className='justify-content-start'>
             <Col>
-              <h3>I wish to take a side:</h3>
+              <h4>Select for or against:</h4>
             </Col>
             <Col>
               <ButtonGroup>
@@ -109,7 +105,7 @@ function profile () {
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h3>Take me to a debate:</h3>
+              <h4>Meet your counterparty:</h4>
             </Col>
             <Col>
               <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
