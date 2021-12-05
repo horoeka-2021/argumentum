@@ -4,7 +4,8 @@ module.exports = {
   createUser,
   userExists,
   getUserEmail,
-  getUserArgs
+  getUserArgs,
+  createUserArg
 }
 
 function createUser (user, db = connection) {
@@ -33,12 +34,17 @@ function getUserEmail (authId, db = connection) {
 function getUserArgs (authId, db = connection) {
   return db('user_arguments')
     .where('user_id', authId)
-    .join('arguments', 'user_arguments.argument_id', 'arguments.id')
+    .join('arguments', 'user_arguments.arg_id', 'arguments.id')
     .select(
-      'user_arguments.argument_id as argId',
+      'user_arguments.arg_id as argId',
       'arguments.name as name',
       'arguments.description as description',
       'user_arguments.side as side',
       'user_arguments.story as story'
     )
+}
+
+function createUserArg (userArg, db = connection) {
+  return db('user_arguments')
+    .insert(userArg)
 }
