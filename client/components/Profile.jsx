@@ -7,9 +7,9 @@ import { useHistory } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
+import { Accordion } from 'react-bootstrap'
 
 // import other components
 import Welcome from './Welcome'
@@ -80,42 +80,50 @@ function Profile () {
                 </Col>
               </Row>
               <Row className='justify-content-start'>
-                <Col>
-                  <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
-                    {profileArguments.stupid && profileArguments.stupid.map(argument => (
-                      <Dropdown.Item key={argument.id} href="#/action-1">
-                        <ArgFormModal argument={argument} />
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
-                </Col>
+                <Accordion>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Stupid</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.stupid && profileArguments.stupid.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>Serious</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.serious && profileArguments.serious.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="2">
+                    <Accordion.Header>Fun</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.fun && profileArguments.fun.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
               </Row>
-              <Row className='justify-content-start'>
-                <Col>
-                  <DropdownButton variant="dark" id="dropdown-basic-button" title="Serious">
-                    {profileArguments.serious && profileArguments.serious.map(argument => (
-                      <Dropdown.Item key={argument.id} href="#/action-1">
-                        <ArgFormModal argument={argument} />
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
-                </Col>
+              <Row>
               </Row>
-              <Row className='justify-content-start'>
-                <DropdownButton variant="outline-dark" id="dropdown-basic-button" title="Fun">
-                  {profileArguments.fun && profileArguments.fun.map(argument => (
-                    <Dropdown.Item key={argument.id} href="#/action-1">
-                      <ArgFormModal argument={argument} />
-                    </Dropdown.Item>
-                  ))}
-                </DropdownButton>           <Col>
-                </Col>
-              </Row>
-              <Button onClick={e => handleClick(e)} variant="outline-dark">Enter Reception</Button>
             </Col>
             <Col>
               <List />
             </Col>
+            <Row><br></br></Row>
+            <hr className="solid"></hr>
+          </Row>
+          <Row>
+            <Button onClick={e => handleClick(e)} variant="outline-dark">Done</Button>
           </Row>
         </Container>
       </IfAuthenticated>
