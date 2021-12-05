@@ -1,10 +1,10 @@
 const connection = require('./connection')
 
 module.exports = {
-  listArguments
+  listArgs
 }
 
-function listArguments (db = connection) {
+function listArgs (db = connection) {
   return db('arguments')
     .select()
 }

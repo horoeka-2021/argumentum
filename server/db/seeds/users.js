@@ -4,7 +4,7 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        { auth0_id: 1, email: 'example@gmail.com' }
+        { auth0_id: 'abc123', email: 'example@gmail.com' }
       ])
     })
 }
