@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button'
 import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import ArgFormModal from './ArgFormModal'
+import List from './List'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
@@ -70,43 +71,50 @@ function Profile () {
         <Container>
           <Row>
             <Col>
-              <h2>What do you want to argue about?</h2>
+              <Row>
+                <Col>
+                  <h2>What do you want to argue about?</h2>
+                </Col>
+              </Row>
+              <hr className="solid"></hr>
+              <Row className='justify-content-start'>
+                <Col>
+                  <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
+                    {profileArguments.stupid && profileArguments.stupid.map(argument => (
+                      <Dropdown.Item key={argument.id} href="#/action-1">
+                        <ArgFormModal argument={argument} />
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </Col>
+              </Row>
+              <Row className='justify-content-start'>
+                <Col>
+                  <DropdownButton variant="dark" id="dropdown-basic-button" title="Serious">
+                    {profileArguments.serious && profileArguments.serious.map(argument => (
+                      <Dropdown.Item key={argument.id} href="#/action-1">
+                        <ArgFormModal argument={argument} />
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </Col>
+              </Row>
+              <Row className='justify-content-start'>
+                <DropdownButton variant="dark" id="dropdown-basic-button" title="Fun">
+                  {profileArguments.fun && profileArguments.fun.map(argument => (
+                    <Dropdown.Item key={argument.id} href="#/action-1">
+                      <ArgFormModal argument={argument} />
+                    </Dropdown.Item>
+                  ))}
+                </DropdownButton>           <Col>
+                </Col>
+              </Row>
+              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
             </Col>
-          </Row>
-          <hr className="solid"></hr>
-          <Row className='justify-content-start'>
             <Col>
-              <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
-                {profileArguments.stupid && profileArguments.stupid.map(argument => (
-                  <Dropdown.Item key={argument.id} href="#/action-1">
-                    <ArgFormModal argument={argument} />
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
+              <List />
             </Col>
           </Row>
-          <Row className='justify-content-start'>
-            <Col>
-              <DropdownButton variant="dark" id="dropdown-basic-button" title="Serious">
-                {profileArguments.serious && profileArguments.serious.map(argument => (
-                  <Dropdown.Item key={argument.id} href="#/action-1">
-                    <ArgFormModal argument={argument} />
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
-            </Col>
-          </Row>
-          <Row className='justify-content-start'>
-            <DropdownButton variant="dark" id="dropdown-basic-button" title="Fun">
-              {profileArguments.fun && profileArguments.fun.map(argument => (
-                <Dropdown.Item key={argument.id} href="#/action-1">
-                  <ArgFormModal argument={argument} />
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>           <Col>
-            </Col>
-          </Row>
-          <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
         </Container>
       </IfAuthenticated>
     </>

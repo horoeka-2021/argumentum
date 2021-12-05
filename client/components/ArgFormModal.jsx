@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import ArgForm from './ArgForm'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setList } from '../actions/list'
 
 export default function ArgFormModal (props) {
   // code from bootstrap
@@ -13,6 +14,7 @@ export default function ArgFormModal (props) {
 
   // our code
   // set name to be the argument.name given as a prop
+  const dispatch = useDispatch()
   const argument = props.argument
 
   const why = useSelector(state => state.why)
@@ -20,7 +22,13 @@ export default function ArgFormModal (props) {
 
   function handleSubmit () {
     setShow(false)
-    console.log('submitting: ', why, radio)
+    const list = {
+      id: argument.id,
+      name: argument.name,
+      why,
+      radio
+    }
+    dispatch(setList(list))
   }
 
   return (
