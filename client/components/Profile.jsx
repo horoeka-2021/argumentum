@@ -46,10 +46,6 @@ function profile () {
     }
 
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
-    // do I need to use dispatch here or can I just call the api?
-    // dispatch(postUser(user))
-
-    // lets just say I can just call the api...
     addChatUser(chatUser)
       .then(() => {
         // history.push('/reciption')
