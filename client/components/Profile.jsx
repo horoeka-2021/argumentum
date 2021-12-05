@@ -10,14 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
+import { Accordion } from 'react-bootstrap'
 
 // import other components
 import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import ArgFormModal from './ArgFormModal'
+import List from './List'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
@@ -72,44 +73,61 @@ function Profile () {
       <IfAuthenticated>
         <Container>
           <Row>
+            <h2>What do you want to argue about?</h2>
+            <hr className="solid"></hr>
+          </Row>
+          <Row>
             <Col>
-              <h2>What do you want to argue about?</h2>
+              <Row>
+                <Col>
+                </Col>
+              </Row>
+              <Row className='justify-content-start'>
+                <Accordion>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Stupid</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.stupid && profileArguments.stupid.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>Serious</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.serious && profileArguments.serious.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="2">
+                    <Accordion.Header>Fun</Accordion.Header>
+                    <Accordion.Body>
+                      {profileArguments.fun && profileArguments.fun.map(argument => (
+                        <Dropdown.Item key={argument.id} href="#/action-1">
+                          <ArgFormModal argument={argument} />
+                        </Dropdown.Item>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </Row>
+              <Row>
+              </Row>
             </Col>
-          </Row>
-          <hr className="solid"></hr>
-          <Row className='justify-content-start'>
             <Col>
-              <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
-                {profileArguments.stupid && profileArguments.stupid.map(argument => (
-                  <Dropdown.Item key={argument.id} href="#/action-1">
-                    <ArgFormModal argument={argument} />
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
+              <List />
             </Col>
+            <Row><br></br></Row>
+            <hr className="solid"></hr>
           </Row>
-          <Row className='justify-content-start'>
-            <Col>
-              <DropdownButton variant="dark" id="dropdown-basic-button" title="Serious">
-                {profileArguments.serious && profileArguments.serious.map(argument => (
-                  <Dropdown.Item key={argument.id} href="#/action-1">
-                    <ArgFormModal argument={argument} />
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
-            </Col>
+          <Row>
+            <Button onClick={e => handleClick(e)} variant="outline-dark">Done</Button>
           </Row>
-          <Row className='justify-content-start'>
-            <DropdownButton variant="dark" id="dropdown-basic-button" title="Fun">
-              {profileArguments.fun && profileArguments.fun.map(argument => (
-                <Dropdown.Item key={argument.id} href="#/action-1">
-                  <ArgFormModal argument={argument} />
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>           <Col>
-            </Col>
-          </Row>
-          <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
         </Container>
       </IfAuthenticated>
 
