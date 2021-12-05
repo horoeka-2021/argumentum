@@ -5,12 +5,12 @@ const router = express.Router()
 
 module.exports = router
 
-// Routes for '/api/v1/arguments
+// Routes for '/api/v1/args
 
 router.get('/', (req, res) => {
   db.listArguments()
-    .then((argumentums) => {
-      res.json(argumentums)
+    .then((args) => {
+      res.json(args)
       return null
     })
     .catch((err) => {

@@ -1,7 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable('user_arguments', (table) => {
-    table.string('user_id').references('users.id')
-    table.integer('argument_id').references('arguments.id')
+    table.string('user_id').references('users.auth0_id')
+    table.integer('arg_id').references('arguments.id')
     table.int('side')
     table.string('story')
   })
