@@ -72,8 +72,8 @@ function Profile () {
             <Col>
               <h2>What do you want to argue about?</h2>
             </Col>
-            <hr className="solid"></hr>
           </Row>
+          <hr className="solid"></hr>
           <Row className='justify-content-start'>
             <Col>
               <DropdownButton id="dropdown-basic-button" title="Stupid">
