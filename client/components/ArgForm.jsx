@@ -1,12 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
+// bootstrap
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+
+// other components
 import SideRadio from './SideRadio'
 
 export default function ArgForm (props) {
   const argument = props.argument
+
+  const radioState = useSelector(state => state.radio)
 
   const [why, setWhy] = React.useState('')
 
@@ -15,26 +20,21 @@ export default function ArgForm (props) {
     setWhy(event.target.value)
   }
 
-  function handleSelection (event) {
-    const id = event.target.value
-    console.log(id)
+  function handleClick (event) {
+    event.preventDefault()
+    console.log({ why })
+    console.log({ radioState })
   }
 
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <SideRadio argument={argument} />
-        {/* <Row className="mb-3">
-          <Col> <Form.Check inline name="side" type="checkbox" onChange={e => handleSelection(e)} label={argument.side0} /> </Col>
-          <Col> <Form.Check inline name="side" type="checkbox" label={'?'} /> </Col>
-          <Col> <Form.Check inline name="side" type="checkbox" label={argument.side1}/> </Col>
-        </Row> */}
       </Form.Group>
       <Form.Group className="mb-3" controlId="formWhy">
-        {/* <Form.Label>Why?</Form.Label> */}
         <Form.Control value={why} onChange={e => handleChange(e)} type="why" placeholder="What are your thoughts on this topic?" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button onClick={e => handleClick(e)} variant="primary" type="submit">
       Submit
       </Button>
     </Form>

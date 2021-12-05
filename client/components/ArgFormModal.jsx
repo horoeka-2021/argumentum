@@ -28,6 +28,7 @@ export default function ArgFormModal (props) {
           <ArgForm argument={argument}/>
         </Modal.Body>
         <Modal.Footer>
+          {/* POLISH: move submit button here (requries 'why' to be global redux state)>
           {/* <Button variant="secondary" onClick={handleClose}>
               Close
           </Button> */}

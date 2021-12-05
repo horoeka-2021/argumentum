@@ -1,17 +1,15 @@
 // React and Redux imports
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
 
 // import other components
 import Welcome from './Welcome'
@@ -100,11 +98,11 @@ function Profile () {
             </Col>
             <hr className="solid"></hr>
           </Row>
+          <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
         </Container>
       </IfAuthenticated>
     </>
   )
 }
-// {/* <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button> */}
 
 export default Profile
