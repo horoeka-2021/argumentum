@@ -19,7 +19,6 @@ function App () {
   return (
     <div className='app'>
       {/* <Route path='/' component={ErrorMessage} /> */}
-      {/* <Route path='/' exact component={loginComponent} /> */}
       {/* <Route path='/' component={loginComponent} /> */}
       <Navigation/>
       <main>
