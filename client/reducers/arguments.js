@@ -1,6 +1,6 @@
 import { FETCH_PROFILE_ARGUMENTS_SUCCESS } from '../actions/arguments'
 
-function products (state = [], action) {
+function profileArguments (state = [], action) {
   switch (action.type) {
     case FETCH_PROFILE_ARGUMENTS_SUCCESS:
       return action.profileArguments
@@ -10,4 +10,4 @@ function products (state = [], action) {
   }
 }
 
-export default products
+export default profileArguments

@@ -31,7 +31,7 @@ function Profile () {
   useEffect(() => {
     dispatch(fetchProfileArguments())
   }, [])
-  console.log('Profile: profileArguments: ', profileArguments)
+  console.log('Profile profileArguments: ', profileArguments)
 
   function handleClick (event) {
     // set up userChat as an object containing the user.auth0_id and email
@@ -69,13 +69,18 @@ function Profile () {
         <Container>
           <Row>
             <Col>
-              <h3>What do you want to argue about?</h3>
+              <h2>What do you want to argue about?</h2>
             </Col>
             <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
             <Col>
               <h3>Stupid</h3>
+              {profileArguments.stupid && profileArguments.stupid.map(argument => {
+                return (
+                  <p key={argument.name}>{argument.name}</p>
+                )
+              })}
             </Col>
             <hr className="solid"></hr>
           </Row>

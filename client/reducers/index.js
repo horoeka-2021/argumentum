@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux'
 
 import user from './user'
-import exampleReducer from './exampleReducer'
-import loginReducer from './loginReducer'
+import profileArguments from './arguments'
 
 export default combineReducers({
   user,
-  exampleReducer,
-  loginReducer
+  profileArguments
 })

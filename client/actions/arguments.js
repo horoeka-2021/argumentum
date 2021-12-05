@@ -21,7 +21,7 @@ export function fetchProfileArguments () {
     dispatch(fetchProfileArgumentsPending())
     return getProfileArguments()
       .then(profileArguments => {
-        dispatch(fetchProfileArgumentsSuccess(arguments))
+        dispatch(fetchProfileArgumentsSuccess(profileArguments))
         return null
       })
       .catch((err) => {
