@@ -19,9 +19,19 @@ router.post('/', async (req, res) => {
     res.sendStatus(201)
   } catch (err) {
     console.error(err.message)
-    res.status(500).send(err.message)
+    res.status(500).send('USER DATABASE ERROR: ' + err.message)
   }
 })
 
-// router.post('/', (req, res) => {
-//   ))
+router.get('/:authId', async (req, res) => {
+  const authId = req.params.authId
+  db.getUserEmail(authId)
+    .then((userEmail) => {
+      res.json(userEmail)
+      return null
+    })
+    .catch(err => {
+      console.error(err.message)
+      res.status(500).send('USER DATABASE ERROR: ' + err.message)
+    })
+})

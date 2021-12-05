@@ -13,14 +13,12 @@ import Welcome from './Welcome'
 
 // import Components
 import Chat from './Chat.jsx'
-import loginComponent from './LoginComponent.jsx'
 
 function App () {
   cacheUser(useAuth0)
   return (
     <div className='app'>
       {/* <Route path='/' component={ErrorMessage} /> */}
-      {/* <Route path='/' exact component={loginComponent} /> */}
       {/* <Route path='/' component={loginComponent} /> */}
       <Navigation/>
       <main>
