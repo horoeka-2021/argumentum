@@ -1,15 +1,16 @@
-// import request from 'superagent'
+import request from 'superagent'
 
 export function getProfileArguments () {
-  // return request.get('/api/v1/arguments/profile')
-  //   .then(res => {
-  //     return res.body
-  //   })
+  return request.get('/api/v1/args')
+    .then(res => {
+      console.log(res.body)
+      return res.body
+    })
 
   // make a promise which resolves with exampleProfileArguments
-  return new Promise((resolve, reject) => {
-    resolve(exampleProfileArguments)
-  })
+  // return new Promise((resolve, reject) => {
+  //   resolve(exampleProfileArguments)
+  // })
 }
 
 const exampleProfileArguments = {
