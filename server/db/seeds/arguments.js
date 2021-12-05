@@ -4,7 +4,7 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('arguments').insert([
-        { id: 1, name: 'Aliens', description: 'Do they exist?' }
+        { id: 1, name: 'Aliens', description: 'Do they exist?', side0: 'Yes', side1: 'No' }
       ])
     })
 }
