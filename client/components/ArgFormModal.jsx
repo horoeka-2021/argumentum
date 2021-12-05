@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import ArgForm from './ArgForm'
+import { useSelector } from 'react-redux'
 
 export default function ArgFormModal (props) {
   // code from bootstrap
@@ -14,9 +15,17 @@ export default function ArgFormModal (props) {
   // set name to be the argument.name given as a prop
   const argument = props.argument
 
+  const why = useSelector(state => state.why)
+  const radio = useSelector(state => state.radio)
+
+  function handleSubmit () {
+    setShow(false)
+    console.log('submitting: ', why, radio)
+  }
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="dark" onClick={handleShow}>
         {argument.name}
       </Button>
 
@@ -28,13 +37,9 @@ export default function ArgFormModal (props) {
           <ArgForm argument={argument}/>
         </Modal.Body>
         <Modal.Footer>
-          {/* POLISH: move submit button here (requries 'why' to be global redux state)>
-          {/* <Button variant="secondary" onClick={handleClose}>
-              Close
-          </Button> */}
-          {/* <Button variant="primary" onClick={handleClose}>
-              Save Changes
-          </Button> */}
+          <Button variant="dark" onClick={handleSubmit}>
+              Submit
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

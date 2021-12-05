@@ -1,29 +1,22 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // bootstrap
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
-// other components
+// other components and actions etc
 import SideRadio from './SideRadio'
+import setWhy from '../actions/why'
 
 export default function ArgForm (props) {
   const argument = props.argument
+  const dispatch = useDispatch()
 
-  const radioState = useSelector(state => state.radio)
-
-  const [why, setWhy] = React.useState('')
+  const why = useSelector(state => state.why)
 
   function handleChange (event) {
-    console.log(why)
-    setWhy(event.target.value)
-  }
-
-  function handleClick (event) {
-    event.preventDefault()
-    console.log({ why })
-    console.log({ radioState })
+    console.log('calling action with', event.target.value)
+    dispatch(setWhy(event.target.value))
   }
 
   return (
@@ -34,9 +27,6 @@ export default function ArgForm (props) {
       <Form.Group className="mb-3" controlId="formWhy">
         <Form.Control value={why} onChange={e => handleChange(e)} type="why" placeholder="What are your thoughts on this topic?" />
       </Form.Group>
-      <Button onClick={e => handleClick(e)} variant="primary" type="submit">
-      Submit
-      </Button>
     </Form>
   )
 }

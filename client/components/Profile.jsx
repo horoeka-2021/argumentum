@@ -76,7 +76,7 @@ function Profile () {
           <hr className="solid"></hr>
           <Row className='justify-content-start'>
             <Col>
-              <DropdownButton id="dropdown-basic-button" title="Stupid">
+              <DropdownButton variant="dark" id="dropdown-basic-button" title="Stupid">
                 {profileArguments.stupid && profileArguments.stupid.map(argument => (
                   <Dropdown.Item key={argument.id} href="#/action-1">
                     <ArgFormModal argument={argument} />
@@ -84,19 +84,27 @@ function Profile () {
                 ))}
               </DropdownButton>
             </Col>
-            <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
             <Col>
-              <h3>Serious</h3>
+              <DropdownButton variant="dark" id="dropdown-basic-button" title="Serious">
+                {profileArguments.serious && profileArguments.serious.map(argument => (
+                  <Dropdown.Item key={argument.id} href="#/action-1">
+                    <ArgFormModal argument={argument} />
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
             </Col>
-            <hr className="solid"></hr>
           </Row>
           <Row className='justify-content-start'>
-            <Col>
-              <h3>Fun</h3>
+            <DropdownButton variant="dark" id="dropdown-basic-button" title="Fun">
+              {profileArguments.fun && profileArguments.fun.map(argument => (
+                <Dropdown.Item key={argument.id} href="#/action-1">
+                  <ArgFormModal argument={argument} />
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>           <Col>
             </Col>
-            <hr className="solid"></hr>
           </Row>
           <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
         </Container>
