@@ -12,7 +12,7 @@ router.get('/:authId', (req, res) => {
   const authId = req.params.authId
   db.getUserArgs(authId)
     .then((args) => {
-      const argsData = {args: args}
+      const argsData = { args: args }
       res.json(argsData)
       return null
     })
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
       story
     }
   })
-  
+
   db.createUserArg(userArgs)
     .then(() => {
       res.sendStatus(201)
@@ -47,34 +47,23 @@ router.post('/', (req, res) => {
     })
 })
 
-
 // GET list of users and their userArgs
-router.get('/', (req, res) => {
-  db.listUsers()
-    .then((usersList) => {
-      db.listUserArgs()
-        .then((userArgsList) => {
-          const swipeusers = usersList.map(user => {
-            return {
-              authId: user.authId,
-              image: user.image,
-              username: user.username,
-              args: userArgsList.filter(arg => arg.userId === user.authId)
-            }
-          })
-          res.json(swipeusers)
-          return null
-        })
-        .catch(err => {
-          console.error(err.message)
-          res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
-        })
+router.get('/', async (req, res) => {
+  try {
+    const usersList = await db.listUsers()
+    const userArgsList = await db.listUserArgs()
+    const swipeusers = usersList.map(user => {
+      return {
+        authId: user.authId,
+        image: user.image,
+        username: user.username,
+        args: userArgsList.filter(arg => arg.userId === user.authId)
+      }
     })
-    .catch(err => {
-      console.error(err.message)
-      res.status(500).send('USER DATABASE ERROR: ' + err.message)
-    })
-
-  
-  
+    res.json(swipeusers)
+    return null
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
+  }
 })

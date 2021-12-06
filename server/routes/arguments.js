@@ -1,5 +1,4 @@
 const express = require('express')
-const { cache } = require('webpack')
 const db = require('../db/arguments')
 
 const router = express.Router()
@@ -16,7 +15,7 @@ router.get('/', (req, res) => {
     fun: []
   }
   db.listArgs()
-  .then((args) => {
+    .then((args) => {
       args.forEach(arg => {
         switch (arg.category) {
           case 'stupid':
@@ -36,11 +35,13 @@ router.get('/', (req, res) => {
       res.json(sortedArgs)
       return null
     })
-    cache
+    .catch((err) => {
+      res.status(500).send('ARGUMENT DATABASE ERROR: ' + err.message)
+    })
 })
 
 // POST new arg, returns new args id
-router.post('/', (req,res) => {
+router.post('/', (req, res) => {
   db.createArg(req.body)
     .then((id) => {
       res.json(id)

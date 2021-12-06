@@ -19,7 +19,6 @@ function Navigation () {
 
   function handleRegister (e) {
     e.preventDefault()
-    console.log('register')
     // getting error where register does not take me to the /register route... changing things up for now
     // loginWithRedirect({
     //   redirectUri: `${window.location.origin}/register`
@@ -35,20 +34,26 @@ function Navigation () {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" className='fixed-top'>
+      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect className='fixed-top'>
         <Container>
-          <Navbar.Brand href="/home">Argumentum</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <IfNotAuthenticated>
-              <Nav.Link href="/register" onClick={handleRegister}>Register</Nav.Link>
-              <Nav.Link href="/login" onClick={handleSignIn}>Login</Nav.Link>
-            </IfNotAuthenticated>
-            <IfAuthenticated>
-              <Nav.Link href="/logout" onClick={handleLogoff}>Log out</Nav.Link>
-            </IfAuthenticated>
-          </Nav>
+          <Navbar.Brand href="/">Argumentum</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto">
+
+              <Nav.Link href="/about">About</Nav.Link>
+
+              <IfNotAuthenticated>
+                <Nav.Link href="/register" onClick={handleRegister}>Register</Nav.Link>
+                <Nav.Link href="/login" onClick={handleSignIn}>Login</Nav.Link>
+              </IfNotAuthenticated>
+
+              <IfAuthenticated>
+                <Nav.Link href="/logout" onClick={handleLogoff}>Log out</Nav.Link>
+              </IfAuthenticated>
+
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

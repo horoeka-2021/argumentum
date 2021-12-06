@@ -5,9 +5,6 @@ const router = express.Router()
 
 module.exports = router
 
-// test data (this should actually come from a user registering after auth0)
-// const data = { username: 'testAPI9', secret: 'password' }
-
 const privateKey = process.env.CHAT_ENGINE_PRIVATE_KEY
 
 router.post('/', async (req, res) => {
