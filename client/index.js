@@ -1,7 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-// import { ReactDOM } from 'react'
-// import { Auth0Provider } from '@auth0/auth0-react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'

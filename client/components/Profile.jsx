@@ -85,6 +85,7 @@ function Profile () {
       <IfNotAuthenticated>
         <Welcome/>
       </IfNotAuthenticated>
+
       <IfAuthenticated>
         <Container>
           <Row>
@@ -98,7 +99,9 @@ function Profile () {
                 </Col>
               </Row>
               <Row className='justify-content-start'>
+
                 <Accordion>
+
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>Stupid</Accordion.Header>
                     <Accordion.Body>
@@ -109,6 +112,7 @@ function Profile () {
                       ))}
                     </Accordion.Body>
                   </Accordion.Item>
+
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>Serious</Accordion.Header>
                     <Accordion.Body>
@@ -119,6 +123,7 @@ function Profile () {
                       ))}
                     </Accordion.Body>
                   </Accordion.Item>
+
                   <Accordion.Item eventKey="2">
                     <Accordion.Header>Fun</Accordion.Header>
                     <Accordion.Body>
@@ -130,6 +135,7 @@ function Profile () {
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
+
               </Row>
               <Row>
               </Row>

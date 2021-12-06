@@ -10,6 +10,7 @@ function listArgs (db = connection) {
     .select()
 }
 
+// What is returning('id') for??
 function createArg (arg, db = connection) {
   return db('arguments')
     .returning('id')
