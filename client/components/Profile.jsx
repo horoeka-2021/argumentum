@@ -50,7 +50,7 @@ function Profile () {
     // set-up: user data for our sesrver
     const dbUser = {
       auth0Id: user.auth0Id,
-      userName: username,
+      username: username,
       image: monkey,
       email: user.email
     }
@@ -67,7 +67,8 @@ function Profile () {
         return null
       })
       .catch(err => {
-        console.error(err)
+        console.log('Error adding user to chat engine, maybe they already exist though!')
+        console.error(err.message)
       })
 
     // add user to database

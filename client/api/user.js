@@ -9,6 +9,7 @@ export async function addUser (user) {
 }
 
 export function addUserArgList (list) {
+  console.log('API addUserArgList', list)
   return request.post('api/v1/userArgs')
     .send(list)
     .catch(logError)
