@@ -24,18 +24,15 @@ hr.solid {
   top: 0;
 }
 
-/* .carouselUser {
-  background-color: blue;
+.carousel {
+  /* width:900px; */
+  /* width:80vw; */
+  /* height:30vh; */
+  max-width: 480px;
   margin: auto;
 }
 
-.carouselCaption {
-  top: 100;
-  bottom: auto; 
-} */
-
-/* .carousel {
-  background-color: seagreen;
-} */
-
-/* <div className="vl"></div> */
+.tableMonkey {
+  max-width: 25vw;
+  border-radius: 3%;
+}

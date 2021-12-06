@@ -13,6 +13,7 @@ Request:
 {
   "authId": "abc123",
   "userName": "Diogenes69", //usernames as stretch
+  "image": 1,
   "email": "user@example.com"
 }
 ```
@@ -124,6 +125,7 @@ This is used on the /reception page to display other users
   "swipeusers": [
     {
       "authId": "abc123",
+      "image": 1,
       "args":  [
         {
           "argId": 0,
@@ -143,6 +145,7 @@ This is used on the /reception page to display other users
       },
     {
       "authId": "def456",
+      "image": 2,
       "args":  [
         {
           "argId": 0,
