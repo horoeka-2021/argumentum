@@ -43,6 +43,14 @@ hr.solid {
   transform: scale(1.1);
 }
 
+.selectedMonkey {
+  /* border-width: 5px; */
+  /* border-color: black; */
+  border-radius: 50%;
+  /* padding: 4px; */
+
+}
+
 /* used to space things out in a standard way */
 .standard {
   margin-bottom: 1rem;
