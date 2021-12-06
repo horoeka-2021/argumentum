@@ -3,9 +3,11 @@ const connection = require('./connection')
 module.exports = {
   createUser,
   userExists,
-  getUserEmail,
+  getUser,
   getUserArgs,
-  createUserArg
+  createUserArg,
+  listUsers,
+  listUserArgs
 }
 
 function createUser (user, db = connection) {
@@ -22,13 +24,11 @@ function userExists (authId, db = connection) {
     })
 }
 
-function getUserEmail (authId, db = connection) {
+function getUser (authId, db = connection) {
   return db('users')
     .where('auth0_id', authId)
     .first()
-    .select(
-      'email'
-    )
+    .select()
 }
 
 function getUserArgs (authId, db = connection) {
@@ -47,4 +47,23 @@ function getUserArgs (authId, db = connection) {
 function createUserArg (userArg, db = connection) {
   return db('user_arguments')
     .insert(userArg)
+}
+
+function listUsers (db = connection) {
+  return db('users')
+    .select(
+      'auth0_id as authId',
+      'image',
+      'username'
+    )
+}
+
+function listUserArgs (db = connection) {
+  return db('user_arguments')
+    .select(
+      'user_id as userId',
+      'arg_id as argId',
+      'side',
+      'story'
+    )
 }
