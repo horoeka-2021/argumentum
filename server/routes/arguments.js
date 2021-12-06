@@ -8,13 +8,13 @@ module.exports = router
 // Routes for '/api/v1/args
 
 router.get('/', (req, res) => {
+  const sortedArgs = {
+    stupid: [],
+    serious: [],
+    fun: []
+  }
   db.listArgs()
-    .then((args) => {
-      const sortedArgs = {
-        stupid: [],
-        serious: [],
-        fun: []
-      }
+  .then((args) => {
       args.forEach(arg => {
         switch (arg.category) {
           case 'stupid':
