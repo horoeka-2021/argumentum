@@ -60,10 +60,13 @@ function listUsers (db = connection) {
 
 function listUserArgs (db = connection) {
   return db('user_arguments')
+    .join('arguments', 'user_arguments.arg_id', 'arguments.id')
     .select(
-      'user_id as userId',
-      'arg_id as argId',
-      'side',
-      'story'
+      'user_arguments.user_id as userId',
+      'user_arguments.arg_id as argId',
+      'arguments.name as name',
+      'arguments.description as description',
+      'user_arguments.side',
+      'user_arguments.story'
     )
 }

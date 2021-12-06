@@ -11,10 +11,10 @@ Request:
 
 ```json
 {
-  "authId": "abc123",
-  "userName": "Diogenes69", //usernames as stretch
-  "image": 1,
-  "email": "user@example.com"
+	"auth0Id": "def456",
+	"email": "example2@gmail.com",
+	"image": 3,
+	"username": "PlatoIsMyRoD"
 }
 ```
 
@@ -26,8 +26,10 @@ Response:
 
 ```json
 {
-  "userName": "Diogenes69", //usernames as stretch
-  "email": "user@example.com"
+  "auth0_id": "abc123",
+  "email": "example@gmail.com",
+  "image": 1,
+  "username": "mad-lad-diogenese"
 }
 ```
 
@@ -43,18 +45,44 @@ Response (200):
 {
   "stupid": [
     {
-      "id": 1,
-      "name": "Does Freewill Exist?",
-      "description": "Does it exist?",
+      "id": 5,
+      "category": "stupid",
+      "name": "Freewill",
+      "description": "Do we have it?",
+      "side0": "Yes",
+      "side1": "No"
+    },
+    {
+      "id": 6,
+      "category": "stupid",
+      "name": "The nature of reality",
+      "description": "Do we live in a simulation?",
       "side0": "Yes",
       "side1": "No"
     }
   ],
   "serious": [
     {
+      "id": 1,
+      "category": "serious",
+      "name": "Aliens",
+      "description": "Do they exist?",
+      "side0": "Yes",
+      "side1": "No"
+    },
+    {
       "id": 2,
+      "category": "serious",
+      "name": "Vaccines",
+      "description": "Are they harmful?",
+      "side0": "Yes",
+      "side1": "No"
+    },
+    {
+      "id": 7,
+      "category": "serious",
       "name": "Vacine Mandates",
-      "description": "Are they neccesarry?",
+      "description": "Should we have them?",
       "side0": "For",
       "side1": "Against"
     }
@@ -62,10 +90,19 @@ Response (200):
   "fun": [
     {
       "id": 3,
-      "name": "Cats vs Dogs",
-      "description": "Meow or Woof?",
-      "side0": "Cats",
-      "side1": "Dogs"
+      "category": "fun",
+      "name": "Dogs Vs Cats",
+      "description": "Which is the best pet?",
+      "side0": "Dogs",
+      "side1": "Cats"
+    },
+    {
+      "id": 4,
+      "category": "fun",
+      "name": "Batman Vs Superman",
+      "description": "Who would win in a fight?",
+      "side0": "Batman",
+      "side1": "Superman"
     }
   ]
 }
@@ -79,13 +116,27 @@ Response:
 
 ```json
 {
-  "arguments": [
+  "args": [
     {
       "argId": 1,
+      "name": "Aliens",
+      "description": "Do they exist?",
+      "side": "Yes",
+      "story": "I was abducted and probed during my OE in rural France."
+    },
+    {
+      "argId": 3,
+      "name": "Dogs Vs Cats",
+      "description": "Which is the best pet?",
+      "side": "Cats",
+      "story": "No one ever made a musical about Dogs."
+    },
+    {
+      "argId": 5,
       "name": "Freewill",
-      "description": "Does it exist?",
-      "side": 0,
-      "story": "God gave us freewill!"
+      "description": "Do we have it?",
+      "side": "No",
+      "story": "We are all meat machines."
     }
   ]
 }
@@ -99,14 +150,19 @@ Request:
 
 ```json
 {
-  "authId": "abc123",
-  "args": [
-    {
-      "argId": 1,
-      "side": 0,
-      "story": "God gave us freewill!"
-    }
-  ]
+	"authId": "abc123",
+	"args": [
+		{
+			"argId": 3,
+			"side": "Cats",
+			"story": "No one ever made a musical about Dogs."
+		},
+		{
+			"argId": 5,
+			"side": "No",
+			"story": "We are all meat machines."
+		}
+	]
 }
 ```
 
@@ -126,41 +182,39 @@ This is used on the /reception page to display other users
     {
       "authId": "abc123",
       "image": 1,
-      "args":  [
+      "username": "mad-lad-diogenese",
+      "args": [
         {
-          "argId": 0,
-          "name": "Freewill",
-          "description": "Does it exist?",
-          "side": "No",
-          "story": "Our brains are just (biological) machines. Machines don't have freewill."
+          "userId": "abc123",
+          "argId": 1,
+          "name": "Aliens",
+          "description": "Do they exist?",
+          "side": "Yes",
+          "story": "I was abducted and probed during my OE in rural France."
         },
         {
-          "argId": 1,
-          "name": "Cats vs Dogs",
-          "description": "Meow or Woof?",
+          "userId": "abc123",
+          "argId": 3,
+          "name": "Dogs Vs Cats",
+          "description": "Which is the best pet?",
           "side": "Cats",
-          "story": "Cats are independant badasses. You need them, they don't need you."
-        }
-        ]
-      },
-    {
-      "authId": "def456",
-      "image": 2,
-      "args":  [
+          "story": "No one ever made a musical about Dogs."
+        },
         {
-          "argId": 0,
+          "userId": "abc123",
+          "argId": 5,
           "name": "Freewill",
-          "description": "Does it exist?",
-          "side": "Yes",
-          "story": "Denial of free will is simply an abdication of personal responsibility."          },
-        {
-          "argId": 1,
-          "name": "Cats vs Dogs",
-          "description": "Meow or Woof?",
-          "side": "Dogs",
-          "story": "Dogs are loyal and affectionate animals"
+          "description": "Do we have it?",
+          "side": "No",
+          "story": "We are all meat machines."
         }
       ]
+    },
+    {
+      "authId": "def456",
+      "image": 3,
+      "username": "PlatoIsMyRoD",
+      "args": []
     }
   ]
 }
@@ -186,11 +240,6 @@ Response (201):
 response body may or may not be neccesary
 ```json
 {
-  "id": 3,
-  "name": "Vacine Mandates",
-  "description": "Should we have them?",
-  "category": "serious",
-  "side0" : "For",
-  "side1": "Against"
+  "id": 9
 }
 ```
