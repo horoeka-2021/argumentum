@@ -10,10 +10,12 @@ module.exports = router
 // POST new user to users db
 router.post('/', async (req, res) => {
   const newUser = req.body
-  const { auth0Id, email } = newUser
+  const { auth0Id, email, image, username } = newUser
   const user = {
     auth0_id: auth0Id,
-    email
+    email,
+    image,
+    username
   }
   try {
     const exists = await db.userExists(user.auth0_id)
@@ -29,12 +31,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-// GET user /:authId email
+// GET user by /:authId
 router.get('/:authId', (req, res) => {
   const authId = req.params.authId
-  db.getUserEmail(authId)
-    .then((userEmail) => {
-      res.json(userEmail)
+  db.getUser(authId)
+    .then((user) => {
+      res.json(user)
       return null
     })
     .catch(err => {

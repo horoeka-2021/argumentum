@@ -37,20 +37,21 @@ function Chat () {
   if (user.email) {
     return (
       <div className='chat'>
+
         <IfNotAuthenticated>
           <Welcome/>
         </IfNotAuthenticated>
+
         <IfAuthenticated>
           <ChatEngine
             height='70vh'
-            // userName='test2'
             userName={user.email}
-            // userSecret='password'
             userSecret={user.auth0Id}
             projectID='5de9b671-f871-4592-bbf9-5b905ee2f090'
             renderNewChatForm={creds => renderChatForm(creds)}
           />
         </IfAuthenticated>
+
       </div>
     )
   } else {
