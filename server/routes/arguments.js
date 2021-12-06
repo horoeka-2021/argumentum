@@ -1,4 +1,5 @@
 const express = require('express')
+const { cache } = require('webpack')
 const db = require('../db/arguments')
 
 const router = express.Router()
@@ -7,14 +8,15 @@ module.exports = router
 
 // Routes for '/api/v1/args
 
+// GET list of args sorted by category
 router.get('/', (req, res) => {
+  const sortedArgs = {
+    stupid: [],
+    serious: [],
+    fun: []
+  }
   db.listArgs()
-    .then((args) => {
-      const sortedArgs = {
-        stupid: [],
-        serious: [],
-        fun: []
-      }
+  .then((args) => {
       args.forEach(arg => {
         switch (arg.category) {
           case 'stupid':
@@ -32,6 +34,16 @@ router.get('/', (req, res) => {
         }
       })
       res.json(sortedArgs)
+      return null
+    })
+    cache
+})
+
+// POST new arg, returns new args id
+router.post('/', (req,res) => {
+  db.createArg(req.body)
+    .then((id) => {
+      res.json(id)
       return null
     })
     .catch((err) => {

@@ -12,11 +12,26 @@ export default function Monkeys () {
   }
 
   const numbers = Array.from({ length: 9 }, (v, i) => ({ src: `images/monkeys/${i + 1}.jpg`, i }))
-  console.log(numbers)
+  const chunks = chunk(numbers, 3)
 
   return (
     <div className='Monkeys'>
       <Table striped borderless hover>
+        {/* Ahmads code, need to check if this works then refactored ours to match */}
+        {/* <tbody>
+          {chunks.map((row, i) =>
+            <tr key={i}>
+              {row.map(monkey =>
+                <td key={monkey.i}>
+                  <img
+                    width='100px'
+                    src={monkey.src}
+                    onClick={() => handleClick(monkey.i)}
+                  />
+                </td>)}
+            </tr>
+          )}
+        </tbody> */}
         {/* <tbody>
           <tr>
             <td>
@@ -71,3 +86,11 @@ export default function Monkeys () {
     </div>
   )
 }
+
+const chunk = (arr, size) =>
+  arr
+    .reduce((acc, _, i) =>
+      (i % size)
+        ? acc
+        : [...acc, arr.slice(i, i + size)]
+    , [])
