@@ -24,4 +24,15 @@ hr.solid {
   top: 0;
 }
 
-/* <div className="vl"></div> */
+.carousel {
+  /* width:900px; */
+  /* width:80vw; */
+  /* height:30vh; */
+  max-width: 480px;
+  margin: auto;
+}
+
+.tableMonkey {
+  max-width: 25vw;
+  border-radius: 3%;
+}
