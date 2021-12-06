@@ -6,6 +6,8 @@ import radio from './radio'
 import why from './why'
 import list from './list'
 import users from './users'
+import username from './username'
+import monkey from './monkey'
 
 export default combineReducers({
   user,
@@ -13,5 +15,7 @@ export default combineReducers({
   radio,
   why,
   list,
-  users
+  users,
+  username,
+  monkey
 })

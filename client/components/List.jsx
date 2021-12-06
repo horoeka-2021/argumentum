@@ -14,9 +14,9 @@ export default function List () {
       </thead>
       <tbody>
         {list.map(item => (
-          <tr key={item.id}>
+          <tr key={item.argId}>
             <td>{item.name}</td>
-            <td>{item.radio}</td>
+            <td>{item.side}</td>
           </tr>
         ))}
       </tbody>

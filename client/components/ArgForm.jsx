@@ -15,7 +15,6 @@ export default function ArgForm (props) {
   const why = useSelector(state => state.why)
 
   function handleChange (event) {
-    console.log('calling action with', event.target.value)
     dispatch(setWhy(event.target.value))
   }
 

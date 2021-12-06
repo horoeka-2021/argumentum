@@ -8,6 +8,13 @@ export async function addUser (user) {
     .catch(logError)
 }
 
+export function addUserArgList (list) {
+  console.log('API addUserArgList', list)
+  return request.post('api/v1/userArgs')
+    .send(list)
+    .catch(logError)
+}
+
 function logError (err) {
   console.error(
     'Error consuming the API (in api/user.js):',

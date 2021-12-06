@@ -35,4 +35,15 @@ hr.solid {
 .tableMonkey {
   max-width: 25vw;
   border-radius: 3%;
+  /* padding: 3em; */
+  transition: transform .5s;
+}
+
+.tableMonkey:hover {
+  transform: scale(1.1);
+}
+
+/* used to space things out in a standard way */
+.standard {
+  margin-bottom: 1rem;
 }

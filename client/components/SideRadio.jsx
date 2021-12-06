@@ -12,7 +12,6 @@ export default function SideRadio (props) {
   const dispatch = useDispatch()
 
   const radioState = useSelector(state => state.radio)
-  console.log({ radioState })
 
   const radios = [
     { name: argument.side0, value: argument.side0 },
