@@ -19,34 +19,46 @@ import List from './List'
 import Monkeys from './Monkeys'
 
 // import apis, actions, and reducers
-import { postUser } from '../actions/user'
+import { postUser, postUserArgList } from '../actions/user'
 import addChatUser from '../api/addChatUser'
 import { fetchProfileArguments } from '../actions/arguments'
+import Username from './Username'
 
 function Profile () {
   const dispatch = useDispatch()
   const history = useHistory()
 
+  // Get states of things from redux
   const user = useSelector(state => state.user)
+  const list = useSelector(state => state.list)
+  const username = useSelector(state => state.username)
+  const monkey = useSelector(state => state.monkey)
 
   // Get the available arguments the user can choose from
   const profileArguments = useSelector(state => state.profileArguments)
   useEffect(() => {
     dispatch(fetchProfileArguments())
   }, [])
-  console.log('Profile profileArguments: ', profileArguments)
 
   function handleClick (event) {
-    // set up userChat as an object containing the user.auth0_id and email
+    // set-up: data for chatengine
     const chatUser = {
       username: user.email,
       secret: user.auth0Id
     }
 
-    // user to be sent to our server
+    // set-up: user data for our sesrver
     const dbUser = {
       auth0Id: user.auth0Id,
+      userName: username,
+      image: monkey,
       email: user.email
+    }
+
+    // set-up: user's arguments list for our server
+    const dbList = {
+      authId: user.auth0Id,
+      args: list
     }
 
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
@@ -59,7 +71,12 @@ function Profile () {
       })
 
     // add user to database
+    // POST /api/v1/users
     dispatch(postUser(dbUser))
+
+    // add user's list of arguments to database
+    // POST /api/v1/userArgs
+    dispatch(postUserArgList(dbList))
     history.push('/reception')
   }
 
@@ -124,13 +141,21 @@ function Profile () {
             <hr className="solid"></hr>
           </Row>
           <Row>
-            <h2>What monkey represents your arguing style best?</h2>
+            <h2>What primate represents your arguing style best?</h2>
             <hr className="solid"></hr>
           </Row>
           <Row>
             <Monkeys />
           </Row>
           <Row>
+            <h2>Choose an anonymous username!</h2>
+            <hr className="solid"></hr>
+          </Row>
+          <Row>
+            <Username />
+          </Row>
+          <Row>
+            <hr className="solid"></hr>
             <Button onClick={e => handleClick(e)} variant="outline-dark">Done</Button>
           </Row>
         </Container>
