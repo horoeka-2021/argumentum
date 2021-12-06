@@ -23,10 +23,10 @@ export default function ArgFormModal (props) {
   function handleSubmit () {
     setShow(false)
     const list = {
-      id: argument.id,
+      argId: argument.id,
       name: argument.name,
-      why,
-      radio
+      side: radio,
+      story: why
     }
     dispatch(setList(list))
   }

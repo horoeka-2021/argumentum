@@ -3,7 +3,6 @@ import request from 'superagent'
 export function getProfileArguments () {
   return request.get('/api/v1/args')
     .then(res => {
-      console.log(res.body)
       return res.body
     })
 
