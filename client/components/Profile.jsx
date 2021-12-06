@@ -16,6 +16,7 @@ import Welcome from './Welcome'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import ArgFormModal from './ArgFormModal'
 import List from './List'
+import Monkeys from './Monkeys'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
@@ -121,6 +122,13 @@ function Profile () {
             </Col>
             <Row><br></br></Row>
             <hr className="solid"></hr>
+          </Row>
+          <Row>
+            <h2>What monkey represents your arguing style best?</h2>
+            <hr className="solid"></hr>
+          </Row>
+          <Row>
+            <Monkeys />
           </Row>
           <Row>
             <Button onClick={e => handleClick(e)} variant="outline-dark">Done</Button>
