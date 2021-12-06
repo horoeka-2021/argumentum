@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   db.createArg(req.body)
     .then((id) => {
-      res.json(id)
+      res.json({id: id[0]})
       return null
     })
     .catch((err) => {
