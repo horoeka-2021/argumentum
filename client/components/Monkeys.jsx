@@ -7,7 +7,6 @@ export default function Monkeys () {
   const dispatch = useDispatch()
 
   function handleClick (i) {
-    console.log(i)
     dispatch(monkeyAction(i))
   }
 

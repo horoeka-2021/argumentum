@@ -1,4 +1,4 @@
-import { addUser, getUsers } from '../api/user'
+import { addUser, getUsers, addUserArgList } from '../api/user'
 
 export const POST_USER_PENDING = 'POST_USER_PENDING'
 export const POST_USER_SUCCESS = 'POST_USER_SUCCESS'
