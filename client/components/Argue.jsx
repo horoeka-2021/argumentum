@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
-import { useDispatch, useSelector } from 'react-redux'
-import { createChat } from '../actions/createChat'
+import { useSelector } from 'react-redux'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Welcome from './Welcome'
 
@@ -10,42 +9,20 @@ import Welcome from './Welcome'
 function Argue () {
   const usernameState = useSelector(state => state.createChat)
   const user = useSelector(state => state.user)
-  // const dispatch = useDispatch()
 
   function createDirectChat (creds) {
     getOrCreateChat(
       creds,
       { is_direct_chat: true, usernames: [usernameState.username] },
-      // () => dispatch(createChat(''))
       () => console.log('chat created')
     )
   }
-
-  // Do I need to use useEffect here?
-  // useEffect(() => {
-
-  // })
 
   function renderChatForm (creds) {
     // does this function need to do anything or is it redundant?
     console.log('attempting to create chat with: ', usernameState.username)
     createDirectChat(creds)
   }
-
-  // function renderChatForm (creds) {
-  //   return (
-  //     <div>
-  //       {/* <input
-  //         placeholder='Username'
-  //         value={username}
-  //         onChange={e => setUsername(e.target.value)}
-  //       /> */}
-  //       <button onClick={() => createDirectChat(creds)}>
-  //         Create
-  //       </button>
-  //     </div>
-  //   )
-  // }
 
   if (user.email && usernameState.username) {
     return (
