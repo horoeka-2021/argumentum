@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Welcome from './Welcome'
 
-// this chat file contains the old version of Chat that I couldn't get working...
 function Chat () {
   const usernameState = useSelector(state => state.createChat)
   const user = useSelector(state => state.user)
@@ -49,4 +48,4 @@ function Chat () {
   }
 }
 
-export default Argue
+export default Chat
