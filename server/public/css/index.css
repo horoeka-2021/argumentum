@@ -19,36 +19,44 @@ body  {
 
 /* left hand chat list column */
 .ce-chats-container {
-  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC
   )
   !important; 
 }
 
 /* chat card top left of chat list */
 .ce-active-chat-card {
-  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
 /* middle text feed column */
+/* #ce-feed-container {
+  background-image: linear-gradient(to top, #999B84,#A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  )
+  !important; 
+} */
+
 #ce-feed-container {
-  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC
   )
   !important; 
 }
 
 /* title bar middle column */
 .ce-chat-title-container {
-  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
+  background-image: linear-gradient(to top,  #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC) !important; 
 }
 
 /* bottom text input toolbar middle column */
 #toolbar {
-  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
+  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  )
+  !important; 
 }
 
 /* right hand settings column */
-.ce-settings  {
-  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+.ce-settings {
+  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC
   )
   !important; 
 }
@@ -60,12 +68,12 @@ body  {
 
 /* photos dropdown box */
 .ce-section-title-container {
-  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC) !important; 
 }
 
 /* options drop down box */
 #ce-options-drop-down {
-  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC) !important; 
 }
 
 /* delete chat button inside options dropdown */
