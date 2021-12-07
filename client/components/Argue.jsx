@@ -61,11 +61,11 @@ function Argue () {
             </Row>
             <Row className='justify-content-start'>
 
-              <Accordion>
+              <Accordion className="background">
 
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header>Stupid</Accordion.Header>
-                  <Accordion.Body>
+                  <Accordion.Header className="background">Stupid</Accordion.Header>
+                  <Accordion.Body className="background">
                     {profileArguments.stupid && profileArguments.stupid.map(argument => (
                       <Dropdown.Item key={argument.id} href="#/action-1">
                         <ArgFormModal argument={argument} />

@@ -29,10 +29,10 @@ export default function Welcome () {
         <hr className="solid"></hr>
         <Row>
           <Col>
-            <h2 className="text-center">A place of many viewpoints.</h2>
-            <h2 className="text-center">A place to challenge assumptions.</h2>
-            <h2 className="text-center">A place where you are free to disagree.</h2>
-            <h2 className="text-center">A place that&#39;s more than just black and white.</h2>
+            <h2>A place of many viewpoints.</h2>
+            <h2>A place to challenge assumptions.</h2>
+            <h2>A place where you are free to disagree.</h2>
+            <h2>A place that&#39;s more than just black and white.</h2>
           </Col>
         </Row>
         <hr className="solid"></hr>

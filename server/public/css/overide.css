@@ -46,3 +46,8 @@ hr.solid {
 .standard {
   margin-bottom: 1rem;
 }
+
+.background {
+  background-color: #FEF7DC
+  !important;
+}
