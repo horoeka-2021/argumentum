@@ -8,7 +8,6 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 // import Components
 import Navigation from './Navigation'
 import Welcome from './Welcome'
-import Argue from './ArgueRoom'
 import Profile from './Profile'
 import Chat from './Chat.jsx'
 import Reception from './Reception'
@@ -31,7 +30,7 @@ function App () {
         <IfAuthenticated>
           <Route path='/' exact component={Argue} />
           <Route path='/profile' exact component={Profile} />
-          <Route path='/chat' component={ArgueRoom} />
+          <Route path='/chat' component={Chat} />
           <Route path='/reception' component={Reception} />
         </IfAuthenticated>
         <Route path='/about' component={About} />
