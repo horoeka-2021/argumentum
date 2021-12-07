@@ -6,15 +6,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
-import Profile from './Profile'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Navigation () {
   const { logout, loginWithRedirect } = useAuth0()
+
   function handleLogoff (e) {
     e.preventDefault()
-    console.log('log off')
     logout()
   }
 
@@ -29,7 +28,6 @@ function Navigation () {
 
   function handleSignIn (e) {
     e.preventDefault()
-    console.log('sign in')
     loginWithRedirect()
   }
 

@@ -18,6 +18,7 @@ import Monkeys from './Monkeys'
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
 import Username from './Username'
+import { confirmUsername } from '../actions/username'
 
 function Profile () {
   const dispatch = useDispatch()
@@ -56,6 +57,8 @@ function Profile () {
     // add user to database
     // POST /api/v1/users
     dispatch(postUser(dbUser))
+
+    dispatch(confirmUsername())
 
     history.push('/')
   }
