@@ -54,6 +54,7 @@ function listUsers (db = connection) {
   return db('users')
     .select(
       'auth0_id as authId',
+      'email',
       'image',
       'username'
     )
