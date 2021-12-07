@@ -31,7 +31,21 @@ export function getUsers () {
     })
     .catch(logError)
 }
-
-export function getUserProfile () {
-  
+// not used yet, gets a users profile based on users authId
+export function getUserProfile (authId) {
+  console.log('getUserProfile api called')
+  return request.get(`api/v1/users/${authId}`)
+    .then(res => {
+      return res.body
+    })
+    .catch(logError)
+}
+// not used yet, gets a users args based on users authId
+export function getUserArgs (authId) {
+  console.log('getUserArgs api called')
+  return request.get(`api/v1/userArgs/${authId}`)
+    .then(res => {
+      return res.body
+    })
+    .catch(logError)
 }
