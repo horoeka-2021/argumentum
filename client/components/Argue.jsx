@@ -50,7 +50,7 @@ function Argue () {
     <>
       <Container>
         <Row>
-          <h2>What Topics Do You Want To Argue About?</h2>
+          <h2>Select an Argument from dropdown menus:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
@@ -61,11 +61,11 @@ function Argue () {
             </Row>
             <Row className='justify-content-start'>
 
-              <Accordion>
+              <Accordion className="background">
 
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header>Stupid</Accordion.Header>
-                  <Accordion.Body>
+                  <Accordion.Header className="background">Simple</Accordion.Header>
+                  <Accordion.Body className="background">
                     {profileArguments.stupid && profileArguments.stupid.map(argument => (
                       <Dropdown.Item key={argument.id} href="#/action-1">
                         <ArgFormModal argument={argument} />
@@ -107,11 +107,10 @@ function Argue () {
           <Row><br></br></Row>
           <hr className="solid"></hr>
         </Row>
-
         <Row>
-          <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="outline-dark">Now Choose Someone to Argue With</Button>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to select your Opposition</Button>
         </Row>
+        <hr className="solid"></hr>
       </Container>
     </>
   )
