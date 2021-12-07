@@ -1,6 +1,6 @@
 main {
   position:  relative;
-  top:  60px;
+  top:  100px;
   padding-bottom:  100px;
   background-color: #FEF7DC;
 }
@@ -53,6 +53,6 @@ hr.solid {
 }
 
 .monkey-img {
-  width: 100%;
+  width: 90%;
   max-width: 412px;
 }
