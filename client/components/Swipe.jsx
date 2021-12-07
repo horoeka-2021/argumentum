@@ -76,7 +76,6 @@ export default function Swipe () {
           </Row>
         </Container>
       </main>
-  )
     </>
   )
 }
