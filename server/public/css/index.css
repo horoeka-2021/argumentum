@@ -8,30 +8,75 @@
   background-color: rgb(105, 227, 24);
 } */
 
-/* left hand chat list column */
-/* .ce-chat-list-column  */
+/* .ce-chat-engine {
+  background-color: rgb(133, 212, 30)
+  !important; 
+} */
 
-.ce-chats-container{
-  background-image: linear-gradient(to bottom, rgb(120, 122, 228), rgb(23, 61, 231), rgb(37, 179, 223), rgb(33, 209, 127), rgb(133, 212, 30)
+body  {
+  background-color: #FEF7DC;
+}
+
+/* left hand chat list column */
+.ce-chats-container {
+  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
   )
   !important; 
 }
 
-/* .ce-chat-feed-column {
-  background-color: rgb(57, 12, 180)
-  !important; 
-} */
-
-#ce-feed-container{
-  background-image: linear-gradient(to bottom, rgb(120, 122, 228), rgb(23, 61, 231), rgb(37, 179, 223), rgb(33, 209, 127), rgb(133, 212, 30)
-)
+/* chat card top left of chat list */
+.ce-active-chat-card {
+  background-color: #A19882
   !important; 
 }
-/* chat card top left of chat list */
 
-/* ce-chat-card ce-active-chat-card */
-.ce-active-chat-card {
-  background-color: rgb(120, 122, 228)
+/* middle text feed column */
+#ce-feed-container {
+  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  )
+  !important; 
+}
+
+/* title bar middle column */
+.ce-chat-title-container {
+  background-color: #A19882
+  !important; 
+}
+
+/* bottom text input toolbar middle column */
+#toolbar {
+  background-color: #FEF7DC
+  !important; 
+}
+
+/* right hand settings column */
+.ce-settings  {
+  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
+  )
+  !important; 
+}
+
+/* rename this chat button */
+.ce-input {
+  background-color: #A19882
+  !important; 
+}
+
+/* photos dropdown box */
+.ce-section-title-container {
+  background-color: #A19882
+  !important; 
+}
+
+/* options drop down box */
+#ce-options-drop-down {
+  background-color: #A19882
+  !important; 
+}
+
+/* delete chat button inside options dropdown */
+.ce-danger-button  {
+  background-color: #FEF7DC
   !important; 
 }
 

@@ -23,25 +23,22 @@ export default function Welcome () {
       <Container>
         <Row>
           <Col>
-            <h3>Welcome to Argumentum</h3>
+            <h1 className="text-center">Welcome to Argumentum</h1>
           </Col>
         </Row>
         <hr className="solid"></hr>
         <Row>
           <Col>
-            <p>A place of many viewpoints.</p>
-
-            <p>A place to challenge assumptions.</p>
-
-            <p>A place where you are free to disagree.</p>
-
-            <p>A place that&#39;s more than just black and white.</p>
-
+            <h2 className="text-center">A place of many viewpoints.</h2>
+            <h2 className="text-center">A place to challenge assumptions.</h2>
+            <h2 className="text-center">A place where you are free to disagree.</h2>
+            <h2 className="text-center">A place that&#39;s more than just black and white.</h2>
           </Col>
         </Row>
         <hr className="solid"></hr>
         <Row>
-          <Col><h4>Please <a href="/register" onClick={handleRegister}>Register</a> to enter.</h4></Col>
+
+          <Col><h4 className="text-center">Please <a href="/register" onClick={handleRegister}>Register</a> to enter.</h4></Col>
         </Row>
       </Container>
     </div>
