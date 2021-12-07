@@ -64,14 +64,15 @@ function Profile () {
     <>
       <Container>
         <Row>
-          <h2>Choose an anonymous username!</h2>
+          <h2>Important: create an ANONYMOUS username!</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
           <Username />
+          <hr className="solid"></hr>
         </Row>
         <Row>
-          <h2>What primate represents your arguing style best?</h2>
+          <h2>Select a primate to represent your discussion style:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
@@ -79,8 +80,9 @@ function Profile () {
         </Row>
         <Row>
           <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="outline-dark">Update Your Profile</Button>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
         </Row>
+        <hr className="solid"></hr>
       </Container>
     </>
   )
