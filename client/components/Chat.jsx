@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
 import { useSelector } from 'react-redux'
