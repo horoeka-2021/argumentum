@@ -6,6 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
+import Profile from './Profile'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
@@ -40,6 +41,11 @@ function Navigation () {
           <Navbar.Toggle />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
+
+              <IfAuthenticated>
+                <Nav.Link href='/'>Argue</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
+              </IfAuthenticated>
 
               <Nav.Link href="/about">About</Nav.Link>
 
