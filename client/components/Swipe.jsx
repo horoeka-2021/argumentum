@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../actions/user'
 
-// import React-Bootstrap components
-import { Carousel } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Table from 'react-bootstrap/Table'
+// bootstrap
+import { Carousel, Container, Table, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { createChat } from '../actions/createChat'
 
 export default function Swipe () {
   const dispatch = useDispatch()
@@ -25,55 +23,58 @@ export default function Swipe () {
     setIndex(selectedIndex)
   }
 
+  function handleClick () {
+    console.log('index', index)
+    // sets the redux state of email to be this email
+    const username = users.swipeusers[index].email
+    dispatch(createChat(username))
+  }
+
   return (
     <>
       <main>
+        <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
+          {users.swipeusers && users.swipeusers.map(user => (
+            <Carousel.Item key={user.id}>
+              <img
+                className="d-block w-100 carousel"
+                src={`images/monkeys/${user.image}.jpg`}
+                alt={`images/monkeys/${user.image}.jpg`}
+              />
+              <Carousel.Caption>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
         <Container>
-          <Row>
-            <Col></Col>
-            <Col>
-              <h2 className='justify-content-center'>Opposition Profile:</h2>
-            </Col>
-            <Col></Col>
-          </Row>
-          <Row>
-            <hr className="solid"></hr>
-            <Col>
-              <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
-                {users.swipeusers && users.swipeusers.map(user => (
-                  <Carousel.Item key={user.id}>
-                    <img
-                      className="d-block w-100 carousel"
-                      src={`images/monkeys/${user.image}.jpg`}
-                      alt={`images/monkeys/${user.image}.jpg`}
-                    />
-                    <Carousel.Caption>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-              <hr className="solid"></hr>
-              <Table striped bordered hover size="sm" responsive="sm">
-                <thead>
-                  <tr>
-                    <th>Argument:</th>
-                    <th>Side (Yes, No or Uncertain):</th>
-                    <th>Thoughts:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.swipeusers && users.swipeusers[index].args.map(arg => (
-                    <tr key={arg.id}>
-                      <td>{arg.name}</td>
-                      <td>{arg.side}</td>
-                      <td>{arg.story}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-              <hr className="solid"></hr>
-            </Col>
-          </Row>
+          <hr className="solid"></hr>
+          <Table striped bordered hover size="sm" responsive="sm">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Side</th>
+                <th>Why?</th>
+                <th>Argue?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.swipeusers && users.swipeusers[index].args.map(arg => (
+                <tr key={arg.id}>
+                  <td>{arg.name}</td>
+                  <td>{arg.side}</td>
+                  <td>{arg.story}</td>
+                  <td>
+                    <Link to='/chat'>
+                      {/* <Button onClick={index => handleClick(index)}> */}
+                      <Button onClick={() => handleClick()}>
+                      ARGUE!
+                      </Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Container>
       </main>
     </>

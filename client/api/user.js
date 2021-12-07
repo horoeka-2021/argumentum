@@ -24,7 +24,6 @@ function logError (err) {
 }
 
 export function getUsers () {
-  console.log('getUsers api called')
   return request.get('/api/v1/userArgs')
     .then(res => {
       return res.body
