@@ -41,6 +41,7 @@ export default function Swipe () {
               alt={`images/monkeys/${user.image}.jpg`}
             />
             <Carousel.Caption>
+              <h3>{user.username}</h3>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
