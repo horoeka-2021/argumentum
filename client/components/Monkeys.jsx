@@ -15,90 +15,32 @@ export default function Monkeys () {
 
   function selected (i) {
     return i === monkey
-      ? 'tableMonkey selectedMonkey'
-      : 'tableMonkey'
+      ? 'tableMonkey selectedMonkey monkey-img'
+      : 'tableMonkey monkey-img'
   }
-
-  const numbers = Array.from({ length: 9 }, (v, i) => ({ src: `images/monkeys/${i + 1}.jpg`, i }))
-  const chunks = chunk(numbers, 3)
 
   return (
     <div className='Monkeys'>
-      <Table striped borderless hover>
-        {/* Ahmads code, need to check if this works then refactored ours to match */}
-        {/* <tbody>
-          {chunks.map((row, i) =>
-            <tr key={i}>
-              {row.map(monkey =>
-                <td key={monkey.i}>
-                  <img
-                    width='100px'
-                    src={monkey.src}
-                    onClick={() => handleClick(monkey.i)}
-                  />
-                </td>)}
-            </tr>
-          )}
-        </tbody> */}
-        {/* <tbody>
-          <tr>
-            <td>
-              {numbers.map(image => <img key={image.i} className='tableMonkey' onClick={() => handleClick(image.i)} src={image.src} />)}
-            </td>
-          </tr>
-        </tbody> */}
-
-        {/* // ? <img key={image.i} className='tableMonkey' onClick={() => handleClick(image.i)} src={image.src} /> */}
-
-        {/* Trying to generate table programitcally... */}
-        {/* <tbody>
-          <tr>
-            {numbers.map(image =>
-              ((image.i + 1) % 3 === 0)
-                ? </tr><tr><td>n</td>
-                : <td>t</td>
-            )}
-          </tr>
-        </tbody> */}
-
-        {/* Generate a 3x3 table programitcally using a map of the numbers array, starting a new row every 3rd element */}
-        {/* <tbody>
-          <tr>
-            {numbers.map(image =>
-              ((image.i + 1) % 3 === 0)
-                ? </tr><tr><td><img className='tableMonkey' onClick={() => handleClick(image.i)} src={image.src} /></td>
-                : <td><img className='tableMonkey' onClick={() => handleClick(image.i + 1)} src={image.src} /></td>
-            )}
-          </tr>
-        </tbody> */}
-
+      <Table responsive striped borderless hover>
         {/* Generate a table using a map of the numbers array, and a ternary operator, where after every 3rd element, the current row is tag is closed, and a new row is started */}
         <tbody>
           <tr>
-            <td><img className={selected(1)} onClick={() => handleClick(1)} src={'images/monkeys/1.jpg'} /></td>
-            <td><img className={selected(2)} onClick={() => handleClick(2)} src={'images/monkeys/2.jpg'} /></td>
-            <td><img className={selected(3)} onClick={() => handleClick(3)} src={'images/monkeys/3.jpg'} /></td>
+            <td><a href='#' onClick={() => handleClick(1)}><img className={selected(1)} src={'images/monkeys/1.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(2)}><img className={selected(2)} src={'images/monkeys/2.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(3)}><img className={selected(3)} src={'images/monkeys/3.jpg'} /></a></td>
           </tr>
           <tr>
-            <td><img className={selected(4)} onClick={() => handleClick(4)} src={'images/monkeys/4.jpg'} /></td>
-            <td><img className={selected(5)} onClick={() => handleClick(5)} src={'images/monkeys/5.jpg'} /></td>
-            <td><img className={selected(6)} onClick={() => handleClick(6)} src={'images/monkeys/6.jpg'} /></td>
+            <td><a href='#' onClick={() => handleClick(4)}><img className={selected(4)} src={'images/monkeys/4.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(5)}><img className={selected(5)} src={'images/monkeys/5.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(6)}><img className={selected(6)} src={'images/monkeys/6.jpg'} /></a></td>
           </tr>
           <tr>
-            <td><img className={selected(7)} onClick={() => handleClick(7)} src={'images/monkeys/7.jpg'} /></td>
-            <td><img className={selected(8)} onClick={() => handleClick(8)} src={'images/monkeys/8.jpg'} /></td>
-            <td><img className={selected(9)} onClick={() => handleClick(9)} src={'images/monkeys/9.jpg'} /></td>
+            <td><a href='#' onClick={() => handleClick(7)}><img className={selected(7)} src={'images/monkeys/7.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(8)}><img className={selected(8)} src={'images/monkeys/8.jpg'} /></a></td>
+            <td><a href='#' onClick={() => handleClick(9)}><img className={selected(9)} src={'images/monkeys/9.jpg'} /></a></td>
           </tr>
         </tbody>
       </Table>
     </div>
   )
 }
-
-const chunk = (arr, size) =>
-  arr
-    .reduce((acc, _, i) =>
-      (i % size)
-        ? acc
-        : [...acc, arr.slice(i, i + size)]
-    , [])
