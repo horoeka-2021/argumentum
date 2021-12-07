@@ -55,12 +55,13 @@ router.get('/', async (req, res) => {
     const swipeusers = usersList.map(user => {
       return {
         authId: user.authId,
+        email: user.email,
         image: user.image,
         username: user.username,
         args: userArgsList.filter(arg => arg.userId === user.authId)
       }
     })
-    res.json(swipeusers)
+    res.json({ swipeusers })
     return null
   } catch (err) {
     console.error(err.message)

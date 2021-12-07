@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button'
 import ArgForm from './ArgForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { setList } from '../actions/list'
+import setWhy from '../actions/why'
+import { setRadioState } from '../actions/radio'
 
 export default function ArgFormModal (props) {
   // code from bootstrap
@@ -23,11 +25,13 @@ export default function ArgFormModal (props) {
   function handleSubmit () {
     setShow(false)
     const list = {
-      id: argument.id,
+      argId: argument.id,
       name: argument.name,
-      why,
-      radio
+      side: radio,
+      story: why
     }
+    dispatch(setWhy(''))
+    dispatch(setRadioState(''))
     dispatch(setList(list))
   }
 

@@ -1,4 +1,4 @@
-import { addUser, getUsers } from '../api/user'
+import { addUser, getUsers, addUserArgList } from '../api/user'
 
 export const POST_USER_PENDING = 'POST_USER_PENDING'
 export const POST_USER_SUCCESS = 'POST_USER_SUCCESS'
@@ -6,6 +6,8 @@ export const SET_USER = 'SET_USER'
 export const CLEAR_USER = 'CLEAR_USER'
 export const GET_USERS_PENDING = 'GET_USERS_PENDING'
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'
+export const POST_USER_ARG_LIST_PENDING = 'POST_USER_ARG_LIST_PENDING'
+export const POST_USER_ARG_LIST_SUCCESS = 'POST_USER_ARG_LIST_SUCCESS'
 
 export function postUserPending () {
   return {
@@ -63,6 +65,30 @@ export function fetchUsers () {
     return getUsers()
       .then(users => {
         dispatch(getUsersSuccess(users))
+        return null
+      })
+      .catch(err => console.error(err.message))
+  }
+}
+
+export function postUserArgListPending () {
+  return {
+    type: POST_USER_ARG_LIST_PENDING
+  }
+}
+
+export function postUserArgListSuccess () {
+  return {
+    type: POST_USER_ARG_LIST_SUCCESS
+  }
+}
+
+export function postUserArgList (list) {
+  return dispatch => {
+    dispatch(postUserArgListPending())
+    return addUserArgList(list)
+      .then(() => {
+        dispatch(postUserArgListSuccess())
         return null
       })
       .catch(err => console.error(err.message))
