@@ -4,6 +4,8 @@ import { fetchUsers } from '../actions/user'
 
 // bootstrap
 import { Carousel, Container, Table, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { createChat } from '../actions/createChat'
 
 export default function Swipe () {
   const dispatch = useDispatch()
@@ -19,6 +21,13 @@ export default function Swipe () {
   const handleSelect = (selectedIndex, e) => {
     console.log('selectedIndex', selectedIndex)
     setIndex(selectedIndex)
+  }
+
+  function handleClick () {
+    console.log('index', index)
+    // sets the redux state of email to be this email
+    const username = users.swipeusers[index].email
+    dispatch(createChat(username))
   }
 
   return (
@@ -53,7 +62,12 @@ export default function Swipe () {
                 <td>{arg.side}</td>
                 <td>{arg.story}</td>
                 <td>
-                  <Button >ARGUE!</Button>
+                  <Link to='/argue'>
+                    {/* <Button onClick={index => handleClick(index)}> */}
+                    <Button onClick={() => handleClick()}>
+                      ARGUE!
+                    </Button>
+                  </Link>
                 </td>
               </tr>
             ))}

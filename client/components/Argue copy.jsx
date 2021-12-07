@@ -6,8 +6,9 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Welcome from './Welcome'
 
 // this chat file contains the old version of Chat that I couldn't get working...
-function Chat () {
-  const [username, setUsername] = useState('')
+function Argue () {
+  const usernameState = useSelector(state => state.username)
+  const [username, setUsername] = useState(usernameState)
   const user = useSelector(state => state.user)
 
   function createDirectChat (creds) {
@@ -18,14 +19,18 @@ function Chat () {
     )
   }
 
+  // function renderChatForm (creds) {
+  //   createDirectChat(creds)
+  // }
+
   function renderChatForm (creds) {
     return (
       <div>
-        <input
+        {/* <input
           placeholder='Username'
           value={username}
           onChange={e => setUsername(e.target.value)}
-        />
+        /> */}
         <button onClick={() => createDirectChat(creds)}>
           Create
         </button>
@@ -58,4 +63,4 @@ function Chat () {
   }
 }
 
-export default Chat
+export default Argue
