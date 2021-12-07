@@ -32,6 +32,8 @@ function App () {
           <IfUserNotAdded>
             <Route path='/' exact component={Profile} />
             <Route path='/profile' exact component={Profile} />
+            <Route path='/chat' component={Profile} />
+            <Route path='/reception' component={Profile} />
           </IfUserNotAdded>
           <IfUserAdded>
             <Route path='/' exact component={Argue} />
