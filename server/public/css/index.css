@@ -26,8 +26,7 @@ body  {
 
 /* chat card top left of chat list */
 .ce-active-chat-card {
-  background-color: #A19882
-  !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
 }
 
 /* middle text feed column */
@@ -39,14 +38,12 @@ body  {
 
 /* title bar middle column */
 .ce-chat-title-container {
-  background-color: #A19882
-  !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
 }
 
 /* bottom text input toolbar middle column */
 #toolbar {
-  background-color: #FEF7DC
-  !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
 }
 
 /* right hand settings column */
@@ -57,21 +54,18 @@ body  {
 }
 
 /* rename this chat button */
-.ce-input {
-  background-color: #A19882
-  !important; 
+.ce-input  {
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6) !important; 
 }
 
 /* photos dropdown box */
 .ce-section-title-container {
-  background-color: #A19882
-  !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
 /* options drop down box */
 #ce-options-drop-down {
-  background-color: #A19882
-  !important; 
+  background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
 /* delete chat button inside options dropdown */
