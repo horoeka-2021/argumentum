@@ -3,6 +3,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
+// import from fontawesome
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -15,6 +18,7 @@ import Monkeys from './Monkeys'
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
 import Username from './Username'
+import { confirmUsername } from '../actions/username'
 
 function Profile () {
   const dispatch = useDispatch()
@@ -54,6 +58,8 @@ function Profile () {
     // POST /api/v1/users
     dispatch(postUser(dbUser))
 
+    dispatch(confirmUsername())
+
     history.push('/')
   }
 
@@ -61,14 +67,15 @@ function Profile () {
     <>
       <Container>
         <Row>
-          <h2>Choose an anonymous username!</h2>
+          <h2>Important: create an ANONYMOUS username!</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
           <Username />
+          <hr className="solid"></hr>
         </Row>
         <Row>
-          <h2>What primate represents your arguing style best?</h2>
+          <h2>Select a primate to represent your discussion style:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
@@ -76,8 +83,9 @@ function Profile () {
         </Row>
         <Row>
           <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="outline-dark">Update Your Profile</Button>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
         </Row>
+        <hr className="solid"></hr>
       </Container>
     </>
   )

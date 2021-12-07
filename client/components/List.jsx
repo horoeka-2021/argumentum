@@ -1,6 +1,8 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
 import { useSelector } from 'react-redux'
+
+// import React-Bootstrap components
+import Table from 'react-bootstrap/Table'
 
 export default function List () {
   const list = useSelector(state => state.list)
