@@ -12,10 +12,10 @@ export default function Welcome () {
   function handleRegister (e) {
     e.preventDefault()
     // getting error where register does not take me to the /register route... changing things up for now
-    // loginWithRedirect({
-    //   redirectUri: `${window.location.origin}/register`
-    // })
-    loginWithRedirect()
+    loginWithRedirect({
+      redirectUri: `${window.location.origin}/profile`
+    })
+    // loginWithRedirect()
   }
 
   return (
