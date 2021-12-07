@@ -24,13 +24,16 @@ function logError (err) {
 }
 
 export function getUsers () {
-  console.log('getUsers api called')
-  // return request.get(userUrl)
-  // .catch(logError)
+  return request.get('/api/v1/userargs')
+    .then(res => {
+      console.log('res', res.body)
+      return res.body
+    })
+    .catch(logError)
 
-  return new Promise((resolve, reject) => {
-    resolve(exampleUsers)
-  })
+  // return new Promise((resolve, reject) => {
+  //   resolve(exampleUsers)
+  // })
 }
 
 const exampleUsers = {

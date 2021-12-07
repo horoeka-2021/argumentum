@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../actions/user'
 
 // bootstrap
-import { Carousel } from 'react-bootstrap'
+import { Carousel, Container, Table, Button } from 'react-bootstrap'
 
 export default function Swipe () {
   const dispatch = useDispatch()
@@ -36,16 +36,30 @@ export default function Swipe () {
           </Carousel.Item>
         ))}
       </Carousel>
-      {users.swipeusers && users.swipeusers[index].args.map(arg => (
-        <div key={arg.id}>
-          <span inline>{arg.name}</span>
-          <br></br>
-          <span inline>{arg.side}</span>
-          <br></br>
-          <span inline>{arg.story}</span>
-          <br></br>
-        </div>
-      ))}
+      <Container>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Side</th>
+              <th>Why?</th>
+              <th>Argue?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.swipeusers && users.swipeusers[index].args.map(arg => (
+              <tr key={arg.id}>
+                <td>{arg.name}</td>
+                <td>{arg.side}</td>
+                <td>{arg.story}</td>
+                <td>
+                  <Button >ARGUE!</Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
     </main>
   )
 }
