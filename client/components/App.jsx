@@ -10,7 +10,6 @@ import Chat from './Chat.jsx'
 import Reception from './Reception'
 import About from './About'
 import Footer from './Footer'
-import Argue from './Argue'
 // import ErrorMessage from './ErrorMessage.jsx'
 // import Register from './Register'
 
@@ -23,7 +22,6 @@ function App () {
       <main>
         <Route path='/' exact component={Profile} />
         <Route path='/chat' component={Chat} />
-        <Route path='/argue' component={Argue} />
         <Route path='/reception' component={Reception} />
         <Route path='/about' component={About} />
         {/* <Route path='/register' component={Register} /> */}

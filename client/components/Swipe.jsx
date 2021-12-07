@@ -62,7 +62,7 @@ export default function Swipe () {
                 <td>{arg.side}</td>
                 <td>{arg.story}</td>
                 <td>
-                  <Link to='/argue'>
+                  <Link to='/chat'>
                     {/* <Button onClick={index => handleClick(index)}> */}
                     <Button onClick={() => handleClick()}>
                       ARGUE!
