@@ -44,7 +44,7 @@ function Chat () {
 
         <IfAuthenticated>
           <ChatEngine
-            height='70vh'
+            height='88vh'
             userName={user.email}
             userSecret={user.auth0Id}
             projectID='5de9b671-f871-4592-bbf9-5b905ee2f090'
