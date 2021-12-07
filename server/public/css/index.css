@@ -1,27 +1,10 @@
-/* main window */
-/* class="app"
-
-/* chat engine */
-/* class="ce-chat-engine" */
-
-/* .ce-chat-engine {
-  background-color: rgb(105, 227, 24);
-} */
-
-/* .ce-chat-engine {
-  background-color: rgb(133, 212, 30)
-  !important; 
-} */
-
 body  {
   background-color: #FEF7DC;
 }
 
 /* left hand chat list column */
 .ce-chats-container {
-  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC
-  )
-  !important; 
+  background-image: linear-gradient(to top, #999B84,  #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
 /* chat card top left of chat list */
@@ -29,17 +12,9 @@ body  {
   background-image: linear-gradient(to top, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
-/* middle text feed column */
-/* #ce-feed-container {
-  background-image: linear-gradient(to top, #999B84,#A19882, #C2B8A3, #E6DDC6, #FEF7DC
-  )
-  !important; 
-} */
-
+/* middle column */
 #ce-feed-container {
-  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC
-  )
-  !important; 
+  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC) !important; 
 }
 
 /* title bar middle column */
@@ -49,16 +24,12 @@ body  {
 
 /* bottom text input toolbar middle column */
 #toolbar {
-  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC
-  )
-  !important; 
+  background-image: linear-gradient(to top, #A19882, #C2B8A3, #E6DDC6, #FEF7DC) !important; 
 }
 
 /* right hand settings column */
 .ce-settings {
-  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC
-  )
-  !important; 
+  background-image: linear-gradient(to top, #999B84, #C2B8A3, #E6DDC6, #FEF7DC, #FEF7DC) !important; 
 }
 
 /* rename this chat button */
@@ -78,49 +49,5 @@ body  {
 
 /* delete chat button inside options dropdown */
 .ce-danger-button  {
-  background-color: #FEF7DC
-  !important; 
+  background-color: #FEF7DC !important; 
 }
-
-
-/* chat card top left text */
-/* class="ce-chat-title-text" */
-
-/* chat title bar center */
-/* class="ce-chat-title" */
-
-/* main text message box center */
-/* id="ce-feed-container" */
-/* class="ce-chat-feed-container" */
-
-/* message text input area */
-/* id="msg-form-container" */
-/* class="ce-message-form-container" */
-
-/* text formatting tools container */
-/* class="ce-quill-container" */
-
-/* text send button */
-/* class="ce-send-button-container" */
-
-/* right hand column */
-/* class="ce-settings-column" */
-/* class="ce-settings" */
-
-/* upper settings outer container inside the right hand column  */
-/* class="ce-settings-container" */
-
-/* top container inside the upper outer container */
-/* class="ce-chat-settings-container" */
-
-/* photos dropdown box */
-/* class="ce-photo-section" */
-
-/* options drop down */
-/* id="ce-options-drop-down" */
-
-/* the delete button below options */
-/* id="ce-delete-chat-button" */
-/* class="ce-primary-button ce-danger-button" */
-
-

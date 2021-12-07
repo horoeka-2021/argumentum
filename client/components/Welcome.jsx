@@ -30,9 +30,17 @@ export default function Welcome () {
         <Row>
           <Col>
             <h2>A place of many viewpoints.</h2>
+            <p>Growth from differences.</p>
+
             <h2>A place to challenge assumptions.</h2>
+            <p>Candid exchange of ideas.</p>
+
             <h2>A place where you are free to disagree.</h2>
+            <p>Safe discussion.</p>
+
             <h2>A place that&#39;s more than just black and white.</h2>
+            <p>Genuine free speech.</p>
+
           </Col>
         </Row>
         <hr className="solid"></hr>
