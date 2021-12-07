@@ -51,3 +51,8 @@ hr.solid {
   background-color: #FEF7DC
   !important;
 }
+
+.monkey-img {
+  width: 100%;
+  max-width: 412px;
+}
