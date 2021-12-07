@@ -55,3 +55,8 @@ hr.solid {
 .standard {
   margin-bottom: 1rem;
 }
+
+.monkey-img {
+  width: 100%;
+  max-width: 412px;
+}
