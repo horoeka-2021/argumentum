@@ -2,6 +2,7 @@ main {
   position:  relative;
   top:  60px;
   padding-bottom:  100px;
+  background-color: #FEF7DC;
 }
 
 #footer {
@@ -12,16 +13,6 @@ main {
 /* Solid border */
 hr.solid {
   border-top: 1px solid black;
-}
-
-/* vertical line */
-.vl {
-  border-left: 1px solid black;
-  height: 100%;
-  position: absolute;
-  left: 1%;
-  border-left: -3px;
-  top: 0;
 }
 
 .carousel {
@@ -54,6 +45,11 @@ hr.solid {
 /* used to space things out in a standard way */
 .standard {
   margin-bottom: 1rem;
+}
+
+.background {
+  background-color: #FEF7DC
+  !important;
 }
 
 .monkey-img {
