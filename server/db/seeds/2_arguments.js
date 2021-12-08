@@ -1,8 +1,6 @@
 exports.seed = function (knex) {
-  // Deletes ALL existing entries
   return knex('arguments').del()
     .then(function () {
-      // Inserts seed entries
       return knex('arguments').insert([
         { id: 2, category: 'stupid', name: 'Are we in a simulation?', description: '', side0: 'Yes', side1: 'No' },
         { id: 1, category: 'stupid', name: 'God', description: '', side0: 'Yes', side1: 'No' },
