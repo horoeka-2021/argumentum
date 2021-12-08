@@ -1,5 +1,5 @@
 // React and Redux imports
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
@@ -29,7 +29,7 @@ function Profile () {
   const user = useSelector(state => state.user)
   const username = useSelector(state => state.username)
   const monkey = useSelector(state => state.monkey)
-  const setUsername = useSelector(state => state.setUsername)
+  // const setUsername = useSelector(state => state.setUsername)
 
   // useEffect(() => {
   //   getUserProfile(user.auth0Id)
