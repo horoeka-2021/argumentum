@@ -54,19 +54,19 @@ export default function Swipe () {
         <Row>
           <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
             {users.swipeusers && users.swipeusers.map(swipeuser => {
-              if (swipeuser.authId !== user.auth0Id) {
-                return (
-                  <Carousel.Item key={swipeuser.authId}>
-                    <img
-                      className="d-block w-100 carousel"
-                      src={`images/monkeys/${swipeuser.image}.jpg`}
-                      alt={`images/monkeys/${swipeuser.image}.jpg`}
-                    />
-                    <Carousel.Caption>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                )
-              }
+              // if (swipeuser.authId !== user.auth0Id) {
+              return (
+                <Carousel.Item key={swipeuser.authId}>
+                  <img
+                    className="d-block w-100 carousel"
+                    src={`images/monkeys/${swipeuser.image}.jpg`}
+                    alt={`images/monkeys/${swipeuser.image}.jpg`}
+                  />
+                  <Carousel.Caption>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              )
+              // }
             })}
           </Carousel>
         </Row>
