@@ -1,9 +1,9 @@
 exports.up = function (knex) {
   return knex.schema.createTable('users', (table) => {
-    table.string('auth0_id').primary()
-    table.string('email')
-    table.int('image')
-    table.string('username')
+    table.varchar('auth0_id').primary()
+    table.varchar('email')
+    table.varchar('image')
+    table.varchar('username')
   })
 }
 

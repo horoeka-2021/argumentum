@@ -1,11 +1,11 @@
 exports.up = function (knex) {
   return knex.schema.createTable('arguments', (table) => {
     table.increments('id').primary()
-    table.string('category')
-    table.string('name')
-    table.string('description')
-    table.string('side0')
-    table.string('side1')
+    table.varchar('category')
+    table.varchar('name')
+    table.varchar('description')
+    table.varchar('side0')
+    table.varchar('side1')
   })
 }
 
