@@ -9,9 +9,9 @@ export function updateUsername (username) {
   }
 }
 
-export function confirmUsername () {
+export function confirmUsername (username) {
   return {
     type: CONFIRM_USERNAME,
-    set: true
+    username
   }
 }

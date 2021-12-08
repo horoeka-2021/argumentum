@@ -8,6 +8,7 @@ import Welcome from './Welcome'
 function Chat () {
   const userToCreateChatWith = useSelector(state => state.createChat)
   const user = useSelector(state => state.user)
+  const username = useSelector(state => state.setUsername)
 
   function createDirectChat (creds) {
     getOrCreateChat(
@@ -34,9 +35,9 @@ function Chat () {
         <IfAuthenticated>
           <ChatEngine
             height='70vh'
-            userName={user.email}
+            userName={username}
             userSecret={user.auth0Id}
-            projectID='5de9b671-f871-4592-bbf9-5b905ee2f090'
+            projectID='0d71b2e6-f619-4edf-b9fc-58592559a6cb'
             renderNewChatForm={creds => renderChatForm(creds)}
           />
         </IfAuthenticated>

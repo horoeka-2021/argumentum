@@ -57,7 +57,7 @@ function Profile () {
         // if res.username dispatch confirmUsername
         if (res) {
           console.log('dispatch confirmUsername')
-          dispatch(confirmUsername())
+          dispatch(confirmUsername(res.username))
         }
         return null
       })
@@ -71,9 +71,13 @@ function Profile () {
       return null
     }
 
+    console.log('handleClick, username: ', username)
+
     // set-up: data for chatengine
     const chatUser = {
-      username: user.email,
+      // username: user.email,
+      username: username,
+      // secret: user.auth0Id
       secret: user.auth0Id
     }
 
@@ -99,7 +103,7 @@ function Profile () {
     // POST /api/v1/users
     dispatch(postUser(dbUser))
 
-    dispatch(confirmUsername())
+    dispatch(confirmUsername(username))
 
     history.push('/')
   }

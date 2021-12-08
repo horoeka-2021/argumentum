@@ -6,6 +6,7 @@ const router = express.Router()
 module.exports = router
 
 const privateKey = process.env.CHAT_ENGINE_PRIVATE_KEY
+console.log('privateKey', privateKey)
 
 router.post('/', async (req, res) => {
   const data = req.body

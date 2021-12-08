@@ -26,7 +26,7 @@ export default function Swipe () {
   function handleClick () {
     console.log('index', index)
     // sets the redux state of email to be this email
-    const username = users.swipeusers[index].email
+    const username = users.swipeusers[index].username
     dispatch(createChat(username))
   }
 
