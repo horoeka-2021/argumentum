@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../actions/user'
 
 // bootstrap
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
@@ -38,53 +40,65 @@ export default function Swipe () {
   return (
     <>
       <main>
-        <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
-          {users.swipeusers && users.swipeusers.map(swipeuser => {
-            if (swipeuser.authId !== user.auth0Id && swipeuser.args.length > 0) {
-              return (
-                <Carousel.Item key={swipeuser.authId}>
-                  <img
-                    className="d-block w-100 carousel"
-                    src={`images/monkeys/${swipeuser.image}.jpg`}
-                    alt={`images/monkeys/${swipeuser.image}.jpg`}
-                  />
-                  <Carousel.Caption>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              )  
-            }
-          })}
-        </Carousel>
-        <Container>
+        <Row>
+          <Col></Col>
+          <Col>
+            <h2>{users.swipeusers && users.swipeusers[index].username}</h2>
+          </Col>
+          <Col></Col>
           <hr className="solid"></hr>
-          <Table striped bordered hover size="sm" responsive="sm">
-            <thead>
-              <tr>
-                <th>Topic</th>
-                <th>Side</th>
-                <th>Why?</th>
-                <th>Argue?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.swipeusers && users.swipeusers[index].args.map(arg => (
-                <tr key={arg.id + arg.userId + arg.story}>
-                  <td>{arg.name}</td>
-                  <td>{arg.side}</td>
-                  <td>{arg.story}</td>
-                  <td>
-                    <Link to='/chat'>
-                      {/* <Button onClick={index => handleClick(index)}> */}
-                      <Button onClick={() => handleClick()} variant='dark'>
-                      ARGUE!
-                      </Button>
-                    </Link>
-                  </td>
+        </Row>
+        <Row>
+          <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
+            {users.swipeusers && users.swipeusers.map(swipeuser => {
+              if (swipeuser.authId !== user.auth0Id && swipeuser.args.length > 0) {
+                return (
+                  <Carousel.Item key={swipeuser.authId}>
+                    <img
+                      className="d-block w-100 carousel"
+                      src={`images/monkeys/${swipeuser.image}.jpg`}
+                      alt={`images/monkeys/${swipeuser.image}.jpg`}
+                    />
+                    <Carousel.Caption>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                )
+              }
+            })}
+          </Carousel>
+        </Row>
+        <Row>
+          <Container>
+            <hr className="solid"></hr>
+            <Table striped bordered hover size="sm" responsive="sm">
+              <thead>
+                <tr>
+                  <th>Topic</th>
+                  <th>Side</th>
+                  <th>Why?</th>
+                  <th>Argue?</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Container>
+              </thead>
+              <tbody>
+                {users.swipeusers && users.swipeusers[index].args.map(arg => (
+                  <tr key={arg.id + arg.userId + arg.story}>
+                    <td>{arg.name}</td>
+                    <td>{arg.side}</td>
+                    <td>{arg.story}</td>
+                    <td>
+                      <Link to='/chat'>
+                        {/* <Button onClick={index => handleClick(index)}> */}
+                        <Button onClick={() => handleClick()} variant='dark'>
+                      ARGUE!
+                        </Button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Container>
+        </Row>
       </main>
     </>
   )
