@@ -21,7 +21,7 @@ export default function ArgFormModal (props) {
 
   const why = useSelector(state => state.why)
   const radio = useSelector(state => state.radio)
- 
+
   function handleSubmit () {
     setShow(false)
     const list = {

@@ -104,7 +104,7 @@ export function fetchUserArgsListPending () {
 }
 
 export function fetchUserArgsListSuccess (userArgs) {
-  return{
+  return {
     type: FETCH_USER_ARG_LIST_SUCCESS,
     userArgs
   }
