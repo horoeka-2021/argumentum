@@ -1,6 +1,6 @@
-import { SET_USERNAME } from '../actions/username'
+import { SET_USERNAME, CONFIRM_USERNAME } from '../actions/username'
 
-function username (state = '', action) {
+export function username (state = '', action) {
   switch (action.type) {
     case SET_USERNAME:
       return action.username
@@ -9,4 +9,11 @@ function username (state = '', action) {
   }
 }
 
-export default username
+export function setUsername (state = '', action) {
+  switch (action.type) {
+    case CONFIRM_USERNAME:
+      return action.set
+    default:
+      return state
+  }
+}

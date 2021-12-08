@@ -24,22 +24,23 @@ function logError (err) {
 }
 
 export function getUsers () {
-  console.log('getUsers api called')
   return request.get('/api/v1/userArgs')
     .then(res => {
       return res.body
     })
     .catch(logError)
 }
+
 // not used yet, gets a users profile based on users authId
 export function getUserProfile (authId) {
-  console.log('getUserProfile api called')
+  console.log('getUserProfile api called with: ', authId)
   return request.get(`api/v1/users/${authId}`)
     .then(res => {
       return res.body
     })
     .catch(logError)
 }
+
 // not used yet, gets a users args based on users authId
 export function getUserArgs (authId) {
   console.log('getUserArgs api called')

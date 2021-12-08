@@ -9,7 +9,8 @@ const emptyUser = {
 export default function chatUsers (state = {}, action) {
   switch (action.type) {
     case POST_USER_SUCCESS:
-      return action.user
+      // return action.user
+      return state
 
     // is this used?
     case SET_USER:
