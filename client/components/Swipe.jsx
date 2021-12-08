@@ -65,7 +65,7 @@ export default function Swipe () {
             </thead>
             <tbody>
               {users.swipeusers && users.swipeusers[index].args.map(arg => (
-                <tr key={arg.id}>
+                <tr key={arg.id + arg.userId + arg.story}>
                   <td>{arg.name}</td>
                   <td>{arg.side}</td>
                   <td>{arg.story}</td>
