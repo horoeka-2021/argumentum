@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   try {
     const existingUserArgs = await db.getUserArgs(authId)
     const filteredUserArgs = userArgs.filter(arg => {
-      if(existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
+      if (existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
         return arg
       }
     })

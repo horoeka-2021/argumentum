@@ -50,7 +50,7 @@ function Argue () {
   // checks to see if there is an argument of matching id already in the list state
   function checkList (id) {
     const listMatch = list.findIndex(item => item.argId === id)
-    return listMatch != -1
+    return listMatch !== -1
   }
 
   return (
