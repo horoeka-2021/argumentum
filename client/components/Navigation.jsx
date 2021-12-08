@@ -2,6 +2,9 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
+// import other components
+import Profile from './Profile'
+
 // import React-Bootstrap components
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
