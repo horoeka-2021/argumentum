@@ -28,7 +28,6 @@ function App () {
 
         <IfAuthenticated>
           {/* Code to ensure new users are redirected to profile */}
-          {/* NOT TESTED */}
           <IfUserNotAdded>
             <Route path='/' exact component={Profile} />
             <Route path='/profile' exact component={Profile} />
@@ -37,7 +36,7 @@ function App () {
           </IfUserNotAdded>
           <IfUserAdded>
             <Route path='/' exact component={Argue} />
-            <Route path='/profile' exact component={Profile} />
+            {/* <Route path='/profile' exact component={Profile} /> */}
             <Route path='/chat' component={Chat} />
             <Route path='/reception' component={Reception} />
           </IfUserAdded>
