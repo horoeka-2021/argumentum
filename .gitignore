@@ -3,6 +3,8 @@ bundle.*
 *.sqlite3
 .env
 node_modules
+tests/e2e/screenshots/
+
 
 # Logs
 logs

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
 import { useSelector } from 'react-redux'
-import { createChatSuccess } from '../actions/createChat'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import Welcome from './Welcome'
+import { createChatSuccess } from '../../actions/createChat'
+import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
+import Welcome from '../Welcome/Welcome'
 
 function Chat () {
   console.log('Chat.jsx')

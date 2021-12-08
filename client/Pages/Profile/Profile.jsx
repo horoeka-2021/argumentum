@@ -12,14 +12,14 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 
 // import other components
-import Monkeys from './Monkeys'
+import Monkeys from '../../components/Monkeys'
 
 // import apis, actions, and reducers
-import { postUser } from '../actions/user'
-import addChatUser from '../api/addChatUser'
-import Username from './Username'
-import { confirmUsername } from '../actions/username'
-import { getUserProfile } from '../api/user'
+import { postUser } from '../../actions/user'
+import addChatUser from '../../api/addChatUser'
+import Username from '../../components/Username'
+import { confirmUsername } from '../../actions/username'
+import { getUserProfile } from '../../api/user'
 
 function Profile () {
   const dispatch = useDispatch()

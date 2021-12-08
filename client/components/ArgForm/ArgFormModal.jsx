@@ -3,9 +3,9 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import ArgForm from './ArgForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { setList } from '../actions/list'
-import setWhy from '../actions/why'
-import { setRadioState } from '../actions/radio'
+import { setList } from '../../actions/list'
+import setWhy from '../../actions/why'
+import { setRadioState } from '../../actions/radio'
 
 export default function ArgFormModal (props) {
   // code from bootstrap

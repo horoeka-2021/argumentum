@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { cacheUser } from '../auth0-utils'
+import { cacheUser } from './auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { IfUserAdded, IfUserNotAdded } from './UserAdded'
+import { IfUserAdded, IfUserNotAdded } from './components/UserAdded'
 
 // import Components
 import Navigation from './Navigation'

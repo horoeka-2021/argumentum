@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated/Authenticated'
 
 function Navigation () {
   const { logout, loginWithRedirect } = useAuth0()
