@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { monkeyAction } from '../actions/monkey'
+import { monkeyAction } from '../../actions/monkey'
 
 // import React-Bootstrap components
 import Table from 'react-bootstrap/Table'

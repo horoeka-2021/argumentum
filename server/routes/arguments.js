@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
             sortedArgs.fun.push(arg)
             break
           default:
-            console.log(`arg id:${arg.id}, category ${arg.category} not sorted`)
             break
         }
       })

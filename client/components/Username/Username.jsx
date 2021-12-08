@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { updateUsername } from '../actions/username'
+import { updateUsername } from '../../actions/username'
 
 export default function Username () {
   const dispatch = useDispatch()

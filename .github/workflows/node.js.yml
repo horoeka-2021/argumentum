@@ -10,6 +10,35 @@ on:
   pull_request:
     branches: [ dev, main ]
 
+env:
+  # PORT: 3000
+  # JWT_SECRET: ${{secrets.JWT_SECRET}}
+  # SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
+  # E2E_TEST_AUTH0_ADMIN_EMAIL: ${{secrets.E2E_TEST_AUTH0_ADMIN_EMAIL}}
+  # E2E_TEST_AUTH0_ADMIN_PASSWORD: ${{secrets.E2E_TEST_AUTH0_ADMIN_PASSWORD}}
+  # E2E_TEST_AUTH0_ADMIN_ID: ${{secrets.E2E_TEST_AUTH0_ADMIN_ID}}
+  # E2E_TEST_ADMIN_USERNAME: ${{secrets.E2E_TEST_ADMIN_USERNAME}}
+  # E2E_TEST_ADMIN_FIRST_NAME: ${{secrets.E2E_TEST_ADMIN_FIRST_NAME}}
+  # E2E_TEST_ADMIN_LAST_NAME: ${{secrets.E2E_TEST_ADMIN_LAST_NAME}}
+  # E2E_TEST_ADMIN_IS_ADMIN: ${{secrets.E2E_TEST_ADMIN_IS_ADMIN}}
+  # E2E_TEST_ADMIN_GARDEN_ID: ${{secrets.E2E_TEST_ADMIN_GARDEN_ID}}
+  # E2E_TEST_AUTH0_MEMBER_EMAIL: ${{secrets.E2E_TEST_AUTH0_MEMBER_EMAIL}}
+  # E2E_TEST_AUTH0_MEMBER_PASSWORD: ${{secrets.E2E_TEST_AUTH0_MEMBER_PASSWORD}}
+  # E2E_TEST_AUTH0_MEMBER_ID: ${{secrets.E2E_TEST_AUTH0_MEMBER_ID}}
+  # E2E_TEST_MEMBER_USERNAME: ${{secrets.E2E_TEST_MEMBER_USERNAME}}
+  # E2E_TEST_MEMBER_FIRST_NAME: ${{secrets.E2E_TEST_MEMBER_FIRST_NAME}}
+  # E2E_TEST_MEMBER_LAST_NAME: ${{secrets.E2E_TEST_MEMBER_LAST_NAME}}
+  # E2E_TEST_MEMBER_IS_ADMIN: ${{secrets.E2E_TEST_MEMBER_IS_ADMIN}}
+  # E2E_TEST_MEMBER_GARDEN_ID: ${{secrets.E2E_TEST_MEMBER_GARDEN_ID}}
+  # TEST_HEADLESS: ${{secrets.TEST_HEADLESS}}
+  # Use the below line to debug nock
+  # DEBUG: nock.*
+
+  # For Auth0 - this will be used for testing
+  # AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+  # AUTH0_API_EXPLORER_CLIENTID: ${{ secrets.AUTH0_API_EXPLORER_CLIENTID }}
+  # AUTH0_API_EXPLORER_SECRET: ${{ secrets.AUTH0_API_EXPLORER_SECRET }}
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -28,28 +57,43 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      # - name: Run a one-line script
-      #   run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      # - name: Run a multi-line script
-      #   run: |
-      #     echo Add other actions to build,
-      #     echo test, and deploy your project.
-          
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: microsoft/playwright-github-action@v1
+      - name: Cache packages
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          node-version: ${{ matrix.node-version }}
-            
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      
       - name: Install Dependencies
         run: npm ci
         
       # - name: Linting
-        # run: "npm run lint -- --rule 'no-console: 2'"
-        # run: "npm run lint
+        # run: "npm run lint" # -- --rule 'no-console: 2'"
         
       # - name: Test
       #   run: npm run test-no-watch
+        
+      ### the below is for E2E testing ###
+      # - name: Build
+      #   run: npm run build
+        
+      # - name: Seed data
+      #   run: npm run db:seed
+
+      # - name: Start test server
+      #   run: npm run start & npx wait-on http://localhost:${{ env.PORT }}
+        
+      # - name: Skipping E2E Tests!
+      #   run: npm run test:e2e
+       

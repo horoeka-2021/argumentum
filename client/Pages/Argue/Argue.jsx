@@ -12,12 +12,12 @@ import Button from 'react-bootstrap/Button'
 import { Accordion } from 'react-bootstrap'
 
 // import other components
-import ArgFormModal from './ArgFormModal'
-import List from './List'
+import ArgFormModal from '../../components/ArgFormModal/ArgFormModal'
+import List from '../../components/List/List'
 
 // import apis, actions, and reducers
-import { postUserArgList } from '../actions/user'
-import { fetchProfileArguments } from '../actions/arguments'
+import { postUserArgList } from '../../actions/user'
+import { fetchProfileArguments } from '../../actions/arguments'
 
 function Argue () {
   const dispatch = useDispatch()

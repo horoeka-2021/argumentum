@@ -1,8 +1,6 @@
 // React and Redux imports
 import React from 'react'
 
-// import React-Bootstrap components
-
 function footer () {
   return (
 

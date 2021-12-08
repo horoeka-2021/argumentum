@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 // import components and actions etc
-import Swipe from './Swipe'
+import Swipe from './Swipe/Swipe'
 
 function Reception () {
   const history = useHistory()
