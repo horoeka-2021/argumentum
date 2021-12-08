@@ -51,7 +51,7 @@ export default function Swipe () {
         <Row>
           <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
             {users.swipeusers && users.swipeusers.map(swipeuser => {
-              if (swipeuser.authId !== user.auth0Id && swipeuser.args.length > 0) {
+              if (swipeuser.authId !== user.auth0Id) {
                 return (
                   <Carousel.Item key={swipeuser.authId}>
                     <img
