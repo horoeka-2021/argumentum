@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { renderWithRedux } from '../../test-utils'
+import { renderWithRedux } from '../../test-utils.OLD'
 import Register from './Register'
 
 describe('Register form field', () => {

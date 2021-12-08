@@ -12,8 +12,8 @@ import Button from 'react-bootstrap/Button'
 import { Accordion } from 'react-bootstrap'
 
 // import other components
-import ArgFormModal from '../ArgForm/ArgFormModal'
-import List from '../List'
+import ArgFormModal from '../../components/ArgForm/ArgFormModal'
+import List from '../../components/List/List'
 
 // import apis, actions, and reducers
 import { postUserArgList } from '../../actions/user'

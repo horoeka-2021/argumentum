@@ -3,18 +3,18 @@ import { Route } from 'react-router-dom'
 import { cacheUser } from './auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { IfUserAdded, IfUserNotAdded } from './components/UserAdded'
+import { IfAuthenticated, IfNotAuthenticated } from './components/Authenticated/Authenticated'
+import { IfUserAdded, IfUserNotAdded } from './components/Username/UserAdded'
 
 // import Components
-import Navigation from './Navigation'
-import Welcome from './Welcome'
-import Profile from './Profile'
-import Chat from './Chat.jsx'
-import Argue from './Argue'
-import Reception from './Reception'
-import About from './About'
-import Footer from './Footer'
+import Navigation from './components/Nav/Navigation'
+import Welcome from './pages/Welcome/Welcome'
+import Profile from './pages/Profile/Profile'
+import Chat from './pages/Chat/Chat'
+import Argue from './pages/Argue/Argue'
+import Reception from './components/Reception/Reception'
+import About from './pages/About/About'
+import Footer from './components/Footer/Footer'
 
 function App () {
   cacheUser(useAuth0)

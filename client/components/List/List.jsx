@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Table from 'react-bootstrap/Table'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUserArgsList } from '../actions/user'
+import { fetchUserArgsList } from '../../actions/user'
 
 // import React-Bootstrap components
 

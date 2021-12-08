@@ -12,12 +12,12 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 
 // import other components
-import Monkeys from '../../components/Monkeys'
+import Monkeys from '../../components/Monkeys/Monkeys'
 
 // import apis, actions, and reducers
 import { postUser } from '../../actions/user'
 import addChatUser from '../../api/addChatUser'
-import Username from '../../components/Username'
+import Username from '../../components/Username/Username'
 import { confirmUsername } from '../../actions/username'
 import { getUserProfile } from '../../api/user'
 

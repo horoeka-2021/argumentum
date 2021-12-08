@@ -2,9 +2,9 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { renderWithRedux } from '../../test-utils'
-import { getIsAuthenticated, getLogoutFn } from '../../auth-utils'
-import Nav from './Nav'
+import { renderWithRedux } from '../../test-utils.OLD'
+import { getIsAuthenticated, getLogoutFn } from '../../auth0-utils'
+import Nav from './Navigation'
 
 jest.mock('../../auth-utils')
 

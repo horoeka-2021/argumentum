@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.jsx'
-import { getIsAuthenticated } from '../../auth-utils'
+import { getIsAuthenticated } from '../../auth0-utils'
 
 jest.mock('../../auth-utils')
 
