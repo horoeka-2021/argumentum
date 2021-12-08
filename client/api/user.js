@@ -43,7 +43,6 @@ export function getUserProfile (authId) {
 
 // not used yet, gets a users args based on users authId
 export function getUserArgs (authId) {
-  console.log('getUserArgs api called')
   return request.get(`api/v1/userArgs/${authId}`)
     .then(res => {
       return res.body

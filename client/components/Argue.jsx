@@ -29,6 +29,7 @@ function Argue () {
 
   // Get the available arguments the user can choose from
   const profileArguments = useSelector(state => state.profileArguments)
+
   useEffect(() => {
     dispatch(fetchProfileArguments())
   }, [])
@@ -45,6 +46,12 @@ function Argue () {
     dispatch(postUserArgList(dbList))
     history.push('/reception')
   }
+
+  // checks to see if there is an argument of matching id already in the list state
+  function checkList (id) {
+    const listMatch = list.findIndex(item => item.argId === id)
+    return listMatch != -1
+  } 
 
   return (
     <>
@@ -64,35 +71,53 @@ function Argue () {
               <Accordion className="background">
 
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header className="background">Simple</Accordion.Header>
-                  <Accordion.Body className="background">
-                    {profileArguments.stupid && profileArguments.stupid.map(argument => (
-                      <Dropdown.Item key={argument.id} href="#/action-1">
-                        <ArgFormModal argument={argument} />
-                      </Dropdown.Item>
-                    ))}
+                  <Accordion.Header>Stupid</Accordion.Header>
+                  <Accordion.Body>
+                    {profileArguments.stupid && profileArguments.stupid.map(argument => {
+                      if (checkList(argument.id)) {
+                        return null
+                      } else {
+                        return (
+                          <Dropdown.Item key={argument.id} href="#/action-1">
+                            <ArgFormModal argument={argument} />
+                          </Dropdown.Item>
+                        )
+                      }
+                    })}
                   </Accordion.Body>
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>Serious</Accordion.Header>
                   <Accordion.Body>
-                    {profileArguments.serious && profileArguments.serious.map(argument => (
-                      <Dropdown.Item key={argument.id} href="#/action-1">
-                        <ArgFormModal argument={argument} />
-                      </Dropdown.Item>
-                    ))}
+                    {profileArguments.serious && profileArguments.serious.map(argument => {
+                      if (checkList(argument.id)) {
+                        return null
+                      } else {
+                        return (
+                          <Dropdown.Item key={argument.id} href="#/action-1">
+                            <ArgFormModal argument={argument} />
+                          </Dropdown.Item>
+                        )
+                      }
+                    })}
                   </Accordion.Body>
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>Fun</Accordion.Header>
                   <Accordion.Body>
-                    {profileArguments.fun && profileArguments.fun.map(argument => (
-                      <Dropdown.Item key={argument.id} href="#/action-1">
-                        <ArgFormModal argument={argument} />
-                      </Dropdown.Item>
-                    ))}
+                    {profileArguments.fun && profileArguments.fun.map(argument => {
+                      if (checkList(argument.id)) {
+                        return null
+                      } else {
+                        return (
+                          <Dropdown.Item key={argument.id} href="#/action-1">
+                            <ArgFormModal argument={argument} />
+                          </Dropdown.Item>
+                        )
+                      }
+                    })}
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

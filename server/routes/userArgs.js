@@ -23,7 +23,7 @@ router.get('/:authId', (req, res) => {
 })
 
 // POST create new userArgs
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { authId, args } = req.body
 
   const userArgs = args.map(arg => {
@@ -36,15 +36,21 @@ router.post('/', (req, res) => {
     }
   })
 
-  db.createUserArg(userArgs)
-    .then(() => {
-      res.sendStatus(201)
-      return null
+  try {
+    const existingUserArgs = await db.getUserArgs(authId)
+    const filteredUserArgs = userArgs.filter(arg => {
+      if(existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
+        return arg
+      }
     })
-    .catch(err => {
-      console.error(err.message)
-      res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
-    })
+    if (filteredUserArgs.length > 0) {
+      await db.createUserArg(filteredUserArgs)
+    }
+    res.sendStatus(201)
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
+  }
 })
 
 // GET list of users and their userArgs

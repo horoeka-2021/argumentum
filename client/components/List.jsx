@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Table from 'react-bootstrap/Table'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { fetchUserArgsList } from '../actions/user'
 
 // import React-Bootstrap components
-import Table from 'react-bootstrap/Table'
 
 export default function List () {
+  const dispatch = useDispatch()
+
   const list = useSelector(state => state.list)
+  const user = useSelector(state => state.user)
+
+  
+  useEffect(() => {
+    dispatch(fetchUserArgsList(user.auth0Id))
+  }, [user])
+  
   return (
     <Table striped bordered hover size="sm" responsive="sm">
       <thead>
