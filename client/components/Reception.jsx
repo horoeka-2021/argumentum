@@ -8,6 +8,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
+// import components and actions etc
+import Swipe from './Swipe'
+
 function Reception () {
   const history = useHistory()
   function handleClick (event) {
@@ -19,25 +22,12 @@ function Reception () {
     <>
       <Container>
         <Row>
-          <Col>
-            <h4>Your counterparty is:</h4>
-          </Col>
+          <Swipe />
         </Row>
         <Row>
-          <Col>
-            <h3>Jaqueline Kennedy</h3>
-          </Col>
-        </Row>
-        <Col><hr className="solid"></hr></Col>
-        <Row>
-          <Col>
-            <h4>To continue please click enter.</h4>
-          </Col>
-        </Row>
-        <Row className='justify-content-center'>
           <Col></Col>
           <Col>
-            <Button onClick={e => handleClick(e)} variant="outline-warning">Enter</Button>
+            <Button variant="dark" onClick={e => handleClick(e)}>Enter</Button>
           </Col>
           <Col></Col>
         </Row>

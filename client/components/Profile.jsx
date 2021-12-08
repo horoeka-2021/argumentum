@@ -1,121 +1,139 @@
 // React and Redux imports
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
+// import from fontawesome
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Welcome from './Welcome'
+import Button from 'react-bootstrap/Button'
 
 // import other components
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import Monkeys from './Monkeys'
 
 // import apis, actions, and reducers
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
+import Username from './Username'
+import { confirmUsername } from '../actions/username'
+import { getUserProfile } from '../api/user'
 
-function profile () {
-  const [radioValue, setRadioValue] = useState('1')
-  const user = useSelector(state => state.user)
-  console.log('TCL: profile -> user', user)
+function Profile () {
   const dispatch = useDispatch()
-  // use history
   const history = useHistory()
 
-  const radios = [
-    { name: 'Pro', value: '1' },
-    { name: 'Con', value: '2' }
-  ]
+  // Get states of things from redux
+  const user = useSelector(state => state.user)
+  const username = useSelector(state => state.username)
+  const monkey = useSelector(state => state.monkey)
+  const setUsername = useSelector(state => state.setUsername)
+
+  // useEffect(() => {
+  //   getUserProfile(user.auth0Id)
+  //     .then(res => {
+  //       console.log(res)
+  //       // if res.username dispatch confirmUsername
+  //       if (res.username) {
+  //         console.log('dispatch confirmUsername')
+  //         dispatch(confirmUsername())
+  //       }
+  //       return null
+  //     })
+  //     .catch(err => {
+  //       console.error(err.message)
+  //     })
+  // }, [user.auth0Id])
+
+  // check to see if we have the user added to our database
+  // if we do, this will cause the app component to re-do the routes
+  // causing the user to see the Argue component
+  if (user.auth0Id) {
+    getUserProfile(user.auth0Id)
+      .then(res => {
+        console.log(res)
+        // if res.username dispatch confirmUsername
+        if (res) {
+          console.log('dispatch confirmUsername')
+          dispatch(confirmUsername(res.username))
+        }
+        return null
+      })
+      .catch(err => {
+        console.error(err.message)
+      })
+  }
 
   function handleClick (event) {
-    // set up userChat as an object containing the user.auth0_id and email
+    if (!monkey || !username) {
+      return null
+    }
+
+    console.log('handleClick, username: ', username)
+
+    // set-up: data for chatengine
     const chatUser = {
-      username: user.email,
+      // username: user.email,
+      username: username,
+      // secret: user.auth0Id
       secret: user.auth0Id
     }
 
-    // user to be sent to our server
+    // set-up: user data for our sesrver
     const dbUser = {
       auth0Id: user.auth0Id,
+      username: username,
+      image: monkey,
       email: user.email
     }
 
     // TELL CHAT ENGINE THAT WE HAVE A NEW USER!
     addChatUser(chatUser)
       .then(() => {
-        // history.push('/reciption')
         return null
       })
       .catch(err => {
-        console.error(err)
+        console.log('Error adding user to chat engine, maybe they already exist though!')
+        console.error(err.message)
       })
 
     // add user to database
+    // POST /api/v1/users
     dispatch(postUser(dbUser))
-    history.push('/reception')
+
+    dispatch(confirmUsername(username))
+
+    history.push('/')
   }
 
   return (
     <>
-      <IfNotAuthenticated>
-        <Welcome/>
-      </IfNotAuthenticated>
-      <IfAuthenticated>
-        <Container>
-          <Row>
-            <Col>
-              <br></br>
-              <h4>Choose a topic:</h4>
-              <br></br>
-              <h1>Are programmers on a different evolutionary path?</h1>
-              <br></br>
-            </Col>
-          </Row>
+      <Container>
+        <Row>
+          <h2>Important: create an ANONYMOUS username!</h2>
           <hr className="solid"></hr>
-          <Row className='justify-content-start'>
-            <Col>
-              <h4>Select for or against:</h4>
-            </Col>
-            <Col>
-              <ButtonGroup>
-                {radios.map((radio, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    id={`radio-${idx}`}
-                    type="radio"
-                    variant={idx % 2 ? 'outline-danger' : 'outline-success'}
-                    name="radio"
-                    value={radio.value}
-                    checked={radioValue === radio.value}
-                    onChange={(e) => setRadioValue(e.currentTarget.value)}
-                  >
-                    {radio.name}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col><hr className="solid"></hr></Col>
-          </Row>
-          <Row className='justify-content-start'>
-            <Col>
-              <h4>Meet your counterparty:</h4>
-            </Col>
-            <Col>
-              <Button onClick={e => handleClick(e)} variant="outline-warning">Enter Reception</Button>
-            </Col>
-          </Row>
+        </Row>
+        <Row>
+          <Username />
           <hr className="solid"></hr>
-        </Container>
-      </IfAuthenticated>
+        </Row>
+        <Row>
+          <h2>Select an Avatar:</h2>
+          <hr className="solid"></hr>
+        </Row>
+        <Row>
+          <Monkeys />
+        </Row>
+        <Row>
+          <hr className="solid"></hr>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
+        </Row>
+        <hr className="solid"></hr>
+      </Container>
     </>
   )
 }
 
-export default profile
+export default Profile

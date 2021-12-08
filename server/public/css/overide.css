@@ -1,7 +1,8 @@
 main {
   position:  relative;
-  top:  60px;
+  top:  100px;
   padding-bottom:  100px;
+  background-color: #FEF7DC;
 }
 
 #footer {
@@ -14,14 +15,44 @@ hr.solid {
   border-top: 1px solid black;
 }
 
-/* vertical line */
-.vl {
-  border-left: 1px solid black;
-  height: 100%;
-  position: absolute;
-  left: 1%;
-  border-left: -3px;
-  top: 0;
+.carousel {
+  /* width:900px; */
+  /* width:80vw; */
+  /* height:30vh; */
+  max-width: 480px;
+  margin: auto;
 }
 
-/* <div className="vl"></div> */
+.tableMonkey {
+  max-width: 25vw;
+  border-radius: 3%;
+  /* padding: 3em; */
+  transition: transform .5s;
+}
+
+.tableMonkey:hover {
+  transform: scale(1.1);
+}
+
+.selectedMonkey {
+  /* border-width: 5px; */
+  /* border-color: black; */
+  border-radius: 50%;
+  /* padding: 4px; */
+
+}
+
+/* used to space things out in a standard way */
+.standard {
+  margin-bottom: 1rem;
+}
+
+.background {
+  background-color: #FEF7DC
+  !important;
+}
+
+.monkey-img {
+  width: 90%;
+  max-width: 412px;
+}

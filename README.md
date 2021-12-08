@@ -1,23 +1,42 @@
 # argumentum
 
 # API routes (proposal)
-### `POST /api/v1/users/profile`
+### `POST /api/v1/users`
+
 Used on /profile page to add a user to our database
 
-Other requirements: Could this check if the user is already added, and not add if so?
+Other requirements: Could this check if the user is already added, and not add if so? *Angus: will try to implement this*
 
 Request:
 
 ```json
 {
-  "authId": "abc123",
-  "email": "user@example.com"
+	"auth0Id": "def456",
+	"email": "example2@gmail.com",
+	"image": 3,
+	"username": "PlatoIsMyRoD"
+}
+```
+
+### `GET /api/v1/users/:authId`
+
+Gets user info from corresponding authId
+
+Response:
+
+```json
+{
+  "auth0_id": "abc123",
+  "email": "example@gmail.com",
+  "image": 1,
+  "username": "mad-lad-diogenese"
 }
 ```
 
 Response (201)
 
-### `GET /api/v1/arguments/profile`
+### `GET /api/v1/args`
+
 Used on /profile to display the arguments available when a user is editing their profile
 
 Response (200):
@@ -26,273 +45,201 @@ Response (200):
 {
   "stupid": [
     {
-      "id": 1,
-      "name": "Does Freewill Exist?",
+      "id": 5,
+      "category": "stupid",
+      "name": "Freewill",
+      "description": "Do we have it?",
       "side0": "Yes",
       "side1": "No"
-      // "sides" : [
-      //   "Yes",
-      //   "?",
-      //   "No"
-      // ]
+    },
+    {
+      "id": 6,
+      "category": "stupid",
+      "name": "The nature of reality",
+      "description": "Do we live in a simulation?",
+      "side0": "Yes",
+      "side1": "No"
     }
   ],
   "serious": [
     {
+      "id": 1,
+      "category": "serious",
+      "name": "Aliens",
+      "description": "Do they exist?",
+      "side0": "Yes",
+      "side1": "No"
+    },
+    {
       "id": 2,
+      "category": "serious",
+      "name": "Vaccines",
+      "description": "Are they harmful?",
+      "side0": "Yes",
+      "side1": "No"
+    },
+    {
+      "id": 7,
+      "category": "serious",
       "name": "Vacine Mandates",
-      "sides" : [
-        "For",
-        "?",
-        "Against"
-      ]
+      "description": "Should we have them?",
+      "side0": "For",
+      "side1": "Against"
     }
   ],
   "fun": [
     {
       "id": 3,
-      "name": "Cats vs Dogs",
-      "sides" : [
-        "Dogs",
-        "?",
-        "Cats"
-      ]
+      "category": "fun",
+      "name": "Dogs Vs Cats",
+      "description": "Which is the best pet?",
+      "side0": "Dogs",
+      "side1": "Cats"
+    },
+    {
+      "id": 4,
+      "category": "fun",
+      "name": "Batman Vs Superman",
+      "description": "Who would win in a fight?",
+      "side0": "Batman",
+      "side1": "Superman"
     }
   ]
 }
 ```
 
-### `GET /api/v1/userArguments/profile/:userid`
+### `GET /api/v1/userArgs/:authId`
+
 Used on /profile to display any arguments the user might have already added
 
 Response:
 
 ```json
 {
-  "arguments": [
+  "args": [
     {
-      "id": 1,
-      "name": "Does freewill exist?",
+      "argId": 1,
+      "name": "Aliens",
+      "description": "Do they exist?",
       "side": "Yes",
-      "story": "God gave us freewill!"
+      "story": "I was abducted and probed during my OE in rural France."
+    },
+    {
+      "argId": 3,
+      "name": "Dogs Vs Cats",
+      "description": "Which is the best pet?",
+      "side": "Cats",
+      "story": "No one ever made a musical about Dogs."
+    },
+    {
+      "argId": 5,
+      "name": "Freewill",
+      "description": "Do we have it?",
+      "side": "No",
+      "story": "We are all meat machines."
     }
   ]
 }
 ```
 
-### `POST /api/v1/userArguments/profile/`
+### `POST /api/v1/userArgs`
+
 Used on /profile to send the users list of arguments
 
 Request:
 
 ```json
 {
-  "auth0Id": "example123",
-  "arguments": [
-    {
-      "id": 1,
-      "side": "Yes",
-      "story": "God gave us freewill!"
-    }
-  ]
+	"authId": "abc123",
+	"args": [
+		{
+			"argId": 3,
+			"side": "Cats",
+			"story": "No one ever made a musical about Dogs."
+		},
+		{
+			"argId": 5,
+			"side": "No",
+			"story": "We are all meat machines."
+		}
+	]
 }
 ```
 
-### `GET /api/v1/reception/`
+### `GET /api/v1/userArgs`
+
+This gets a list of users and their corresponding arguments.
+
+The side property needs to be mape the userArg side to the the corresponding side string value.
+
 This is used on the /reception page to display other users
+
+*note: will need a GET route to get user info from authId to retireve a users email when selected. Extra security as a stretch.*
 
 ```json
 {
   "swipeusers": [
-      {
-        "email": "user@example.com",
-        "arguments":  [
-          {
-            "name": "Freewill",
-            "description": "Does it exist",
-            "side": "no",
-            "why": "Our brains are just (biological) machines. Machines don't have freewill."
-          },
-          {
-            "name": "Cats vs Dogs",
-            "description": "Meow or Woof?",
-            "side": "Cats",
-            "why": "Cats are independant badasses. You need them, they don't need you."
-          }
-        ]
-      },
-      {
-        "email": "user2@example.com",
-        "arguments":  [
-          {
-            "name": "Freewill",
-            "description": "Does it exist",
-            "side": "no",
-            "why": "Our brains are just (biological) machines. Machines don't have freewill."
-          },
-          {
-            "name": "Cats vs Dogs",
-            "description": "Meow or Woof?",
-            "side": "Cats",
-            "why": "Cats are independant badasses. You need them, they don't need you."
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-## Potential Routes
-
-### `GET /api/v1/userarguments/:userid`
-not sure if this is needed.
-
-Response (200):
-
-```json
-{
-  "userArguments": [
     {
-      "argumentId": 1,
-      "side" : "for"
-    },
-    {
-      "argumentId": 2,
-      "sides" : "Dogs"
-    },
-  ]
-}
-```
-
-
-### `POST /api/v1/userarguments/`
-
-Request:
-
-```json
-{
-  "userArguments": [
-    {
-      "auth0Id": "example1",
-      "argumentId": 1,
-      "side" : "for"
-    },
-    {
-      "auth0Id": "example2",
-      "argumentId": 2,
-      "side" : "Dogs"
-    },
-  ]
-}
-```
-
-Response (201):
-
-
-### `GET /api/v1/userarguments/`
-Not sure if this is needed.
-
-Response (200):
-
-```json
-{
-  "userArguments": [
-    {
-      "id": 1,
-      "side" : "for"
-    },
-    {
-      "id": 2,
-      "sides" : "Dogs"
-    },
-  ]
-}
-```
-
-
-### `POST /api/v1/arguments`
-Not part of MVP currently
-
-Request:
-
-```json
-{
-  "name": "Vacine Mandates",
-  "category": "serious",
-  "sides" : [
-    "For",
-    "?",
-    "Against"
-  ]
-}
-```
-
-Response (201):
-
-```json
-{
-  "id": 3,
-  "name": "Vacine Mandates",
-  "category": "serious",
-  "sides" : [
-    "For",
-    "?",
-    "Against"
-  ]
-}
-```
-
-
-### `GET /api/v1/arguments`
-Not sure if this is needed, or the one below.
-
-Response (200):
-
-```json
-{
-  "arguments": [
-    {
-      "id": 1,
-      "name": "Does Freewill Exist?",
-      "category": "stupid",
-      "sides" : [
-        "Yes",
-        "?",
-        "No"
+      "authId": "abc123",
+      "image": 1,
+      "username": "mad-lad-diogenese",
+      "args": [
+        {
+          "userId": "abc123",
+          "argId": 1,
+          "name": "Aliens",
+          "description": "Do they exist?",
+          "side": "Yes",
+          "story": "I was abducted and probed during my OE in rural France."
+        },
+        {
+          "userId": "abc123",
+          "argId": 3,
+          "name": "Dogs Vs Cats",
+          "description": "Which is the best pet?",
+          "side": "Cats",
+          "story": "No one ever made a musical about Dogs."
+        },
+        {
+          "userId": "abc123",
+          "argId": 5,
+          "name": "Freewill",
+          "description": "Do we have it?",
+          "side": "No",
+          "story": "We are all meat machines."
+        }
       ]
     },
     {
-      "id": 2,
-      "name": "Cats vs Dogs",
-      "category": "fun",
-      "sides" : [
-        "Dogs",
-        "?",
-        "Cats"
-      ]
-    },
-  ]
-}
-```
-
-
-### `GET /api/v1/users`
-Not sure if this is needed...
-
-Response (200):
-
-```json
-{
-  "users": [
-    {
-      "authId": "example123",
-      "email": "user@example.com"
-    },
-    {
-      "authId": "example1234",
-      "email": "user2@example.com"
+      "authId": "def456",
+      "image": 3,
+      "username": "PlatoIsMyRoD",
+      "args": []
     }
   ]
 }
 ```
+## Potential Routes
 
+### `POST /api/v1/arguments`
+Not part of MVP currently (but will be necessary for imediate stretch)
+
+Request:
+
+```json
+{
+  "name": "Vacine Mandates",
+  "description": "Should we have them?",
+  "category": "serious",
+  "side0" : "For",
+  "side1": "Against"
+}
+```
+
+Response (201):
+response body may or may not be neccesary
+```json
+{
+  "id": 9
+}
+```
