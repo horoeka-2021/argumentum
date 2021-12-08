@@ -11,7 +11,7 @@ exports.seed = function (knex) {
         { user_id: 'abc125', arg_id: 17, side: 'Yes', story: 'To live with a basic level of income is a human right.' },
         { user_id: 'abc125', arg_id: 27, side: 'Yes', story: 'It is a fundamentally sound choice in most circumstances.' },
         { user_id: 'abc126', arg_id: 17, side: 'No', story: 'Get a job and earn your own income.' },
-        { user_id: 'abc126', arg_id: 27, side: 'Yes', story: 'Why would you when Apple is available?' }
+        { user_id: 'abc126', arg_id: 27, side: 'No', story: 'Why would you when Apple is available?' }
       ])
     })
 }
