@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
 import { useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Welcome from './Welcome'
 
 function Chat () {
+  console.log('Chat.jsx')
   // Getting the username of the person we want to CREATE a chat with
   const userToCreateChatWith = useSelector(state => state.createChat)
   // Getting the Auth0Id
@@ -14,18 +15,26 @@ function Chat () {
   // Getting the username of the current user
   const username = useSelector(state => state.setUsername)
 
+  // a React state
+  const [created, setCreated] = useState(false)
+
   function createDirectChat (creds) {
+    setCreated(true)
     console.log(creds)
     getOrCreateChat(
       creds,
       { is_direct_chat: true, usernames: [userToCreateChatWith.username] },
-      () => createChatSuccess()
+      () => {
+        console.log('chat created')
+        // createChatSuccess()
+        // setCreated(true)
+      }
     )
   }
 
   function renderChatForm (creds) {
     // does this function need to do anything or is it redundant?
-    if (userToCreateChatWith.username) {
+    if (userToCreateChatWith.username && !created) {
       console.log('attempting to create chat with: ', userToCreateChatWith.username)
       createDirectChat(creds)
     } else {
