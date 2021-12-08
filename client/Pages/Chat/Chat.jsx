@@ -7,7 +7,6 @@ import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authentica
 import Welcome from '../Welcome/Welcome'
 
 function Chat () {
-  console.log('Chat.jsx')
   // Getting the username of the person we want to CREATE a chat with
   const userToCreateChatWith = useSelector(state => state.createChat)
   // Getting the Auth0Id
@@ -20,12 +19,10 @@ function Chat () {
 
   function createDirectChat (creds) {
     setCreated(true)
-    console.log(creds)
     getOrCreateChat(
       creds,
       { is_direct_chat: true, usernames: [userToCreateChatWith.username] },
       () => {
-        console.log('chat created')
         // createChatSuccess()
         // setCreated(true)
       }
@@ -35,7 +32,6 @@ function Chat () {
   function renderChatForm (creds) {
     // does this function need to do anything or is it redundant?
     if (userToCreateChatWith.username && !created) {
-      console.log('attempting to create chat with: ', userToCreateChatWith.username)
       createDirectChat(creds)
     } else {
       return null

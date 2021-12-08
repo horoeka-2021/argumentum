@@ -3,9 +3,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
-// import from fontawesome
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -29,23 +26,6 @@ function Profile () {
   const user = useSelector(state => state.user)
   const username = useSelector(state => state.username)
   const monkey = useSelector(state => state.monkey)
-  // const setUsername = useSelector(state => state.setUsername)
-
-  // useEffect(() => {
-  //   getUserProfile(user.auth0Id)
-  //     .then(res => {
-  //       console.log(res)
-  //       // if res.username dispatch confirmUsername
-  //       if (res.username) {
-  //         console.log('dispatch confirmUsername')
-  //         dispatch(confirmUsername())
-  //       }
-  //       return null
-  //     })
-  //     .catch(err => {
-  //       console.error(err.message)
-  //     })
-  // }, [user.auth0Id])
 
   // check to see if we have the user added to our database
   // if we do, this will cause the app component to re-do the routes
@@ -53,10 +33,8 @@ function Profile () {
   if (user.auth0Id) {
     getUserProfile(user.auth0Id)
       .then(res => {
-        console.log(res)
         // if res.username dispatch confirmUsername
         if (res) {
-          console.log('dispatch confirmUsername')
           dispatch(confirmUsername(res.username))
         }
         return null
@@ -95,7 +73,6 @@ function Profile () {
         return null
       })
       .catch(err => {
-        console.log('Error adding user to chat engine, maybe they already exist though!')
         console.error(err.message)
       })
 

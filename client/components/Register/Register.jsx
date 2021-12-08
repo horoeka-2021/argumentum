@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 // import { addUser } from '../api'
 
-import { GridForm, ColOne, ColTwo, Button } from './Styled'
+import { GridForm, ColOne, ColTwo, Button } from './Styled/Styled'
 
 function Register () {
   const user = useSelector(state => state.user)
@@ -14,7 +14,6 @@ function Register () {
   })
 
   useEffect(() => {
-    console.log('setting form up')
     setForm({
       auth0Id: user?.auth0Id,
       email: user?.email
@@ -23,7 +22,6 @@ function Register () {
 
   // addUser api has not been implemented yet
   async function handleClick () {
-    console.log('handleClick will submit this user: ', user)
     // await addUser(form)
     history.push('/')
   }

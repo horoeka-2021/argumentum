@@ -20,18 +20,15 @@ export default function Swipe () {
   useEffect(() => {
     dispatch(fetchUsers())
   }, [])
-  console.log({ users })
 
   // bootstrap code
   const [index, setIndex] = useState(0)
 
   const handleSelect = (selectedIndex, e) => {
-    console.log('selectedIndex', selectedIndex)
     setIndex(selectedIndex)
   }
 
   function handleClick () {
-    console.log('index', index)
     // sets the redux state of email to be this email
     const username = users.swipeusers[index].username
     dispatch(createChat(username))
