@@ -12,7 +12,7 @@ export function username (state = '', action) {
 export function setUsername (state = '', action) {
   switch (action.type) {
     case CONFIRM_USERNAME:
-      return action.set
+      return action.username
     default:
       return state
   }

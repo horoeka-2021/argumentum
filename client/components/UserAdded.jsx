@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const UserAdded = () => {
   const username = useSelector(state => state.setUsername)
 
-  if (username === true) {
+  if (username) {
     return true
   } else {
     return false

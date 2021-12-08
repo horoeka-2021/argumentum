@@ -28,7 +28,7 @@ export default function Swipe () {
   function handleClick () {
     console.log('index', index)
     // sets the redux state of email to be this email
-    const username = users.swipeusers[index].email
+    const username = users.swipeusers[index].username
     dispatch(createChat(username))
   }
 
@@ -72,7 +72,7 @@ export default function Swipe () {
                   <td>
                     <Link to='/chat'>
                       {/* <Button onClick={index => handleClick(index)}> */}
-                      <Button onClick={() => handleClick()}>
+                      <Button onClick={() => handleClick()} variant='dark'>
                       ARGUE!
                       </Button>
                     </Link>
