@@ -47,6 +47,9 @@ function Profile () {
   //     })
   // }, [user.auth0Id])
 
+  // check to see if we have the user added to our database
+  // if we do, this will cause the app component to re-do the routes
+  // causing the user to see the Argue component
   if (user.auth0Id) {
     getUserProfile(user.auth0Id)
       .then(res => {
