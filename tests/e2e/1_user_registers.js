@@ -11,7 +11,7 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: true, slowMo: 500 })
+  browser = await chromium.launch({ headless: false, slowMo: 500 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
@@ -31,20 +31,20 @@ afterAll(async () => {
 })
 
 // Test goes here
-test('Admin can login & add event', async () => {
+test('User can register', async () => {
   // going to localhost:3000
   await page.goto(serverUrl)
 
   // clicking on sign In
-  await Promise.all([page.waitForNavigation(), page.click('text=Sign in')])
+  await Promise.all([page.waitForNavigation(), page.click('text=Register')])
 
   // checking if the url changes to /signin
   expect(await page.url()).toContain(
-    'https://gardenz.au.auth0.com/u/login?state='
+    'https://argumentum-eda.au.auth0.com/u/login?state='
   )
 
-  const testEmail = process.env.E2E_TEST_AUTH0_ADMIN_EMAIL
-  const testPassword = process.env.E2E_TEST_AUTH0_ADMIN_PASSWORD
+  const testEmail = process.env.E2E_TEST_AUTH0_EMAIL
+  const testPassword = process.env.E2E_TEST_AUTH0_PASSWORD
 
   await page.fill('#username', testEmail)
   await page.fill('#password', testPassword)
@@ -57,7 +57,7 @@ test('Admin can login & add event', async () => {
   await page.waitForSelector('text=Log out')
   expect(await page.content()).toMatch(/Log out/)
 
-  await Promise.all([page.waitForNavigation(), page.click('text=My Garden')])
+  await Promise.all([page.waitForNavigation(), page.click('text=Profile')])
 
   await Promise.all([
     page.waitForNavigation(),
