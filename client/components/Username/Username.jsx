@@ -13,7 +13,7 @@ export default function Username () {
 
   return (
     <div className='standard'>
-      <input onChange={(e) => handleChange(e)} type='text' placeholder='username' value={username} />
+      <input id="username" onChange={(e) => handleChange(e)} type='text' placeholder='username' value={username} />
     </div>
   )
 }

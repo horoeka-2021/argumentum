@@ -24,7 +24,7 @@ export default function ArgForm (props) {
         <SideRadio argument={argument} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formWhy">
-        <Form.Control value={why} onChange={e => handleChange(e)} type="why" placeholder="What are your thoughts on this topic?" />
+        <Form.Control id="why-field" value={why} onChange={e => handleChange(e)} type="why" placeholder="What are your thoughts on this topic?" />
       </Form.Group>
     </Form>
   )

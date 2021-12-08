@@ -105,7 +105,7 @@ function Profile () {
         </Row>
         <Row>
           <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
+          <Button id="add-user" onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
         </Row>
         <hr className="solid"></hr>
       </Container>
