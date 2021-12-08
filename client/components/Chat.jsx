@@ -6,24 +6,24 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Welcome from './Welcome'
 
 function Chat () {
-  const usernameState = useSelector(state => state.createChat)
+  const userToCreateChatWith = useSelector(state => state.createChat)
   const user = useSelector(state => state.user)
 
   function createDirectChat (creds) {
     getOrCreateChat(
       creds,
-      { is_direct_chat: true, usernames: [usernameState.username] },
+      { is_direct_chat: true, usernames: [userToCreateChatWith.username] },
       () => console.log('chat created')
     )
   }
 
   function renderChatForm (creds) {
     // does this function need to do anything or is it redundant?
-    console.log('attempting to create chat with: ', usernameState.username)
+    console.log('attempting to create chat with: ', userToCreateChatWith.username)
     createDirectChat(creds)
   }
 
-  if (user.email && usernameState.username) {
+  if (user.email && userToCreateChatWith.username) {
     return (
       <div className='chat'>
 

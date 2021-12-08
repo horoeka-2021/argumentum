@@ -67,6 +67,10 @@ function Profile () {
   }
 
   function handleClick (event) {
+    if (!monkey || !username) {
+      return null
+    }
+
     // set-up: data for chatengine
     const chatUser = {
       username: user.email,

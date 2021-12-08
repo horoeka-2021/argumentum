@@ -42,6 +42,7 @@ function Navigation () {
 
               <IfAuthenticated>
                 <Nav.Link href='/'>Profile</Nav.Link>
+                <Nav.Link href="/reception">People</Nav.Link>
                 <Nav.Link href="/chat">Arguments</Nav.Link>
               </IfAuthenticated>
 

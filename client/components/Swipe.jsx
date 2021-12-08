@@ -66,7 +66,7 @@ export default function Swipe () {
                   <td>
                     <Link to='/chat'>
                       {/* <Button onClick={index => handleClick(index)}> */}
-                      <Button onClick={() => handleClick()}>
+                      <Button onClick={() => handleClick()} variant='dark'>
                       ARGUE!
                       </Button>
                     </Link>
