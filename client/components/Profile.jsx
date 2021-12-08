@@ -109,7 +109,7 @@ function Profile () {
           <hr className="solid"></hr>
         </Row>
         <Row>
-          <h2>Select a primate to represent your discussion style:</h2>
+          <h2>Select an Avatar:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
