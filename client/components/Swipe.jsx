@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../actions/user'
 
 // bootstrap
-import { Carousel, Container, Table, Button } from 'react-bootstrap'
+import Carousel from 'react-bootstrap/Carousel'
+import Container from 'react-bootstrap/Container'
+import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { createChat } from '../actions/createChat'
 
