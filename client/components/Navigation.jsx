@@ -41,8 +41,8 @@ function Navigation () {
             <Nav className="ms-auto">
 
               <IfAuthenticated>
-                <Nav.Link href='/'>Argument</Nav.Link>
-                <Nav.Link href="/profile">Profile</Nav.Link>
+                <Nav.Link href='/'>Profile</Nav.Link>
+                <Nav.Link href="/chat">Arguments</Nav.Link>
               </IfAuthenticated>
 
               <Nav.Link href="/about">About</Nav.Link>
