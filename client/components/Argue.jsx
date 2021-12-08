@@ -51,7 +51,7 @@ function Argue () {
   function checkList (id) {
     const listMatch = list.findIndex(item => item.argId === id)
     return listMatch != -1
-  } 
+  }
 
   return (
     <>
