@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
 import { useSelector } from 'react-redux'
-import { createChatSuccess } from '../../actions/createChat'
 import { IfAuthenticated, IfNotAuthenticated } from '../../components/Authenticated/Authenticated'
 import Welcome from '../Welcome/Welcome'
 
@@ -23,8 +22,6 @@ function Chat () {
       creds,
       { is_direct_chat: true, usernames: [userToCreateChatWith.username] },
       () => {
-        // createChatSuccess()
-        // setCreated(true)
       }
     )
   }
@@ -38,7 +35,6 @@ function Chat () {
     }
   }
 
-  // if (user.email && userToCreateChatWith.username) {
   return (
     <div className='chat'>
 
@@ -58,9 +54,6 @@ function Chat () {
 
     </div>
   )
-  // } else {
-  //   return <Welcome/>
-  // }
 }
 
 export default Chat
