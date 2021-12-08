@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // BOOTSTRAP
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import { setRadioState } from '../../../actions/radio'
+import { setRadioState } from '../../../../actions/radio'
 
 export default function SideRadio (props) {
   const argument = props.argument

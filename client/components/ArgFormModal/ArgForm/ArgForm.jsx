@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 
 // other components and actions etc
 import SideRadio from './SideRadio/SideRadio'
-import setWhy from '../../actions/why'
+import setWhy from '../../../actions/why'
 
 export default function ArgForm (props) {
   const argument = props.argument

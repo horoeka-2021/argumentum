@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsers } from '../../../actions/user'
 
 // bootstrap
 import Row from 'react-bootstrap/Row'
@@ -12,6 +11,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
 // actions
+import { fetchUsers } from '../../../actions/user'
 import { createChat, setTopic } from '../../../actions/createChat'
 
 export default function Swipe () {
