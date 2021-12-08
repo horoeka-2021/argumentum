@@ -4,7 +4,7 @@ import { cacheUser } from './auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { IfAuthenticated, IfNotAuthenticated } from './components/Authenticated/Authenticated'
-import { IfUserAdded, IfUserNotAdded } from './components/Username/UserAdded'
+import { IfUserAdded, IfUserNotAdded } from './components/UserAdded/UserAdded'
 
 // import Components
 import Navigation from './components/Nav/Navigation'

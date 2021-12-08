@@ -11,12 +11,14 @@ jest.setTimeout(20000)
 let browser
 let page
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false, slowMo: 500 })
+  browser = await chromium.launch({ headless: false, slowMo: 50 }) // 1000 })
   await db.migrate.latest({ directory: './server/db/migrations' })
 })
 
 beforeEach(async () => {
-  const context = await browser.newContext()
+  const context = await browser.newContext({
+    viewport: null
+  })
   page = await context.newPage()
   await db.seed.run({ directory: './server/db/seeds' })
 })
@@ -31,7 +33,7 @@ afterAll(async () => {
 })
 
 // Test goes here
-test('User can register', async () => {
+test('User can create an argument', async () => {
   // going to localhost:3000
   await page.goto(serverUrl)
 
@@ -40,7 +42,7 @@ test('User can register', async () => {
 
   // checking if the url changes to /signin
   expect(await page.url()).toContain(
-    'https://argumentum-eda.au.auth0.com/u/login?state='
+    'https://argumentum-eda.au.auth0.com/'
   )
 
   const testEmail = process.env.E2E_TEST_AUTH0_EMAIL
@@ -57,33 +59,41 @@ test('User can register', async () => {
   await page.waitForSelector('text=Log out')
   expect(await page.content()).toMatch(/Log out/)
 
-  await Promise.all([page.waitForNavigation(), page.click('text=Profile')])
+  expect(await page.content()).toMatch('Select an Avatar')
+
+  await page.fill('#username', 'Test User')
+  await page.click('#monkey-9', { force: true })
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('text=Add New Event')
+    page.click('#add-user', { force: true })
   ])
 
-  expect(await page.content()).toMatch('Create Event')
-
-  await page.fill('#title', 'Christmas Gardening!')
-  await page.fill('[type=date]', '2021-12-25')
-  await page.fill('[type=number]', '100')
-  await page.fill(
-    '#description',
-    "I don't want a lot for Christmas, there is just one thing I need, I don't care about the presents, underneath the Christmas tree, I just want you for my own, more than you could ever know, make my wish come true, all I want for Christmas is you"
+  expect(await page.$eval('main', (el) => el.innerText)).toMatch(
+    /Select an Argument/
   )
 
-  expect(await page.$eval('#title', (el) => el.value)).toMatch(
-    /Christmas Gardening!/
+  await page.click('text=Stupid', { force: true })
+  await page.click('text=God', { force: true })
+  await page.click('text=No', { force: true })
+  await page.fill('#why-field', 'What has he done for me')
+  await page.click('text=Submit', { force: true })
+
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('text=Click to select your Opposition', { force: true })
+  ])
+
+  expect(await page.$eval('main', (el) => el.innerText)).toMatch(
+    /xkeyboardWarrior/
   )
 
   await Promise.all([
     page.waitForNavigation(),
-    page.click('.button-primary', { force: true })
+    page.click('text=ARGUE!', { force: true })
   ])
 
-  expect(await page.$eval('section', (el) => el.innerText)).toMatch(
-    /Christmas Gardening!/
+  expect(await page.$eval('main', (el) => el.innerText)).toMatch(
+    /God/
   )
 })
