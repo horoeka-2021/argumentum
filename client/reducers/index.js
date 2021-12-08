@@ -1,9 +1,26 @@
 import { combineReducers } from 'redux'
 
 import user from './user'
-import loginReducer from './loginReducer'
+import profileArguments from './arguments'
+import radio from './radio'
+import why from './why'
+import list from './list'
+import users from './users'
+import { username, setUsername } from './username'
+import monkey from './monkey'
+import userArgList from './userArgList'
+import createChat from './createChat'
 
 export default combineReducers({
   user,
-  loginReducer
+  profileArguments,
+  radio,
+  why,
+  list,
+  users,
+  username,
+  monkey,
+  userArgList,
+  createChat,
+  setUsername
 })
