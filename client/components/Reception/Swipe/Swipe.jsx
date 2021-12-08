@@ -10,11 +10,13 @@ import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import { createChat } from '../../../actions/createChat'
+
+// actions
+import { createChat, setTopic } from '../../../actions/createChat'
 
 export default function Swipe () {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+  // const user = useSelector(state => state.user)
   const users = useSelector(state => state.users)
 
   useEffect(() => {
@@ -28,10 +30,12 @@ export default function Swipe () {
     setIndex(selectedIndex)
   }
 
-  function handleClick () {
+  function handleClick (topic) {
+    console.log('index', index)
     // sets the redux state of email to be this email
     const username = users.swipeusers[index].username
     dispatch(createChat(username))
+    dispatch(setTopic(topic))
   }
 
   return (
@@ -48,19 +52,19 @@ export default function Swipe () {
         <Row>
           <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
             {users.swipeusers && users.swipeusers.map(swipeuser => {
-              if (swipeuser.authId !== user.auth0Id) {
-                return (
-                  <Carousel.Item key={swipeuser.authId}>
-                    <img
-                      className="d-block w-100 carousel"
-                      src={`images/monkeys/${swipeuser.image}.jpg`}
-                      alt={`images/monkeys/${swipeuser.image}.jpg`}
-                    />
-                    <Carousel.Caption>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                )
-              }
+              // if (swipeuser.authId !== user.auth0Id) {
+              return (
+                <Carousel.Item key={swipeuser.authId}>
+                  <img
+                    className="d-block w-100 carousel"
+                    src={`images/monkeys/${swipeuser.image}.jpg`}
+                    alt={`images/monkeys/${swipeuser.image}.jpg`}
+                  />
+                  <Carousel.Caption>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              )
+              // }
             })}
           </Carousel>
         </Row>
@@ -85,7 +89,7 @@ export default function Swipe () {
                     <td>
                       <Link to='/chat'>
                         {/* <Button onClick={index => handleClick(index)}> */}
-                        <Button onClick={() => handleClick()} variant='dark'>
+                        <Button onClick={() => handleClick(arg.name)} variant='dark'>
                       ARGUE!
                         </Button>
                       </Link>

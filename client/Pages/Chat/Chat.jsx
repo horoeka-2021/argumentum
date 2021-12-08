@@ -12,16 +12,20 @@ function Chat () {
   const user = useSelector(state => state.user)
   // Getting the username of the current user
   const username = useSelector(state => state.setUsername)
+  // Get the topic of the chat
+  const topic = useSelector(state => state.topic)
 
   // a React state
   const [created, setCreated] = useState(false)
 
   function createDirectChat (creds) {
-    setCreated(true)
+    // setCreated(true)
     getOrCreateChat(
       creds,
       { is_direct_chat: true, usernames: [userToCreateChatWith.username] },
       () => {
+        // createChatSuccess()
+        setCreated(true)
       }
     )
   }
@@ -43,6 +47,7 @@ function Chat () {
       </IfNotAuthenticated>
 
       <IfAuthenticated>
+        <h2>{topic}</h2>
         <ChatEngine
           height='70vh'
           userName={username}
