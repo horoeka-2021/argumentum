@@ -9,7 +9,9 @@ import { createChat } from '../actions/createChat'
 
 export default function Swipe () {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
   const users = useSelector(state => state.users)
+
   useEffect(() => {
     dispatch(fetchUsers())
   }, [])
@@ -34,17 +36,21 @@ export default function Swipe () {
     <>
       <main>
         <Carousel activeIndex={index} onSelect={handleSelect} variant='dark' interval='100000' keyboard='true'>
-          {users.swipeusers && users.swipeusers.map(user => (
-            <Carousel.Item key={user.id}>
-              <img
-                className="d-block w-100 carousel"
-                src={`images/monkeys/${user.image}.jpg`}
-                alt={`images/monkeys/${user.image}.jpg`}
-              />
-              <Carousel.Caption>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
+          {users.swipeusers && users.swipeusers.map(swipeuser => {
+            if (swipeuser.authId !== user.auth0Id && swipeuser.args.length > 0) {
+              return (
+                <Carousel.Item key={swipeuser.authId}>
+                  <img
+                    className="d-block w-100 carousel"
+                    src={`images/monkeys/${swipeuser.image}.jpg`}
+                    alt={`images/monkeys/${swipeuser.image}.jpg`}
+                  />
+                  <Carousel.Caption>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              )  
+            }
+          })}
         </Carousel>
         <Container>
           <hr className="solid"></hr>
