@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import Table from 'react-bootstrap/Table'
 import { useDispatch } from 'react-redux'
 import { monkeyAction } from '../actions/monkey'
+
+// import React-Bootstrap components
+import Table from 'react-bootstrap/Table'
 
 export default function Monkeys () {
   const dispatch = useDispatch()
@@ -21,7 +23,7 @@ export default function Monkeys () {
 
   return (
     <div className='Monkeys'>
-      <Table responsive striped borderless hover>
+      <Table responsive borderless>
         {/* Generate a table using a map of the numbers array, and a ternary operator, where after every 3rd element, the current row is tag is closed, and a new row is started */}
         <tbody>
           <tr>

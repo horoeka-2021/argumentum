@@ -24,10 +24,10 @@ function Reception () {
         <Row>
           <Swipe />
         </Row>
-        <Row className='justify-content-center'>
+        <Row>
           <Col></Col>
           <Col>
-            <Button onClick={e => handleClick(e)} variant="outline-dark">Enter</Button>
+            <Button variant="dark" onClick={e => handleClick(e)}>Enter</Button>
           </Col>
           <Col></Col>
         </Row>

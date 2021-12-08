@@ -47,6 +47,7 @@ function Argue () {
     history.push('/reception')
   }
 
+  // checks to see if there is an argument of matching id already in the list state
   function checkList (id) {
     const listMatch = list.findIndex(item => item.argId === id)
     return listMatch != -1
@@ -56,7 +57,7 @@ function Argue () {
     <>
       <Container>
         <Row>
-          <h2>What Topics Do You Want To Argue About?</h2>
+          <h2>Select an Argument from dropdown menus:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
@@ -67,7 +68,7 @@ function Argue () {
             </Row>
             <Row className='justify-content-start'>
 
-              <Accordion>
+              <Accordion className="background">
 
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>Stupid</Accordion.Header>
@@ -131,11 +132,10 @@ function Argue () {
           <Row><br></br></Row>
           <hr className="solid"></hr>
         </Row>
-
         <Row>
-          <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="outline-dark">Now Choose Someone to Argue With</Button>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to select your Opposition</Button>
         </Row>
+        <hr className="solid"></hr>
       </Container>
     </>
   )

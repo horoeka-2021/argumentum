@@ -37,7 +37,15 @@ router.post('/', async (req, res) => {
   })
 
   try {
-    await db.createUserArg(userArgs)
+    const existingUserArgs = await db.getUserArgs(authId)
+    const filteredUserArgs = userArgs.filter(arg => {
+      if(existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
+        return arg
+      }
+    })
+    if (filteredUserArgs.length > 0) {
+      await db.createUserArg(filteredUserArgs)
+    }
     res.sendStatus(201)
   } catch (err) {
     console.error(err.message)

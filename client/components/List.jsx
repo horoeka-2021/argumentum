@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { fetchUserArgsList } from '../actions/user'
 
+// import React-Bootstrap components
+
 export default function List () {
   const dispatch = useDispatch()
 
   const list = useSelector(state => state.list)
-  const userArgs = useSelector(state => state.userArgList)
   const user = useSelector(state => state.user)
 
   

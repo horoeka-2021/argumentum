@@ -1,7 +1,10 @@
 // React and Redux imports
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
+
+// import from fontawesome
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container'
@@ -15,6 +18,8 @@ import Monkeys from './Monkeys'
 import { postUser } from '../actions/user'
 import addChatUser from '../api/addChatUser'
 import Username from './Username'
+import { confirmUsername } from '../actions/username'
+import { getUserProfile } from '../api/user'
 
 function Profile () {
   const dispatch = useDispatch()
@@ -24,6 +29,39 @@ function Profile () {
   const user = useSelector(state => state.user)
   const username = useSelector(state => state.username)
   const monkey = useSelector(state => state.monkey)
+  const setUsername = useSelector(state => state.setUsername)
+
+  // useEffect(() => {
+  //   getUserProfile(user.auth0Id)
+  //     .then(res => {
+  //       console.log(res)
+  //       // if res.username dispatch confirmUsername
+  //       if (res.username) {
+  //         console.log('dispatch confirmUsername')
+  //         dispatch(confirmUsername())
+  //       }
+  //       return null
+  //     })
+  //     .catch(err => {
+  //       console.error(err.message)
+  //     })
+  // }, [user.auth0Id])
+
+  if (user.auth0Id) {
+    getUserProfile(user.auth0Id)
+      .then(res => {
+        console.log(res)
+        // if res.username dispatch confirmUsername
+        if (res) {
+          console.log('dispatch confirmUsername')
+          dispatch(confirmUsername())
+        }
+        return null
+      })
+      .catch(err => {
+        console.error(err.message)
+      })
+  }
 
   function handleClick (event) {
     // set-up: data for chatengine
@@ -54,6 +92,8 @@ function Profile () {
     // POST /api/v1/users
     dispatch(postUser(dbUser))
 
+    dispatch(confirmUsername())
+
     history.push('/')
   }
 
@@ -61,14 +101,15 @@ function Profile () {
     <>
       <Container>
         <Row>
-          <h2>Choose an anonymous username!</h2>
+          <h2>Important: create an ANONYMOUS username!</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
           <Username />
+          <hr className="solid"></hr>
         </Row>
         <Row>
-          <h2>What primate represents your arguing style best?</h2>
+          <h2>Select a primate to represent your discussion style:</h2>
           <hr className="solid"></hr>
         </Row>
         <Row>
@@ -76,8 +117,9 @@ function Profile () {
         </Row>
         <Row>
           <hr className="solid"></hr>
-          <Button onClick={e => handleClick(e)} variant="outline-dark">Update Your Profile</Button>
+          <Button onClick={e => handleClick(e)} variant="dark">Click to Update Your Profile</Button>
         </Row>
+        <hr className="solid"></hr>
       </Container>
     </>
   )
