@@ -81,8 +81,8 @@ jobs:
       # - name: Linting
         # run: "npm run lint" # -- --rule 'no-console: 2'"
         
-      - name: Test
-        run: npm run test-no-watch
+      # - name: Test
+      #   run: npm run test-no-watch
         
       ### the below is for E2E testing ###
       # - name: Build
