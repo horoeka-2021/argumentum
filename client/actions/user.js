@@ -1,4 +1,4 @@
-import { addUser, getUsers, addUserArgList } from '../api/user'
+import { addUser, getUsers, addUserArgList, getUserArgs } from '../api/user'
 
 export const POST_USER_PENDING = 'POST_USER_PENDING'
 export const POST_USER_SUCCESS = 'POST_USER_SUCCESS'
@@ -8,6 +8,8 @@ export const GET_USERS_PENDING = 'GET_USERS_PENDING'
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'
 export const POST_USER_ARG_LIST_PENDING = 'POST_USER_ARG_LIST_PENDING'
 export const POST_USER_ARG_LIST_SUCCESS = 'POST_USER_ARG_LIST_SUCCESS'
+export const FETCH_USER_ARG_LIST_PENDING = 'FETCH_USER_ARG_LIST_PENDING'
+export const FETCH_USER_ARG_LIST_SUCCESS = 'FETCH_USER_ARG_LIST_SUCCESS'
 
 export function postUserPending () {
   return {
@@ -89,6 +91,31 @@ export function postUserArgList (list) {
     return addUserArgList(list)
       .then(() => {
         dispatch(postUserArgListSuccess())
+        return null
+      })
+      .catch(err => console.error(err.message))
+  }
+}
+
+export function fetchUserArgsListPending () {
+  return {
+    type: FETCH_USER_ARG_LIST_PENDING
+  }
+}
+
+export function fetchUserArgsListSuccess (userArgs) {
+  return{
+    type: FETCH_USER_ARG_LIST_SUCCESS,
+    userArgs
+  }
+}
+
+export function fetchUserArgsList (authId) {
+  return dispatch => {
+    dispatch(fetchUserArgsListPending())
+    return getUserArgs(authId)
+      .then(userArgs => {
+        dispatch(fetchUserArgsListSuccess(userArgs))
         return null
       })
       .catch(err => console.error(err.message))
