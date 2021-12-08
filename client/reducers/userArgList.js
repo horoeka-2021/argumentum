@@ -4,7 +4,8 @@ import { POST_USER_ARG_LIST_SUCCESS } from '../actions/user'
 export default function userArgList (state = [], action) {
   switch (action.type) {
     case POST_USER_ARG_LIST_SUCCESS:
-      return action.userArgList
+      // return action.userArgList
+      return state
     default:
       return state
   }
