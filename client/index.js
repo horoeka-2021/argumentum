@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 import reducers from './reducers'
-import App from './components/App'
+import App from './App'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(

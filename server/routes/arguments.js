@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
             sortedArgs.fun.push(arg)
             break
           default:
-            console.log(`arg id:${arg.id}, category ${arg.category} not sorted`)
             break
         }
       })
@@ -40,14 +39,15 @@ router.get('/', (req, res) => {
     })
 })
 
+// This route doesn't work under postgres
 // POST new arg, returns new args id
-router.post('/', (req, res) => {
-  db.createArg(req.body)
-    .then((id) => {
-      res.json({ id: id[0] })
-      return null
-    })
-    .catch((err) => {
-      res.status(500).send('ARGUMENT DATABASE ERROR: ' + err.message)
-    })
-})
+// router.post('/', (req, res) => {
+//   db.createArg(req.body)
+//     .then((id) => {
+//       res.json({ id: id[0] })
+//       return null
+//     })
+//     .catch((err) => {
+//       res.status(500).send('ARGUMENT DATABASE ERROR: ' + err.message)
+//     })
+// })

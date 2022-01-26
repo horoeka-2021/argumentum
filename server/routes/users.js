@@ -1,5 +1,6 @@
 const express = require('express')
 const db = require('../db/users')
+const log = require('../logger')
 
 const router = express.Router()
 
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
       res.status(500).send('USER DATABASE ERROR: user already exists in db')
     }
   } catch (err) {
-    console.error(err.message)
+    log(err.message)
     res.status(500).send('USER DATABASE ERROR: ' + err.message)
   }
 })
@@ -40,7 +41,7 @@ router.get('/:authId', (req, res) => {
       return null
     })
     .catch(err => {
-      console.error(err.message)
+      log(err.message)
       res.status(500).send('USER DATABASE ERROR: ' + err.message)
     })
 })

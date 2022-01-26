@@ -10,6 +10,7 @@ import { username, setUsername } from './username'
 import monkey from './monkey'
 import userArgList from './userArgList'
 import createChat from './createChat'
+import topic from './topic'
 
 export default combineReducers({
   user,
@@ -22,5 +23,6 @@ export default combineReducers({
   monkey,
   userArgList,
   createChat,
-  setUsername
+  setUsername,
+  topic
 })

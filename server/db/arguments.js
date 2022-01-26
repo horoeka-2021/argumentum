@@ -1,8 +1,7 @@
 const connection = require('./connection')
 
 module.exports = {
-  listArgs,
-  createArg
+  listArgs
 }
 
 function listArgs (db = connection) {
@@ -10,9 +9,10 @@ function listArgs (db = connection) {
     .select()
 }
 
-// What is returning('id') for??
-function createArg (arg, db = connection) {
-  return db('arguments')
-    .returning('id')
-    .insert(arg)
-}
+// Postgres .insert() doesn't work the same as SQLite
+// // What is returning('id') for??
+// function createArg (arg, db = connection) {
+//   return db('arguments')
+//     .returning('id')
+//     .insert(arg)
+// }

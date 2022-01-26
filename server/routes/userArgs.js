@@ -1,5 +1,6 @@
 const express = require('express')
 const db = require('../db/users')
+const log = require('../logger')
 
 const router = express.Router()
 
@@ -17,7 +18,7 @@ router.get('/:authId', (req, res) => {
       return null
     })
     .catch(err => {
-      console.error(err.message)
+      log(err.message)
       res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
     })
 })
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
   try {
     const existingUserArgs = await db.getUserArgs(authId)
     const filteredUserArgs = userArgs.filter(arg => {
-      if(existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
+      if (existingUserArgs.findIndex(item => item.argId === arg.arg_id) === -1) {
         return arg
       }
     })
@@ -48,7 +49,7 @@ router.post('/', async (req, res) => {
     }
     res.sendStatus(201)
   } catch (err) {
-    console.error(err.message)
+    log(err.message)
     res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
   }
 })
@@ -70,7 +71,7 @@ router.get('/', async (req, res) => {
     res.json({ swipeusers })
     return null
   } catch (err) {
-    console.error(err.message)
+    log(err.message)
     res.status(500).send('USER_ARGUMENTS DATABASE ERROR: ' + err.message)
   }
 })
