@@ -7,7 +7,8 @@ module.exports = {
   getUserArgs,
   createUserArg,
   listUsers,
-  listUserArgs
+  listUserArgs,
+  getUserById
 }
 
 function createUser (user, db = connection) {
@@ -27,6 +28,14 @@ function userExists (authId, db = connection) {
 function getUser (authId, db = connection) {
   return db('users')
     .where('auth0_id', authId)
+    .first()
+    .select()
+}
+
+// required for testing
+function getUserById (id, db = connection) {
+  return db('users')
+    .where('id', id)
     .first()
     .select()
 }
