@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
             break
         }
       })
+      console.log(sortedArgs)
       res.json(sortedArgs)
       return null
     })
