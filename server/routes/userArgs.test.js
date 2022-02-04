@@ -4,6 +4,8 @@ const db = require('../db/users')
 
 jest.mock('../db/users')
 
+// Tests and Mocks for POST /api/v1/userArgs
+
 // const mockPost = 1
 const mockGetUserArgs = [
   {
@@ -92,4 +94,34 @@ describe('POST /api/v1/userArgs', () => {
         return null
       })
   })
+})
+
+// Tests and Mocks for GET /api/v1/userArgs/:authId
+
+// mock for getUserArgs is the same as used in the POST test
+
+describe('GET /api/v1/userArgs/:authId', () => {
+  it('gets the correct args for a user', () => {
+    db.getUserArgs.mockImplementation(() => {
+      return Promise.resolve(mockGetUserArgs)
+    })
+    return request(server)
+      .get('/api/v1/userArgs/auth0|61b00fe4013f920068a29725')
+      .expect(200)
+      .then(res => {
+        expect(res.body.args[0].name).toBe('God')
+        return null
+      })
+  })
+  it.todo('returns an error if user does not exist')
+  // it('returns an error if user does not exist', () => {
+  //   return request(server)
+  //     .get('/api/v1/userArgs/auth0|010101001010101')
+  //     .expect(500)
+  //     .then(res => {
+  //       console.log(res.body.error)
+  //       expect(res.body.error).toBe('User does not exist')
+  //       return null
+  //     })
+  // })
 })

@@ -60,6 +60,14 @@ describe('getUserArgs', () => {
         return null
       })
   })
+  it.todo('returns an error if user does not exist')
+  // it('returns an error if user does not exist', () => {
+  // return db.getUserArgs('auth0|1010101010', testDb)
+  //   .then(userArgs => {
+  //     expect(userArgs).toBeNull()
+  //     return null
+  //   })
+  // })
 })
 
 describe('createUserArgs', () => {
