@@ -108,3 +108,35 @@ describe('listUsers', () => {
       })
   })
 })
+
+describe('listUserArgs', () => {
+  it('returns one users arguments', () => {
+    return db.listUserArgs(testDb)
+      .then(userArgs => {
+        expect(userArgs).toHaveLength(1)
+        return null
+      })
+  })
+  it('returns multiple users arguments', () => {
+    // const newUser = {
+    //   auth0_id: 'auth0|12345',
+    //   email: 'test@gmail.com'
+    // }
+    // return db.createUser(newUser, testDb)
+    const userArgs = {
+      user_id: 'auth0|12345',
+      arg_id: 2,
+      side: '?',
+      story: 'This is just stupid...'
+    }
+    return db.createUserArg(userArgs, testDb)
+      .then(() => {
+        return db.listUserArgs(testDb)
+      })
+      .then((userArgs) => {
+        console.log(userArgs)
+        expect(userArgs).toHaveLength(2)
+        return null
+      })
+  })
+})
