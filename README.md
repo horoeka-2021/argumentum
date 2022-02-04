@@ -1,6 +1,24 @@
 # argumentum
 
-# API routes (proposal)
+This repo is for the final project of the Enspiral Dev Academy Bootcamp.
+
+The team:
+  Tane
+  James
+  Angus
+  Troy
+
+The idea 'Tinder for Arguments' was proposed during the cohort-wide project idea brainstorm.
+
+The team then voted to work on this idea and developed it into a project aiming to create a place that people can come and engage in meaningful (or just fun) 'arguments'.
+
+These days, the word 'argument' has a negative meaning. This doesn't have to be the case, there are things in this world we have to discuss and it is important that we do that in a civil and respectful manner.
+
+Check out the demo: https://www.youtube.com/watch?v=EbJ-95AoH04&list=PL_AE4CqTqcwKvUhSw5xmRPkj3aXEjkFTB&index=3&t=303s
+
+# Planning
+
+## API routes (proposal)
 ### `POST /api/v1/users`
 
 Used on /profile page to add a user to our database
