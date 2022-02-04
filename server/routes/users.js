@@ -35,6 +35,7 @@ router.post('/', async (req, res) => {
 // GET user by /:authId
 router.get('/:authId', (req, res) => {
   const authId = req.params.authId
+  console.log('authID: ', authId)
   db.getUser(authId)
     .then((user) => {
       res.json(user)
